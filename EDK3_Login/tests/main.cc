@@ -27,6 +27,7 @@
 #include "math_library/vector_3.h"
 
 #include "material_custom.h"
+#include "geometry_custom_terrain.h"
 
 
 float EDK3::MaterialCustom::LightSettings::ambient_color_[3] = { 0.0f,0.0f,0.0f };
@@ -41,9 +42,50 @@ const int kWindowWidth = 1024;
 const int kWindowHeight = 768;
 
 
+void InitTerrain(EDK3::Node* root) {
+
+    EDK3::ref_ptr<EDK3::TerrainCustom> custom_terrain;
+    custom_terrain.alloc();
+    custom_terrain->init(256, 256, 2.0f, 1.0f, 0.05f, 20.0f, "./textures/island_heightmap.png", true);
+    EDK3::dev::GPUManager::CheckGLError("Explotido");
+
+    EDK3::scoped_array<char> error_log;
+
+    //Load texture
+
+    EDK3::ref_ptr<EDK3::Texture> texture;
+    EDK3::Texture::Load("./cuesta.png", &texture);
+    if (!texture) {
+        printf("Can't load texture");
+        exit(-2);
+    }
+
+    // Material
+
+    EDK3::ref_ptr<EDK3::MaterialCustom> mat;
+    mat.alloc();
+    mat->init(error_log, "./shaders/basicVertex.vs", "./shaders/basiFragment.fs");
+    EDK3::ref_ptr<EDK3::MaterialCustom::MaterialCustomSettings> mat_settings;
+    mat_settings.alloc();
+    float color[] = { 1.0f, 1.0f, 1.0f, 1.0f };
+    mat_settings->set_color(color);
+
+    EDK3::ref_ptr<EDK3::Drawable> drawable;
+    drawable.alloc();
+    drawable->set_geometry(custom_terrain.get());
+    drawable->set_material(mat.get());
+    drawable->set_material_settings(mat_settings.get());
+    drawable->set_position(0.0f, 0.0f, 0.0f);
+    drawable->set_HPR(0.0f, 0.0f, 0.0f);
+    root->addChild(drawable.get());
+
+}
+
 void InitScene() {
   //Allocating root node:
   EDK3::Node* root = GameState.root.alloc();
+
+  InitTerrain(root);
 
   //Allocating and initializing the camera:
   GameState.camera.alloc();

@@ -1,50 +1,5 @@
-﻿  matrix_3.cc
-C:\Users\jimenezmu\Documents\prog_graph_jimenezmu\EDK3_Login\include\math_library\math_utils.h(15,46): warning C4100: 'copy': parámetro formal sin referencia
-  matrix_4.cc
-C:\Users\jimenezmu\Documents\prog_graph_jimenezmu\EDK3_Login\include\math_library\math_utils.h(15,46): warning C4100: 'copy': parámetro formal sin referencia
-C:\Users\jimenezmu\Documents\prog_graph_jimenezmu\EDK3_Login\include\math_library\matrix_4.h(348,20): warning C4100: 'far': parámetro formal sin referencia
-C:\Users\jimenezmu\Documents\prog_graph_jimenezmu\EDK3_Login\include\math_library\matrix_4.h(348,8): warning C4100: 'near': parámetro formal sin referencia
-C:\Users\jimenezmu\Documents\prog_graph_jimenezmu\EDK3_Login\include\math_library\matrix_4.h(347,54): warning C4100: 'aspect': parámetro formal sin referencia
-C:\Users\jimenezmu\Documents\prog_graph_jimenezmu\EDK3_Login\include\math_library\matrix_4.h(347,43): warning C4100: 'fov': parámetro formal sin referencia
-C:\Users\jimenezmu\Documents\prog_graph_jimenezmu\EDK3_Login\include\math_library\matrix_4.h(354,20): warning C4100: 'far': parámetro formal sin referencia
-C:\Users\jimenezmu\Documents\prog_graph_jimenezmu\EDK3_Login\include\math_library\matrix_4.h(354,8): warning C4100: 'near': parámetro formal sin referencia
-C:\Users\jimenezmu\Documents\prog_graph_jimenezmu\EDK3_Login\include\math_library\matrix_4.h(353,73): warning C4100: 'valueottom': parámetro formal sin referencia
-C:\Users\jimenezmu\Documents\prog_graph_jimenezmu\EDK3_Login\include\math_library\matrix_4.h(353,62): warning C4100: 'top': parámetro formal sin referencia
-C:\Users\jimenezmu\Documents\prog_graph_jimenezmu\EDK3_Login\include\math_library\matrix_4.h(353,50): warning C4100: 'left': parámetro formal sin referencia
-C:\Users\jimenezmu\Documents\prog_graph_jimenezmu\EDK3_Login\include\math_library\matrix_4.h(353,37): warning C4100: 'right': parámetro formal sin referencia
-  vector_2.cc
-  vector_3.cc
-C:\Users\jimenezmu\Documents\prog_graph_jimenezmu\EDK3_Login\include\math_library\math_utils.h(15,46): warning C4100: 'copy': parámetro formal sin referencia
-  vector_4.cc
-C:\Users\jimenezmu\Documents\prog_graph_jimenezmu\EDK3_Login\include\math_library\math_utils.h(15,46): warning C4100: 'copy': parámetro formal sin referencia
-  Generando código...
-ESAT_d.lib(draw.obj) : warning LNK4099: no se encontró PDB 'ESAT_d.pdb' con 'ESAT_d.lib(draw.obj)' o en 'C:\Users\jimenezmu\Documents\prog_graph_jimenezmu\EDK3_Login\bin\Debug\x32\ESAT_d.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
-ESAT_d.lib(input.obj) : warning LNK4099: no se encontró PDB 'ESAT_d.pdb' con 'ESAT_d.lib(input.obj)' o en 'C:\Users\jimenezmu\Documents\prog_graph_jimenezmu\EDK3_Login\bin\Debug\x32\ESAT_d.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
-ESAT_d.lib(math.obj) : warning LNK4099: no se encontró PDB 'ESAT_d.pdb' con 'ESAT_d.lib(math.obj)' o en 'C:\Users\jimenezmu\Documents\prog_graph_jimenezmu\EDK3_Login\bin\Debug\x32\ESAT_d.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
-ESAT_d.lib(time.obj) : warning LNK4099: no se encontró PDB 'ESAT_d.pdb' con 'ESAT_d.lib(time.obj)' o en 'C:\Users\jimenezmu\Documents\prog_graph_jimenezmu\EDK3_Login\bin\Debug\x32\ESAT_d.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
-ESAT_d.lib(window.obj) : warning LNK4099: no se encontró PDB 'ESAT_d.pdb' con 'ESAT_d.lib(window.obj)' o en 'C:\Users\jimenezmu\Documents\prog_graph_jimenezmu\EDK3_Login\bin\Debug\x32\ESAT_d.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
-ESAT_d.lib(edk_camera.obj) : warning LNK4099: no se encontró PDB 'ESAT_d.pdb' con 'ESAT_d.lib(edk_camera.obj)' o en 'C:\Users\jimenezmu\Documents\prog_graph_jimenezmu\EDK3_Login\bin\Debug\x32\ESAT_d.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
-ESAT_d.lib(edk_geometry.obj) : warning LNK4099: no se encontró PDB 'ESAT_d.pdb' con 'ESAT_d.lib(edk_geometry.obj)' o en 'C:\Users\jimenezmu\Documents\prog_graph_jimenezmu\EDK3_Login\bin\Debug\x32\ESAT_d.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
-ESAT_d.lib(edk_gpumanager.obj) : warning LNK4099: no se encontró PDB 'ESAT_d.pdb' con 'ESAT_d.lib(edk_gpumanager.obj)' o en 'C:\Users\jimenezmu\Documents\prog_graph_jimenezmu\EDK3_Login\bin\Debug\x32\ESAT_d.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
-ESAT_d.lib(edk_gpuresources.obj) : warning LNK4099: no se encontró PDB 'ESAT_d.pdb' con 'ESAT_d.lib(edk_gpuresources.obj)' o en 'C:\Users\jimenezmu\Documents\prog_graph_jimenezmu\EDK3_Login\bin\Debug\x32\ESAT_d.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
-ESAT_d.lib(edk_material.obj) : warning LNK4099: no se encontró PDB 'ESAT_d.pdb' con 'ESAT_d.lib(edk_material.obj)' o en 'C:\Users\jimenezmu\Documents\prog_graph_jimenezmu\EDK3_Login\bin\Debug\x32\ESAT_d.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
-ESAT_d.lib(edk_node.obj) : warning LNK4099: no se encontró PDB 'ESAT_d.pdb' con 'ESAT_d.lib(edk_node.obj)' o en 'C:\Users\jimenezmu\Documents\prog_graph_jimenezmu\EDK3_Login\bin\Debug\x32\ESAT_d.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
-ESAT_d.lib(edk_rendertarget.obj) : warning LNK4099: no se encontró PDB 'ESAT_d.pdb' con 'ESAT_d.lib(edk_rendertarget.obj)' o en 'C:\Users\jimenezmu\Documents\prog_graph_jimenezmu\EDK3_Login\bin\Debug\x32\ESAT_d.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
-ESAT_d.lib(nanovg.obj) : warning LNK4099: no se encontró PDB '' con 'ESAT_d.lib(nanovg.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
-ESAT_d.lib(glew.obj) : warning LNK4099: no se encontró PDB 'ESAT_d.pdb' con 'ESAT_d.lib(glew.obj)' o en 'C:\Users\jimenezmu\Documents\prog_graph_jimenezmu\EDK3_Login\bin\Debug\x32\ESAT_d.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
-ESAT_d.lib(context.obj) : warning LNK4099: no se encontró PDB 'ESAT_d.pdb' con 'ESAT_d.lib(context.obj)' o en 'C:\Users\jimenezmu\Documents\prog_graph_jimenezmu\EDK3_Login\bin\Debug\x32\ESAT_d.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
-ESAT_d.lib(init.obj) : warning LNK4099: no se encontró PDB 'ESAT_d.pdb' con 'ESAT_d.lib(init.obj)' o en 'C:\Users\jimenezmu\Documents\prog_graph_jimenezmu\EDK3_Login\bin\Debug\x32\ESAT_d.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
-ESAT_d.lib(input.obj) : warning LNK4099: no se encontró PDB 'ESAT_d.pdb' con 'ESAT_d.lib(input.obj)' o en 'C:\Users\jimenezmu\Documents\prog_graph_jimenezmu\EDK3_Login\bin\Debug\x32\ESAT_d.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
-ESAT_d.lib(monitor.obj) : warning LNK4099: no se encontró PDB 'ESAT_d.pdb' con 'ESAT_d.lib(monitor.obj)' o en 'C:\Users\jimenezmu\Documents\prog_graph_jimenezmu\EDK3_Login\bin\Debug\x32\ESAT_d.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
-ESAT_d.lib(window.obj) : warning LNK4099: no se encontró PDB 'ESAT_d.pdb' con 'ESAT_d.lib(window.obj)' o en 'C:\Users\jimenezmu\Documents\prog_graph_jimenezmu\EDK3_Login\bin\Debug\x32\ESAT_d.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
-ESAT_d.lib(win32_init.obj) : warning LNK4099: no se encontró PDB 'ESAT_d.pdb' con 'ESAT_d.lib(win32_init.obj)' o en 'C:\Users\jimenezmu\Documents\prog_graph_jimenezmu\EDK3_Login\bin\Debug\x32\ESAT_d.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
-ESAT_d.lib(win32_monitor.obj) : warning LNK4099: no se encontró PDB 'ESAT_d.pdb' con 'ESAT_d.lib(win32_monitor.obj)' o en 'C:\Users\jimenezmu\Documents\prog_graph_jimenezmu\EDK3_Login\bin\Debug\x32\ESAT_d.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
-ESAT_d.lib(win32_time.obj) : warning LNK4099: no se encontró PDB 'ESAT_d.pdb' con 'ESAT_d.lib(win32_time.obj)' o en 'C:\Users\jimenezmu\Documents\prog_graph_jimenezmu\EDK3_Login\bin\Debug\x32\ESAT_d.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
-ESAT_d.lib(win32_tls.obj) : warning LNK4099: no se encontró PDB '' con 'ESAT_d.lib(win32_tls.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
-ESAT_d.lib(win32_window.obj) : warning LNK4099: no se encontró PDB 'ESAT_d.pdb' con 'ESAT_d.lib(win32_window.obj)' o en 'C:\Users\jimenezmu\Documents\prog_graph_jimenezmu\EDK3_Login\bin\Debug\x32\ESAT_d.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
-ESAT_d.lib(wgl_context.obj) : warning LNK4099: no se encontró PDB 'ESAT_d.pdb' con 'ESAT_d.lib(wgl_context.obj)' o en 'C:\Users\jimenezmu\Documents\prog_graph_jimenezmu\EDK3_Login\bin\Debug\x32\ESAT_d.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
-ESAT_d.lib(winmm_joystick.obj) : warning LNK4099: no se encontró PDB 'ESAT_d.pdb' con 'ESAT_d.lib(winmm_joystick.obj)' o en 'C:\Users\jimenezmu\Documents\prog_graph_jimenezmu\EDK3_Login\bin\Debug\x32\ESAT_d.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
-ESAT_extra_d.lib(imgui.obj) : warning LNK4099: no se encontró PDB 'ESAT_extra_d.pdb' con 'ESAT_extra_d.lib(imgui.obj)' o en 'C:\Users\jimenezmu\Documents\prog_graph_jimenezmu\EDK3_Login\bin\Debug\x32\ESAT_extra_d.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
-ESAT_extra_d.lib(imgui.obj) : warning LNK4099: no se encontró PDB 'ESAT_extra_d.pdb' con 'ESAT_extra_d.lib(imgui.obj)' o en 'C:\Users\jimenezmu\Documents\prog_graph_jimenezmu\EDK3_Login\bin\Debug\x32\ESAT_extra_d.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
-ESAT_extra_d.lib(imgui_draw.obj) : warning LNK4099: no se encontró PDB 'ESAT_extra_d.pdb' con 'ESAT_extra_d.lib(imgui_draw.obj)' o en 'C:\Users\jimenezmu\Documents\prog_graph_jimenezmu\EDK3_Login\bin\Debug\x32\ESAT_extra_d.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
-  PR_Demo_Workspace.vcxproj -> C:\Users\jimenezmu\Documents\prog_graph_jimenezmu\EDK3_Login\bin\Debug\x32\PR_Demo_Workspace_d.exe
+﻿  main.cc
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\math_library\math_utils.h(15,46): warning C4100: 'copy': parámetro formal sin referencia
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\tests\main.cc(122,33): warning C4100: 'argv': parámetro formal sin referencia
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\tests\main.cc(122,20): warning C4100: 'argc': parámetro formal sin referencia
+  PR_Demo_Workspace.vcxproj -> C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\bin\Debug\x32\PR_Demo_Workspace_d.exe
