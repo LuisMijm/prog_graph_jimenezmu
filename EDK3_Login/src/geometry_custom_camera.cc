@@ -101,10 +101,20 @@ namespace EDK3 {
                         position_[2] + right.z * speed_};
         set_position(&new_position.x);
       }
+      if (ESAT::IsKeyPressed('Q')) {
+        new_position = {position_[0],
+                        position_[1] - speed_,
+                        position_[2]};
+        set_position(&new_position.x);
+      }
 
-
-
-
+      if (ESAT::IsKeyPressed('E')) {
+        new_position = {position_[0],
+                        position_[1] + speed_,
+                        position_[2] };
+        set_position(&new_position.x);
+      }
+      
 
       alpha = ((window_size_.y-(float)ESAT::MousePositionY()) / window_height) * 3.14f;
       omega = ((float)ESAT::MousePositionX() / window_width) * 6.28f;

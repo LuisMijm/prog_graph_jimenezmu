@@ -90,13 +90,14 @@ bool MaterialCustom::enable(const EDK3::MaterialSettings *mat) const {
     }
     const LightSettings* light_set = dynamic_cast<const LightSettings*>(mat);
     if(light_set){
+      program_->use();
       int lights_counter;
       char name[60] = {'\0'};
       int loc;
       for(int i=0; i < 8; i++){
         if(light_set->light_confs_[i].enabled_){
           lights_counter++;
-
+          /*
           //Position
           sprintf(name, "u_lights[%d].pos\0");
           loc = program_->get_uniform_position(name);
@@ -137,7 +138,7 @@ bool MaterialCustom::enable(const EDK3::MaterialSettings *mat) const {
           }
           
           //Linear attenuation
-          sprintf(name, "u_lights[%d].spec_color\0");
+          sprintf(name, "u_lights[%d].linear_att\0");
           loc = program_->get_uniform_position(name);
           if (loc != -1) {
               program_->set_uniform_value(loc, EDK3::Type::T_FLOAT_1, &light_set->light_confs_[i].linear_att_);
@@ -195,6 +196,7 @@ bool MaterialCustom::enable(const EDK3::MaterialSettings *mat) const {
           else {
               printf("Error uniform %s\n", name);
           }
+          */
         }
       }
       

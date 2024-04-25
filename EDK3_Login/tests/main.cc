@@ -28,14 +28,20 @@
 
 #include "material_custom.h"
 #include "geometry_custom_terrain.h"
+#include "geometry_custom_sphere.h"
+#include "camera_custom.h"
 
 
 float EDK3::MaterialCustom::LightSettings::ambient_color_[3] = { 0.0f,0.0f,0.0f };
 
 //Unnamed struct and it's unique instance:
 struct {
-  EDK3::ref_ptr<EDK3::Camera> camera;
+  EDK3::ref_ptr<EDK3::CameraCustom> camera;
   EDK3::ref_ptr<EDK3::Node> root;
+  EDK3::ref_ptr<EDK3::MaterialCustom> mat;
+  EDK3::ref_ptr<EDK3::MaterialCustom::MaterialCustomSettings> mat_settings;
+
+
 } GameState;
 
 const int kWindowWidth = 1024;
@@ -46,59 +52,76 @@ void InitTerrain(EDK3::Node* root) {
 
     EDK3::ref_ptr<EDK3::TerrainCustom> custom_terrain;
     custom_terrain.alloc();
-    custom_terrain->init(256, 256, 2.0f, 1.0f, 0.05f, 20.0f, "./textures/island_heightmap.png", true);
-    EDK3::dev::GPUManager::CheckGLError("Explotido");
+    custom_terrain->init(256, 256, 5.0f, 1.0f, 0.005f, 30.0f, "./textures/south.png", true);
 
-    EDK3::scoped_array<char> error_log;
 
     //Load texture
 
+    /*
     EDK3::ref_ptr<EDK3::Texture> texture;
-    EDK3::Texture::Load("./cuesta.png", &texture);
+    EDK3::Texture::Load("./test/T_EDK_Logo.png", &texture);
     if (!texture) {
         printf("Can't load texture");
         exit(-2);
     }
-
-    // Material
-
-    EDK3::ref_ptr<EDK3::MaterialCustom> mat;
-    mat.alloc();
-    mat->init(error_log, "./shaders/basicVertex.vs", "./shaders/basiFragment.fs");
-    EDK3::ref_ptr<EDK3::MaterialCustom::MaterialCustomSettings> mat_settings;
-    mat_settings.alloc();
-    float color[] = { 1.0f, 1.0f, 1.0f, 1.0f };
-    mat_settings->set_color(color);
+    */
 
     EDK3::ref_ptr<EDK3::Drawable> drawable;
     drawable.alloc();
     drawable->set_geometry(custom_terrain.get());
-    drawable->set_material(mat.get());
-    drawable->set_material_settings(mat_settings.get());
+    drawable->set_material(GameState.mat.get());
+    drawable->set_material_settings(GameState.mat_settings.get());
     drawable->set_position(0.0f, 0.0f, 0.0f);
     drawable->set_HPR(0.0f, 0.0f, 0.0f);
+    drawable->set_name("terrain");
     root->addChild(drawable.get());
+}
 
+void InitMaterials() {
+  EDK3::scoped_array<char> error_log;
+  GameState.mat.alloc();
+  GameState.mat_settings.alloc();
+
+  GameState.mat->init(error_log, "./shaders/basicVertex.vs", "./shaders/basicFragment.fs");
+  GameState.mat_settings.alloc();
+  float color[] = { 0.5f, 0.5f, 0.25f, 1.0f };
+  GameState.mat_settings->set_color(color);
+
+}
+
+void InitSphere(EDK3::Node* root) {
+  EDK3::ref_ptr<EDK3::SphereCustom> sphere;
+  sphere.alloc();
+  sphere->init(1000.0f);
 }
 
 void InitScene() {
   //Allocating root node:
   EDK3::Node* root = GameState.root.alloc();
-
+  
+  InitMaterials();
   InitTerrain(root);
+  
 
   //Allocating and initializing the camera:
   GameState.camera.alloc();
-  float pos[] = { 120.0f, 140.0f, 120.0f };
-  float view[] = { -120.0f, -140.0f, -120.0f };
+  float pos[] = { 0.0f, 80.0f, 100.0f };
+  float view[] = { 0.0f, 0.0f, 0.0f };
   GameState.camera->set_position(pos);
-  GameState.camera->set_view_direction(view);
+  GameState.camera->initViewTarget(kWindowWidth, kWindowHeight);
+  GameState.camera->setSensitibity(1.0f);
+  //GameState.camera->set_view_direction(view);
+  GameState.camera->setSpeed(0.05f);
+  GameState.camera->setSpeedModifier(0.01f);
   GameState.camera->setupPerspective(70.0f, 8.0f / 6.0f, 1.0f, 1500.0f);
+  
   EDK3::dev::GPUManager::CheckGLError("Prepare END");
 }
 
 void UpdateFn() {
   GameState.camera->set_clear_color(0.94f, 1.0f, 0.94f, 1.0f);
+  GameState.camera->update(0.0f, GameState.camera->window_size().x, GameState.camera->window_size().y);
+  
 }
 
 void RenderFn() {
