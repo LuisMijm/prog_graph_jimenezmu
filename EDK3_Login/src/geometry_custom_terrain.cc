@@ -52,7 +52,6 @@ void TerrainCustom::init(const int num_cols, const int num_rows,
 
   //Create vertexes values
 
-  //float terrain_size = size / 2.0f;
   //float delta_x = size / (float)num_cols;
   //float delta_y = size / (float)num_rows;
   Vec3 up_vector;
@@ -83,12 +82,12 @@ void TerrainCustom::init(const int num_cols, const int num_rows,
         if (texel_value > 1.0f) texel_value = 1.0f;
         if (is_centered) {
             mesh_elements_pointer[j + i * (num_cols + 1)].pos = Vec3(size * j - ((size * num_cols) / 2),
-                                                                     texel_value * heightmap_mult +  SimplexNoise::noise(size * j * smoothness ,size * i * smoothness) * height_mult,
+                                                                     texel_value * heightmap_mult +  SimplexNoise::noise(size * j * smoothness ,size * i * smoothness) * 0.0001f * height_mult,
                                                                      size * i - ((size * num_rows) / 2));
         }
         else {
-            mesh_elements_pointer[j + i * (num_cols + 1)].pos =  Vec3(size * j , 
-                                                                      SimplexNoise::noise(size * j * smoothness ,size * i * smoothness) * height_mult,
+            mesh_elements_pointer[j + i * (num_cols + 1)].pos = Vec3(size * j,
+                SimplexNoise::noise(size * j * smoothness, size * i * smoothness) * 0.01f *height_mult,
                                                                       size * i);
         }
      
@@ -169,7 +168,7 @@ void TerrainCustom::init(const int num_cols, const int num_rows,
       }
   }
 
-  // Z is inverted in EDK3, why?
+  // Z is inverted in EDK3
   // Vertex order
   unsigned int* order_elements_pointer = mesh_order.get();
   for (int i = 0; i < num_rows ; i++) {
