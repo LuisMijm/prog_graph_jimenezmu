@@ -44,7 +44,7 @@ struct {
   EDK3::ref_ptr<EDK3::CameraCustom> camera;
   EDK3::ref_ptr<EDK3::Node> root;
   EDK3::ref_ptr<EDK3::MaterialCustom> mat;
-  EDK3::ref_ptr<EDK3::MaterialCustom::MaterialCustomSettings> mat_settings;
+  EDK3::ref_ptr<EDK3::MaterialCustom::MaterialCustomTextureSettings> mat_settings;
   EDK3::ref_ptr<EDK3::Texture> texture;
 
 } GameState;
@@ -52,7 +52,7 @@ struct {
 const int kWindowWidth = 1024;
 const int kWindowHeight = 768;
 const int kFigurePoints = 10;
-
+EDK3::scoped_array<EDK3::ref_ptr<EDK3::Geometry>> customObjGeometry;
 
 void InitMaterials() {
     EDK3::scoped_array<char> error_log;
@@ -66,7 +66,7 @@ void InitMaterials() {
 }
 
 void InitTextures() {
-    EDK3::Texture::Load("./test/cuesta.png", &GameState.texture);
+    EDK3::Texture::Load("./test/T_EDK_Logo.png", &GameState.texture);
     if (!GameState.texture) {
         printf("Can't load texture.png\n");
         exit(-2);
@@ -83,14 +83,14 @@ void InitTerrain(EDK3::Node* root) {
 
     //Load texture
 
-    /*
+    
     EDK3::ref_ptr<EDK3::Texture> texture;
     EDK3::Texture::Load("./test/T_EDK_Logo.png", &texture);
     if (!texture) {
         printf("Can't load texture");
         exit(-2);
     }
-    */
+
 
     EDK3::ref_ptr<EDK3::Drawable> drawable;
     drawable.alloc();
@@ -99,7 +99,7 @@ void InitTerrain(EDK3::Node* root) {
     drawable->set_material_settings(GameState.mat_settings.get());
     drawable->set_position(0.0f, 0.0f, 0.0f);
     drawable->set_HPR(0.0f, 0.0f, 0.0f);
-    drawable->set_name("terrain");
+    drawable->set_name("Terrain");
     root->addChild(drawable.get());
 }
 
@@ -186,6 +186,19 @@ void InitSurface(EDK3::Node* root) {
     root->addChild(drawable.get());
 }
 
+void InitObj(EDK3::Node* root) {
+    EDK3::LoadObj("./obj/Couch/couch.obj", &customObjGeometry, nullptr);
+
+    EDK3::ref_ptr<EDK3::Drawable> drawable;
+    drawable.alloc();
+    drawable->set_geometry(customObjGeometry[0].get());
+    drawable->set_material(GameState.mat.get());
+    drawable->set_material_settings(GameState.mat_settings.get());
+    drawable->set_position(-200.0f, 100.0f, 0.0f);
+    drawable->set_HPR(0.0f, 0.0f, 0.0f);
+    root->addChild(drawable.get());
+}
+
 void InitScene() {
   //Allocating root node:
   EDK3::Node* root = GameState.root.alloc();
@@ -197,6 +210,8 @@ void InitScene() {
   InitCube24(root);
   InitCube8(root);
   //InitSurface(root); --> no usar
+  //InitTextures();
+  //InitObj(root);
    
 
   //Allocating and initializing the camera:

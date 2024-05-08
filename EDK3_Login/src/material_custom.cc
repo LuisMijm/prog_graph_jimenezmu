@@ -61,7 +61,7 @@ bool MaterialCustom::enable(const EDK3::MaterialSettings *mat) const {
         unsigned int color_loc = program_->get_uniform_position("u_color");
         program_->set_uniform_value(color_loc, Type::T_FLOAT_4, ms->color());
 
-        int use_texture = 0;
+        int use_texture = 1;
         unsigned int used_texture_loc = program_->get_uniform_position("u_use_texture");
         program_->set_uniform_value(used_texture_loc, Type::T_INT_1, &use_texture);
         return true;
@@ -83,7 +83,7 @@ bool MaterialCustom::enable(const EDK3::MaterialSettings *mat) const {
       albedo_loc = program_->get_uniform_position("u_albedo_2");
       program_->set_uniform_value(albedo_loc, EDK3::Type::T_INT_1, &slot);
 
-      int use_texture = 1;
+      int use_texture = 0;
       unsigned int used_texture_loc = program_->get_uniform_position("u_use_texture");
       program_->set_uniform_value(used_texture_loc, Type::T_INT_1, &use_texture);
       return true;
