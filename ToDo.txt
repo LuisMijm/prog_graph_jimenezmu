@@ -1,0 +1,49 @@
+GRÁFICA
+
+
+	Simulacion de un bosque con mar
+
+	Control de los nodos del grafo -> revisar bien esto porque es importante
+
+	Gestión de la camara --> puede que ya lo tenga
+
+	Materiales custom con:
+	- Punto de luz
+	- Foco de luz
+	- Tres componentes (difuso, especular y ambiente) -> creo que lo tengo al menos empezado
+	- texturas compatibles con iluminación
+	
+	Modo Wireframe
+	
+	Transparencias
+
+	2 post-procesos
+
+	Logica 2D - Render 3D
+
+	Filosofia RAII
+
+	Debug & Release
+
+	Video 5 - 10 min
+
+	GPUCustom:
+	- Camera:
+		- doCull
+		- doRender
+
+	- GPU Manager:
+		- drawElements
+		- enableVertexAttribute, disableVertexAttribute
+		- eneblaCullFaces, disableCullFaces
+		- enableScissors, disableScissor
+
+
+
+
+
+
+
+
+
+
