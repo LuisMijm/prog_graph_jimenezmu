@@ -1,0 +1,214 @@
+﻿  material_custom.cc
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\material_custom.h(244,25): error C2059: error de sintaxis: 'const'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\material_custom.h(244,52): error C2238: símbolos (token) inesperados delante de ';'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\deps\EDK\include\EDK3\dev\gpumanager.h(15,1): error C2059: error de sintaxis: 'namespace'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\deps\EDK\include\EDK3\dev\gpumanager.h(15,16): error C2143: error de sintaxis: falta ';' delante de '{'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\material_custom.h(205,48): error C2065: 'texture_': identificador no declarado
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\material_custom.h(206,43): error C2065: 'texture_': identificador no declarado
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\material_custom.h(207,55): error C2065: 'texture_': identificador no declarado
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\material_custom.h(209,49): error C2065: 'specualar_': identificador no declarado
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\material_custom.h(210,44): error C2065: 'specualar_': identificador no declarado
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\material_custom.h(211,56): error C2065: 'specualar_': identificador no declarado
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\material_custom.h(213,47): error C2065: 'normal_': identificador no declarado
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\material_custom.h(214,42): error C2065: 'normal_': identificador no declarado
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\material_custom.h(215,54): error C2065: 'normal_': identificador no declarado
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\material_custom.h(220,20): error C2065: 'color_': identificador no declarado
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\material_custom.h(220,38): error C2065: 'color_': identificador no declarado
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\material_custom.h(223,5): error C2059: error de sintaxis: 'private'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\material_custom.h(231,5): error C3321: en este contexto no se espera ninguna lista de inicializadores
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\material_custom.h(230,23): error C2064: el término no se evalúa como una función con 1 argumentos
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\material_custom.h(236,16): error C2143: error de sintaxis: falta ';' delante de 'EDK3::CustomLightMaterial::Settings::~Settings'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\material_custom.h(236,24): error C2064: el término no se evalúa como una función con 1 argumentos
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\material_custom.h(240,5): error C2143: error de sintaxis: falta ';' delante de '}'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\deps\EDK\include\EDK3\dev\gpumanager.h(15,16): error C2447: '{': falta el encabezado de función (¿lista formal de estilo anterior?)
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\src\material_custom.cc(17,34): error C2888: 'EDK3::MaterialCustom::MaterialCustom(void)': el símbolo no se puede definir en el espacio de nombres 'EDK3'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\src\material_custom.cc(18,35): error C2888: 'EDK3::MaterialCustom::~MaterialCustom(void)': el símbolo no se puede definir en el espacio de nombres 'EDK3'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\src\material_custom.cc(19,59): error C2888: 'EDK3::MaterialCustom::MaterialCustom(const EDK3::MaterialCustom &)': el símbolo no se puede definir en el espacio de nombres 'EDK3'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\src\material_custom.cc(21,70): error C2888: 'EDK3::MaterialCustom &EDK3::MaterialCustom::operator =(const EDK3::MaterialCustom &)': el símbolo no se puede definir en el espacio de nombres 'EDK3'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\src\material_custom.cc(28,33): error C2039: "scoped_array": no es un miembro de "EDK3::EDK3"
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\src\material_custom.cc(15,11): message : vea la declaración de 'EDK3::EDK3'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\src\material_custom.cc(28,45): error C2143: error de sintaxis: falta ')' delante de '<'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\src\material_custom.cc(28,45): error C2143: error de sintaxis: falta ';' delante de '<'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\src\material_custom.cc(28,45): error C2761: "void EDK3::MaterialCustom::init(EDK3::scoped_array<char,unsigned int> &,const char *,const char *)": no se permite la nueva declaración del miembro
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\src\material_custom.cc(28,45): error C2059: error de sintaxis: '<'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\src\material_custom.cc(30,52): error C2059: error de sintaxis: ')'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\src\material_custom.cc(30,53): error C2143: error de sintaxis: falta ';' delante de '{'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\src\material_custom.cc(30,53): error C2447: '{': falta el encabezado de función (¿lista formal de estilo anterior?)
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\src\material_custom.cc(304,1): error C2888: 'EDK3::CustomLightMaterial::CustomLightMaterial(void)': el símbolo no se puede definir en el espacio de nombres 'EDK3'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\src\material_custom.cc(307,38): error C2039: "scoped_array": no es un miembro de "EDK3::EDK3"
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\src\material_custom.cc(15,11): message : vea la declaración de 'EDK3::EDK3'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\src\material_custom.cc(307,50): error C2143: error de sintaxis: falta ')' delante de '<'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\src\material_custom.cc(307,50): error C2143: error de sintaxis: falta ';' delante de '<'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\src\material_custom.cc(307,50): error C2761: "void EDK3::CustomLightMaterial::init(EDK3::scoped_array<char,unsigned int> &,const char *,const char *)": no se permite la nueva declaración del miembro
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\src\material_custom.cc(307,50): error C2059: error de sintaxis: '<'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\src\material_custom.cc(307,119): error C2059: error de sintaxis: ')'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\src\material_custom.cc(308,1): error C2143: error de sintaxis: falta ';' delante de '{'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\src\material_custom.cc(308,1): error C2447: '{': falta el encabezado de función (¿lista formal de estilo anterior?)
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\src\material_custom.cc(335,46): error C2039: "MaterialSettings": no es un miembro de "EDK3::EDK3"
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\src\material_custom.cc(15,11): message : vea la declaración de 'EDK3::EDK3'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\src\material_custom.cc(336,1): error C2888: 'bool EDK3::CustomLightMaterial::enable(const EDK3::MaterialSettings *) const': el símbolo no se puede definir en el espacio de nombres 'EDK3'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\src\material_custom.cc(337,5): error C2065: 'program': identificador no declarado
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\src\material_custom.cc(342,1): error C2888: 'void EDK3::CustomLightMaterial::setupCamera(const float [],const float []) const': el símbolo no se puede definir en el espacio de nombres 'EDK3'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\src\material_custom.cc(346,1): error C2888: 'void EDK3::CustomLightMaterial::setupModel(const float []) const': el símbolo no se puede definir en el espacio de nombres 'EDK3'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\src\material_custom.cc(350,1): error C2888: 'unsigned int EDK3::CustomLightMaterial::num_attributes_required(void) const': el símbolo no se puede definir en el espacio de nombres 'EDK3'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\src\material_custom.cc(354,7): error C2039: "Attribute": no es un miembro de "EDK3::EDK3"
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\src\material_custom.cc(15,11): message : vea la declaración de 'EDK3::EDK3'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\src\material_custom.cc(355,1): error C2888: 'EDK3::Attribute EDK3::CustomLightMaterial::attribute_at_index(const unsigned int) const': el símbolo no se puede definir en el espacio de nombres 'EDK3'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\src\material_custom.cc(356,18): error C2039: "Attribute": no es un miembro de "EDK3::EDK3"
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\src\material_custom.cc(15,11): message : vea la declaración de 'EDK3::EDK3'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\src\material_custom.cc(359,7): error C2039: "Type": no es un miembro de "EDK3::EDK3"
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\src\material_custom.cc(15,11): message : vea la declaración de 'EDK3::EDK3'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\src\material_custom.cc(360,1): error C2888: 'EDK3::Type EDK3::CustomLightMaterial::attribute_type_at_index(const unsigned int) const': el símbolo no se puede definir en el espacio de nombres 'EDK3'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\src\material_custom.cc(361,18): error C2039: "Type": no es un miembro de "EDK3::EDK3"
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\src\material_custom.cc(15,11): message : vea la declaración de 'EDK3::EDK3'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\material_custom.h(22): fatal  error C1075: "{": no se encontró ningún token coincidente
+  math_helpers.cc
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\src\math_helpers.cc(22,25): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\src\math_helpers.cc(23,25): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
+  main.cc
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\math_library\math_utils.h(15,46): warning C4100: 'copy': parámetro formal sin referencia
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\material_custom.h(244,25): error C2059: error de sintaxis: 'const'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\material_custom.h(244,52): error C2238: símbolos (token) inesperados delante de ';'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_terrain.h(21,1): error C2059: error de sintaxis: 'namespace'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_terrain.h(21,16): error C2143: error de sintaxis: falta ';' delante de '{'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\material_custom.h(205,48): error C2065: 'texture_': identificador no declarado
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\material_custom.h(206,43): error C2065: 'texture_': identificador no declarado
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\material_custom.h(207,55): error C2065: 'texture_': identificador no declarado
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\material_custom.h(209,49): error C2065: 'specualar_': identificador no declarado
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\material_custom.h(210,44): error C2065: 'specualar_': identificador no declarado
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\material_custom.h(211,56): error C2065: 'specualar_': identificador no declarado
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\material_custom.h(213,47): error C2065: 'normal_': identificador no declarado
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\material_custom.h(214,42): error C2065: 'normal_': identificador no declarado
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\material_custom.h(215,54): error C2065: 'normal_': identificador no declarado
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\material_custom.h(220,20): error C2065: 'color_': identificador no declarado
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\material_custom.h(220,38): error C2065: 'color_': identificador no declarado
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\material_custom.h(223,5): error C2059: error de sintaxis: 'private'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\material_custom.h(231,5): error C3321: en este contexto no se espera ninguna lista de inicializadores
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\material_custom.h(230,23): error C2064: el término no se evalúa como una función con 1 argumentos
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\material_custom.h(236,16): error C2143: error de sintaxis: falta ';' delante de 'EDK3::CustomLightMaterial::Settings::~Settings'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\material_custom.h(236,24): error C2064: el término no se evalúa como una función con 1 argumentos
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\material_custom.h(240,5): error C2143: error de sintaxis: falta ';' delante de '}'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_terrain.h(21,16): error C2447: '{': falta el encabezado de función (¿lista formal de estilo anterior?)
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_sphere.h(18,35): error C2039: "Geometry": no es un miembro de "EDK3::EDK3"
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_sphere.h(16,11): message : vea la declaración de 'EDK3::EDK3'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_sphere.h(36,23): error C2039: "dev": no es un miembro de "EDK3::EDK3"
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_sphere.h(16,11): message : vea la declaración de 'EDK3::EDK3'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_sphere.h(36,9): error C2039: "ref_ptr": no es un miembro de "EDK3::EDK3"
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_sphere.h(16,11): message : vea la declaración de 'EDK3::EDK3'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_sphere.h(36,16): error C2059: error de sintaxis: '<'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_sphere.h(36,23): error C3083: 'dev': el símbolo situado a la izquierda de '::' debe ser un tipo
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_sphere.h(36,28): error C2039: "Buffer": no es un miembro de "EDK3::EDK3"
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_sphere.h(16,11): message : vea la declaración de 'EDK3::EDK3'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_sphere.h(36,51): error C2238: símbolos (token) inesperados delante de ';'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_sphere.h(37,23): error C2039: "dev": no es un miembro de "EDK3::EDK3"
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_sphere.h(16,11): message : vea la declaración de 'EDK3::EDK3'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_sphere.h(37,9): error C2039: "ref_ptr": no es un miembro de "EDK3::EDK3"
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_sphere.h(16,11): message : vea la declaración de 'EDK3::EDK3'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_sphere.h(37,16): error C2059: error de sintaxis: '<'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_sphere.h(37,23): error C3083: 'dev': el símbolo situado a la izquierda de '::' debe ser un tipo
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_sphere.h(37,28): error C2039: "Buffer": no es un miembro de "EDK3::EDK3"
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_sphere.h(16,11): message : vea la declaración de 'EDK3::EDK3'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_sphere.h(37,48): error C2238: símbolos (token) inesperados delante de ';'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\camera_custom.h(19,35): error C2039: "Camera": no es un miembro de "EDK3::EDK3"
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\camera_custom.h(17,11): message : vea la declaración de 'EDK3::EDK3'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_quad.h(18,33): error C2039: "Geometry": no es un miembro de "EDK3::EDK3"
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_quad.h(16,11): message : vea la declaración de 'EDK3::EDK3'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_quad.h(35,23): error C2039: "dev": no es un miembro de "EDK3::EDK3"
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_quad.h(16,11): message : vea la declaración de 'EDK3::EDK3'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_quad.h(35,9): error C2039: "ref_ptr": no es un miembro de "EDK3::EDK3"
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_quad.h(16,11): message : vea la declaración de 'EDK3::EDK3'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_quad.h(35,16): error C2059: error de sintaxis: '<'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_quad.h(35,23): error C3083: 'dev': el símbolo situado a la izquierda de '::' debe ser un tipo
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_quad.h(35,28): error C2039: "Buffer": no es un miembro de "EDK3::EDK3"
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_quad.h(16,11): message : vea la declaración de 'EDK3::EDK3'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_quad.h(35,51): error C2238: símbolos (token) inesperados delante de ';'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_quad.h(36,23): error C2039: "dev": no es un miembro de "EDK3::EDK3"
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_quad.h(16,11): message : vea la declaración de 'EDK3::EDK3'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_quad.h(36,9): error C2039: "ref_ptr": no es un miembro de "EDK3::EDK3"
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_quad.h(16,11): message : vea la declaración de 'EDK3::EDK3'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_quad.h(36,16): error C2059: error de sintaxis: '<'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_quad.h(36,23): error C3083: 'dev': el símbolo situado a la izquierda de '::' debe ser un tipo
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_quad.h(36,28): error C2039: "Buffer": no es un miembro de "EDK3::EDK3"
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_quad.h(16,11): message : vea la declaración de 'EDK3::EDK3'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_quad.h(36,48): error C2238: símbolos (token) inesperados delante de ';'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_cube.h(18,33): error C2039: "Geometry": no es un miembro de "EDK3::EDK3"
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_cube.h(16,11): message : vea la declaración de 'EDK3::EDK3'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_cube.h(37,23): error C2039: "dev": no es un miembro de "EDK3::EDK3"
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_cube.h(16,11): message : vea la declaración de 'EDK3::EDK3'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_cube.h(37,9): error C2039: "ref_ptr": no es un miembro de "EDK3::EDK3"
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_cube.h(16,11): message : vea la declaración de 'EDK3::EDK3'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_cube.h(37,16): error C2059: error de sintaxis: '<'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_cube.h(37,23): error C3083: 'dev': el símbolo situado a la izquierda de '::' debe ser un tipo
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_cube.h(37,28): error C2039: "Buffer": no es un miembro de "EDK3::EDK3"
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_cube.h(16,11): message : vea la declaración de 'EDK3::EDK3'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_cube.h(37,51): error C2238: símbolos (token) inesperados delante de ';'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_cube.h(38,23): error C2039: "dev": no es un miembro de "EDK3::EDK3"
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_cube.h(16,11): message : vea la declaración de 'EDK3::EDK3'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_cube.h(38,9): error C2039: "ref_ptr": no es un miembro de "EDK3::EDK3"
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_cube.h(16,11): message : vea la declaración de 'EDK3::EDK3'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_cube.h(38,16): error C2059: error de sintaxis: '<'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_cube.h(38,23): error C3083: 'dev': el símbolo situado a la izquierda de '::' debe ser un tipo
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_cube.h(38,28): error C2039: "Buffer": no es un miembro de "EDK3::EDK3"
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_cube.h(16,11): message : vea la declaración de 'EDK3::EDK3'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_cube.h(38,48): error C2238: símbolos (token) inesperados delante de ';'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_surface.h(19,36): error C2039: "Geometry": no es un miembro de "EDK3::EDK3"
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_surface.h(17,11): message : vea la declaración de 'EDK3::EDK3'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_surface.h(40,23): error C2039: "dev": no es un miembro de "EDK3::EDK3"
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_surface.h(17,11): message : vea la declaración de 'EDK3::EDK3'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_surface.h(40,9): error C2039: "ref_ptr": no es un miembro de "EDK3::EDK3"
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_surface.h(17,11): message : vea la declaración de 'EDK3::EDK3'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_surface.h(40,16): error C2059: error de sintaxis: '<'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_surface.h(40,23): error C3083: 'dev': el símbolo situado a la izquierda de '::' debe ser un tipo
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_surface.h(40,28): error C2039: "Buffer": no es un miembro de "EDK3::EDK3"
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_surface.h(17,11): message : vea la declaración de 'EDK3::EDK3'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_surface.h(40,51): error C2238: símbolos (token) inesperados delante de ';'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_surface.h(41,23): error C2039: "dev": no es un miembro de "EDK3::EDK3"
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_surface.h(17,11): message : vea la declaración de 'EDK3::EDK3'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_surface.h(41,9): error C2039: "ref_ptr": no es un miembro de "EDK3::EDK3"
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_surface.h(17,11): message : vea la declaración de 'EDK3::EDK3'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_surface.h(41,16): error C2059: error de sintaxis: '<'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_surface.h(41,23): error C3083: 'dev': el símbolo situado a la izquierda de '::' debe ser un tipo
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_surface.h(41,28): error C2039: "Buffer": no es un miembro de "EDK3::EDK3"
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_surface.h(17,11): message : vea la declaración de 'EDK3::EDK3'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_surface.h(41,48): error C2238: símbolos (token) inesperados delante de ';'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\tests\main.cc(50,13): error C2039: "MaterialCustom": no es un miembro de "EDK3::EDK3"
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_surface.h(17,11): message : vea la declaración de 'EDK3::EDK3'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\tests\main.cc(50,29): error C2039: "LightSettings": no es un miembro de "EDK3::EDK3"
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_surface.h(17,11): message : vea la declaración de 'EDK3::EDK3'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\tests\main.cc(50,13): error C3083: 'MaterialCustom': el símbolo situado a la izquierda de '::' debe ser un tipo
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\tests\main.cc(50,29): error C3083: 'LightSettings': el símbolo situado a la izquierda de '::' debe ser un tipo
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\tests\main.cc(50,44): error C2039: "ambient_color_": no es un miembro de "EDK3::EDK3"
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_surface.h(17,11): message : vea la declaración de 'EDK3::EDK3'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\tests\main.cc(55,9): error C2039: "ref_ptr": no es un miembro de "EDK3::EDK3"
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_surface.h(17,11): message : vea la declaración de 'EDK3::EDK3'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\tests\main.cc(55,16): error C2059: error de sintaxis: '<'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\tests\main.cc(55,43): error C2238: símbolos (token) inesperados delante de ';'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\tests\main.cc(56,9): error C2039: "ref_ptr": no es un miembro de "EDK3::EDK3"
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_surface.h(17,11): message : vea la declaración de 'EDK3::EDK3'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\tests\main.cc(56,16): error C2059: error de sintaxis: '<'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\tests\main.cc(56,23): error C2039: "Node": no es un miembro de "EDK3::EDK3"
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_surface.h(17,11): message : vea la declaración de 'EDK3::EDK3'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\tests\main.cc(56,33): error C2238: símbolos (token) inesperados delante de ';'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\tests\main.cc(57,9): error C2039: "ref_ptr": no es un miembro de "EDK3::EDK3"
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_surface.h(17,11): message : vea la declaración de 'EDK3::EDK3'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\tests\main.cc(57,16): error C2059: error de sintaxis: '<'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\tests\main.cc(57,23): error C2039: "MaterialCustom": no es un miembro de "EDK3::EDK3"
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_surface.h(17,11): message : vea la declaración de 'EDK3::EDK3'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\tests\main.cc(57,42): error C2238: símbolos (token) inesperados delante de ';'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\tests\main.cc(58,23): error C2039: "MaterialCustom": no es un miembro de "EDK3::EDK3"
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_surface.h(17,11): message : vea la declaración de 'EDK3::EDK3'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\tests\main.cc(58,9): error C2039: "ref_ptr": no es un miembro de "EDK3::EDK3"
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_surface.h(17,11): message : vea la declaración de 'EDK3::EDK3'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\tests\main.cc(58,16): error C2059: error de sintaxis: '<'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\tests\main.cc(58,23): error C3083: 'MaterialCustom': el símbolo situado a la izquierda de '::' debe ser un tipo
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\tests\main.cc(58,39): error C2039: "MaterialCustomTextureSettings": no es un miembro de "EDK3::EDK3"
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_surface.h(17,11): message : vea la declaración de 'EDK3::EDK3'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\tests\main.cc(58,82): error C2238: símbolos (token) inesperados delante de ';'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\tests\main.cc(59,9): error C2039: "ref_ptr": no es un miembro de "EDK3::EDK3"
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_surface.h(17,11): message : vea la declaración de 'EDK3::EDK3'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\tests\main.cc(59,16): error C2059: error de sintaxis: '<'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\tests\main.cc(59,23): error C2039: "Texture": no es un miembro de "EDK3::EDK3"
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\include\geometry_custom_surface.h(17,11): message : vea la declaración de 'EDK3::EDK3'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\tests\main.cc(59,39): error C2238: símbolos (token) inesperados delante de ';'
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\EDK3_Login\tests\main.cc(59,39): fatal  error C1003: el recuento de errores supera 100; se detiene la compilación
+  Generando código...

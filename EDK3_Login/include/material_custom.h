@@ -83,6 +83,7 @@ class MaterialCustom : public EDK3::Material {
       }
   };
   
+  /*
   class MaterialCustomSettings : public EDK3::MaterialSettings {
    public:
     MaterialCustomSettings() {
@@ -139,8 +140,15 @@ class MaterialCustom : public EDK3::Material {
           return *this;
       }
       float color_[4];
-      EDK3::ref_ptr<EDK3::Texture> texture_[2];
+      EDK3::ref_ptr<EDK3::Texture> normal_;
+      EDK3::ref_ptr<EDK3::Texture> diffuse_;
+      EDK3::ref_ptr<EDK3::Texture> specular_;
+
+
+
   }; //MaterialCustomTextureSettings
+  */
+
 
 
  protected:
@@ -154,6 +162,95 @@ class MaterialCustom : public EDK3::Material {
   MaterialCustom& operator=(const MaterialCustom&);
 };
 
+class CustomLightMaterial : public EDK3::Material {
+public:
+    CustomLightMaterial();
+
+    void init(EDK3::scoped_array<char>& error_log,
+        const char* vertex_path,
+        const char* fragment_path);
+    virtual bool enable(const EDK3::MaterialSettings*) const override;
+    virtual void setupCamera(const float projecton[16], const float view[16]) const override;
+    virtual void setupModel(const float m[16]) const override;
+
+    virtual unsigned int num_attributes_required() const override;
+    virtual EDK3::Attribute attribute_at_index(const unsigned int attrib_idx) const override;
+    virtual EDK3::Type attribute_type_at_index(const unsigned int attrib_index) const override;
+
+
+
+    struct LightConf {
+        int type_;
+        float pos_[3];
+        float dir_[3];
+        float diff_color_[3];
+        float spec_color_[3];
+        float linear_att_;
+        float quadratic_att_;
+        float constant_att_;
+        float shininess_;
+        float strength_;
+        float camera_pos_[3];
+        bool enabled_;
+    };
+
+    class Settings : public EDK3::MaterialSettings {
+    
+    private:
+        LightConf lightConf_[10];
+        float color_[4];
+        EDK3::ref_ptr<EDK3::Texture> texture_;
+        EDK3::ref_ptr<EDK3::Texture> specualar_;
+        EDK3::ref_ptr<EDK3::Texture> normal_;
+
+    private:
+        Settings(const Settings&);
+        Settings& operator=(const Settings&);
+
+
+    public:
+        void set_texture(EDK3::Texture* tex) { texture_ = tex; }
+        EDK3::Texture* texture() { return texture_.get(); }
+        const EDK3::Texture* texture() const { return texture_.get(); }
+
+        void set_specular(EDK3::Texture* tex) { specualar_ = tex; }
+        EDK3::Texture* specular() { return specualar_.get(); }
+        const EDK3::Texture* specular() const { return specualar_.get(); }
+
+        void set_normal(EDK3::Texture* tex) { normal_ = tex; }
+        EDK3::Texture* normal() { return normal_.get(); }
+        const EDK3::Texture* normal() const { return normal_.get(); }
+        Settings();
+        ~Settings();
+        void set_color(const float v[4]) {
+            memcpy(color_, v, sizeof(color_));
+
+
+            init(EDK3::scoped_array<char> &error_log,
+                const char* vertex_path,
+                const char* fragment_path)
+
+
+    Settings::Settings()
+    {
+        //numPointLights_ = 0;
+        //numSpotLights_ = 0;
+    }
+
+    Settings::~Settings()
+    {
+    }
+
+    };
+
+
+    EDK3::ref_ptr<EDK3::dev::Program> program_;
+    CustomLightMaterial(const CustomLightMaterial&);
+    CustomLightMaterial& operator=(const CustomLightMaterial&);
+};
+
 } //EDK3
 
 #endif //__MATERIAL_BASIC_H__
+
+

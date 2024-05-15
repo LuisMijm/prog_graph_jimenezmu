@@ -26,6 +26,16 @@
 #include "math_library/vector_2.h"
 #include "math_library/vector_3.h"
 
+
+#include "dev/custom_gpu_program.h"
+#include "dev/custom_gpu_buffer.h"
+#include "dev/custom_gpu_camera.h"
+#include "dev/custom_gpu_manager.h"
+#include "dev/custom_gpu_shader.h"
+#include "dev/custom_gpu_texture.h"
+
+
+
 #include "material_custom.h"
 #include "geometry_custom_terrain.h"
 #include "geometry_custom_sphere.h"
@@ -39,6 +49,7 @@
 
 float EDK3::MaterialCustom::LightSettings::ambient_color_[3] = { 0.0f,0.0f,0.0f };
 
+
 //Unnamed struct and it's unique instance:
 struct {
   EDK3::ref_ptr<EDK3::CameraCustom> camera;
@@ -46,6 +57,9 @@ struct {
   EDK3::ref_ptr<EDK3::MaterialCustom> mat;
   EDK3::ref_ptr<EDK3::MaterialCustom::MaterialCustomTextureSettings> mat_settings;
   EDK3::ref_ptr<EDK3::Texture> texture;
+  EDK3::ref_ptr<EDK3::CustomGPUTexture> customTexture_;
+  
+
 
 } GameState;
 
@@ -71,6 +85,8 @@ void InitTextures() {
         printf("Can't load texture.png\n");
         exit(-2);
     }
+
+    
 }
 
 

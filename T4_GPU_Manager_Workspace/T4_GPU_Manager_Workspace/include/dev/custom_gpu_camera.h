@@ -33,21 +33,6 @@ class CustomGPUCamera : public EDK3::Camera {
 
   struct CamData;
 
-  /*
-  struct NodeData {
-	  EDK3::Geometry* geo;
-	  EDK3::Material* mat;
-	  EDK3::MaterialSettings* mat_settings;
-	  Mat4 model; //float [16]
-  };
-
-  struct CamData {
-	  std::vector<NodeData> data;
-  };
-  */
-
-
-
  protected:
   virtual ~CustomGPUCamera();
 

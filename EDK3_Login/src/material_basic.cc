@@ -98,6 +98,7 @@ void MaterialBasic::init(EDK3::scoped_array<char> &error_log){
 bool MaterialBasic::enable(const EDK3::MaterialSettings *mat) const {
   //Enable the material...
   //... and use the uniforms located in the material settings!
+  /*
     const MaterialBasicSettings* ms = dynamic_cast<const MaterialBasicSettings*>(mat);
     if (ms){
         program_->use();
@@ -133,6 +134,10 @@ bool MaterialBasic::enable(const EDK3::MaterialSettings *mat) const {
             return true;
         }
     }
+  */
+
+
+
     return false;
 }
 

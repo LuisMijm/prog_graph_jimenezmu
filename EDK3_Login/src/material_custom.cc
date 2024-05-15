@@ -9,6 +9,8 @@
 
 #include "material_custom.h"
 #include "EDK3/dev/gpumanager.h"
+#include "EDK3/dev/shader.h"
+
 
 namespace EDK3 {
 
@@ -51,6 +53,7 @@ void MaterialCustom::init(EDK3::scoped_array<char> &error_log,
   //5: Finally... link the program!
     program_->link();
 }
+/*
 
 bool MaterialCustom::enable(const EDK3::MaterialSettings *mat) const {
   //Enable the material...
@@ -97,7 +100,7 @@ bool MaterialCustom::enable(const EDK3::MaterialSettings *mat) const {
       for(int i=0; i < 8; i++){
         if(light_set->light_confs_[i].enabled_){
           lights_counter++;
-          /*
+          
           //Position
           sprintf(name, "u_lights[%d].pos\0");
           loc = program_->get_uniform_position(name);
@@ -196,7 +199,7 @@ bool MaterialCustom::enable(const EDK3::MaterialSettings *mat) const {
           else {
               printf("Error uniform %s\n", name);
           }
-          */
+          
         }
       }
       
@@ -292,6 +295,70 @@ EDK3::Type MaterialCustom::attribute_type_at_index(const unsigned int attrib_idx
         return EDK3::Type::T_NONE;
         break;
     }
+}*/
+
+
+
+
+CustomLightMaterial::CustomLightMaterial()
+{
+}
+
+void CustomLightMaterial::init(EDK3::scoped_array<char>& error_log, const char* vertex_path, const char* fragment_path)
+{
+    //1: Request at least two shaders and one program to the GPU Manager.
+    EDK3::dev::GPUManager& GPU = *EDK3::dev::GPUManager::Instance();
+    EDK3::ref_ptr<EDK3::dev::Shader> fragment_shader;
+    GPU.newShader(&fragment_shader);
+    EDK3::ref_ptr<EDK3::dev::Shader> vertex_vertex;
+    GPU.newShader(&vertex_vertex);
+    GPU.newProgram(&program_);
+
+
+    //2: Load the source code to the requested shaders.
+    if (!loadVertexShaderFile(&vertex_vertex, vertex_path)) printf("Error loading vertex shader path: %s\n", vertex_path);
+    if (!loadFragmentShaderFile(&fragment_shader, fragment_path)) printf("Error loading fragment shader path: %s\n", fragment_path);
+    // bool loadFragmentShaderFile(ref_ptr<dev::Shader> *output, const char* file_path);
+
+  //3: Compile both shaders.
+    if (!vertex_vertex->compile(&error_log)) printf("VERTEX: %s\n", error_log.get());
+    if (!fragment_shader->compile(&error_log)) printf("FRAGMENT: %s\n", error_log.get());
+
+
+    //4: Attach shaders to the program.
+    program_->attach(vertex_vertex.get());
+    program_->attach(fragment_shader.get());
+    //5: Finally... link the program!
+    program_->link();
+}
+
+bool CustomLightMaterial::enable(const EDK3::MaterialSettings*) const
+{
+    program->use();
+    return false;
+}
+
+void CustomLightMaterial::setupCamera(const float projecton[16], const float view[16]) const
+{
+}
+
+void CustomLightMaterial::setupModel(const float m[16]) const
+{
+}
+
+unsigned int CustomLightMaterial::num_attributes_required() const
+{
+    return 0;
+}
+
+EDK3::Attribute CustomLightMaterial::attribute_at_index(const unsigned int attrib_idx) const
+{
+    return EDK3::Attribute();
+}
+
+EDK3::Type CustomLightMaterial::attribute_type_at_index(const unsigned int attrib_index) const
+{
+    return EDK3::Type();
 }
 
 } //EDK3
