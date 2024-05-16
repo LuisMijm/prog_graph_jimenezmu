@@ -50,14 +50,22 @@
 float EDK3::MaterialCustom::LightSettings::ambient_color_[3] = { 0.0f,0.0f,0.0f };
 
 
+struct {
+  EDK3::ref_ptr<EDK3::CustomLightMaterial> mat;
+  EDK3::ref_ptr<EDK3::CustomLightMaterial::Settings> matSettings;
+} Materials;
+
+struct {
+  EDK3::ref_ptr<EDK3::Texture> texture;
+  EDK3::ref_ptr<EDK3::CustomGPUTexture> customTexture_;
+} Textures;
+
 //Unnamed struct and it's unique instance:
 struct {
   EDK3::ref_ptr<EDK3::CameraCustom> camera;
   EDK3::ref_ptr<EDK3::Node> root;
   EDK3::ref_ptr<EDK3::MaterialCustom> mat;
-  EDK3::ref_ptr<EDK3::MaterialCustom::MaterialCustomTextureSettings> mat_settings;
-  EDK3::ref_ptr<EDK3::Texture> texture;
-  EDK3::ref_ptr<EDK3::CustomGPUTexture> customTexture_;
+  //EDK3::ref_ptr<EDK3::MaterialCustom::MaterialCustomTextureSettings> mat_settings;
   
 
 
@@ -70,25 +78,36 @@ EDK3::scoped_array<EDK3::ref_ptr<EDK3::Geometry>> customObjGeometry;
 
 void InitMaterials() {
     EDK3::scoped_array<char> error_log;
-    GameState.mat.alloc();
-    GameState.mat_settings.alloc();
+    Materials.mat.alloc();
+    Materials.matSettings.alloc();
 
-    GameState.mat->init(error_log, "./shaders/basicVertex.vs", "./shaders/basicFragment.fs");
-    GameState.mat_settings.alloc();
+    Materials.mat->init(error_log, "./shaders/basicVertex.vs", "./shaders/basicFragment.fs");
+    Materials.matSettings.alloc();
     float color[] = { 0.5f, 0.5f, 0.25f, 1.0f };
-    GameState.mat_settings->set_color(color);
+    Materials.matSettings->set_color(color);
 }
 
 void InitTextures() {
-    EDK3::Texture::Load("./test/T_EDK_Logo.png", &GameState.texture);
-    if (!GameState.texture) {
+    EDK3::Texture::Load("./test/T_EDK_Logo.png", &Textures.texture);
+    if (!Textures.texture) {
         printf("Can't load texture.png\n");
         exit(-2);
     }
 
-    
+      
 }
 
+void AddDrawable(EDK3::Node* root, EDK3::Geometry *g, EDK3::Material *m, EDK3::MaterialSettings *ms, float pos[3], float HPR[3], const char* name) {
+  EDK3::ref_ptr<EDK3::Drawable> drawable;
+  drawable.alloc();
+  drawable->set_geometry(g);
+  drawable->set_material(m);
+  drawable->set_material_settings(ms);
+  drawable->set_position(pos[0], pos[1], pos[2]);
+  drawable->set_HPR(HPR[0], HPR[1], HPR[2]);
+  drawable->set_name(name);
+  root->addChild(drawable.get());
+}
 
 void InitTerrain(EDK3::Node* root) {
 
@@ -107,12 +126,13 @@ void InitTerrain(EDK3::Node* root) {
         exit(-2);
     }
 
+    
 
     EDK3::ref_ptr<EDK3::Drawable> drawable;
     drawable.alloc();
     drawable->set_geometry(custom_terrain.get());
-    drawable->set_material(GameState.mat.get());
-    drawable->set_material_settings(GameState.mat_settings.get());
+    drawable->set_material(Materials.mat.get());
+    drawable->set_material_settings(Materials.matSettings.get());
     drawable->set_position(0.0f, 0.0f, 0.0f);
     drawable->set_HPR(0.0f, 0.0f, 0.0f);
     drawable->set_name("Terrain");
@@ -128,8 +148,8 @@ void InitSphere(EDK3::Node* root) {
   EDK3::ref_ptr<EDK3::Drawable> drawable;
   drawable.alloc();
   drawable->set_geometry(sphere.get());
-  drawable->set_material(GameState.mat.get());
-  drawable->set_material_settings(GameState.mat_settings.get());
+  drawable->set_material(Materials.mat.get());
+  drawable->set_material_settings(Materials.matSettings.get());
   drawable->set_position(0.0f, 100.0f, 0.0f);
   drawable->set_HPR(0.0f, 0.0f, 0.0f);
   drawable->set_name("Sphere");

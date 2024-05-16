@@ -14,7 +14,6 @@ struct Light{
     float constant_att;
     float shininess;
     float strength;
-
 };
 
 const int kMaxLights = 8;
