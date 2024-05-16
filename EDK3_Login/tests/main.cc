@@ -47,8 +47,9 @@
 
 
 
-float EDK3::MaterialCustom::LightSettings::ambient_color_[3] = { 0.0f,0.0f,0.0f };
+//float EDK3::MaterialCustom::LightSettings::ambient_color_[3] = { 0.0f,0.0f,0.0f };
 
+float EDK3::CustomLightMaterial::Settings::ambient_color_[3] = { 0.5f, 0.5f, 0.0f};
 
 struct {
   EDK3::ref_ptr<EDK3::CustomLightMaterial> mat;
@@ -67,8 +68,6 @@ struct {
   EDK3::ref_ptr<EDK3::MaterialCustom> mat;
   //EDK3::ref_ptr<EDK3::MaterialCustom::MaterialCustomTextureSettings> mat_settings;
   
-
-
 } GameState;
 
 const int kWindowWidth = 1024;
@@ -76,25 +75,70 @@ const int kWindowHeight = 768;
 const int kFigurePoints = 10;
 EDK3::scoped_array<EDK3::ref_ptr<EDK3::Geometry>> customObjGeometry;
 
+
+void InitLight(int light, int light_type, 
+              float pos[3], float dir[3], float diff_color[3], float spec_color[3],
+              float linear_att, float quad_att, float const_att, 
+              float shininess, float strength, const float cam_pos[3]) {
+  Materials.matSettings->lightConf_[light].type_ = light_type;
+  memcpy(Materials.matSettings->lightConf_[light].pos_, pos, sizeof(pos));
+  memcpy(Materials.matSettings->lightConf_[light].dir_, pos, sizeof(dir));
+  memcpy(Materials.matSettings->lightConf_[light].diff_color_, pos, sizeof(diff_color));
+  memcpy(Materials.matSettings->lightConf_[light].spec_color_, pos, sizeof(spec_color));
+  
+  Materials.matSettings->lightConf_[light].linear_att_ = linear_att;
+  Materials.matSettings->lightConf_[light].quadratic_att_ = quad_att;
+  Materials.matSettings->lightConf_[light].constant_att_ = const_att;
+  Materials.matSettings->lightConf_[light].shininess_ = shininess;
+  Materials.matSettings->lightConf_[light].strength_ = strength;
+  memcpy(Materials.matSettings->lightConf_[light].camera_pos_, pos, sizeof(cam_pos));
+
+  Materials.matSettings->lightConf_[light].enabled_ = true;
+
+
+}
+
+void InitSceneLights() {
+  int lightType = 1;
+  float pos[3]{ 0.0f,100.0f,0.0f };
+  float dir[3]{ 0.0f,0.0f,0.0f };
+  float diff_color[3]{ 1.0f,1.0f,1.0f };
+  float spec_color[3]{ 1.0f,1.0f,1.0f };
+  float linear_att = 1.0f;
+  float quad_att = 1.0f;
+  float const_att = 1.0f;
+  float shininess = 1.0f;
+  float strength = 1.0f;
+
+  InitLight(0, lightType, pos, dir, diff_color, spec_color, linear_att, quad_att, const_att, shininess, strength, GameState.camera->position());
+  InitLight(1, lightType, pos, dir, diff_color, spec_color, linear_att, quad_att, const_att, shininess, strength, GameState.camera->position());
+  InitLight(2, lightType, pos, dir, diff_color, spec_color, linear_att, quad_att, const_att, shininess, strength, GameState.camera->position());
+  InitLight(3, lightType, pos, dir, diff_color, spec_color, linear_att, quad_att, const_att, shininess, strength, GameState.camera->position());
+}
+
 void InitMaterials() {
     EDK3::scoped_array<char> error_log;
     Materials.mat.alloc();
     Materials.matSettings.alloc();
 
-    Materials.mat->init(error_log, "./shaders/basicVertex.vs", "./shaders/basicFragment.fs");
-    Materials.matSettings.alloc();
-    float color[] = { 0.5f, 0.5f, 0.25f, 1.0f };
+    Materials.mat->init(error_log, "./shaders/basicVertex.vs", "./shaders/light_shader.fs");
+    Materials.mat->useTexture_ = 1;
+
+    float color[] = { 1.0f, 1.0f, 1.0f, 1.0f };
     Materials.matSettings->set_color(color);
+    Materials.matSettings->set_texture(Textures.texture.get());
+
 }
+    
 
 void InitTextures() {
-    EDK3::Texture::Load("./test/T_EDK_Logo.png", &Textures.texture);
+    EDK3::Texture::Load("./textures/sand.png", &Textures.texture);
     if (!Textures.texture) {
         printf("Can't load texture.png\n");
         exit(-2);
     }
 
-      
+    
 }
 
 void AddDrawable(EDK3::Node* root, EDK3::Geometry *g, EDK3::Material *m, EDK3::MaterialSettings *ms, float pos[3], float HPR[3], const char* name) {
@@ -118,25 +162,18 @@ void InitTerrain(EDK3::Node* root) {
 
     //Load texture
 
-    
+    /*
     EDK3::ref_ptr<EDK3::Texture> texture;
     EDK3::Texture::Load("./test/T_EDK_Logo.png", &texture);
     if (!texture) {
         printf("Can't load texture");
         exit(-2);
     }
+    */
 
-    
-
-    EDK3::ref_ptr<EDK3::Drawable> drawable;
-    drawable.alloc();
-    drawable->set_geometry(custom_terrain.get());
-    drawable->set_material(Materials.mat.get());
-    drawable->set_material_settings(Materials.matSettings.get());
-    drawable->set_position(0.0f, 0.0f, 0.0f);
-    drawable->set_HPR(0.0f, 0.0f, 0.0f);
-    drawable->set_name("Terrain");
-    root->addChild(drawable.get());
+    float pos[3] = { 0.0f, 0.0f, 0.0f };
+    float HPR[3] = { 0.0f, 0.0f, 0.0f };
+    AddDrawable(root, custom_terrain.get(), Materials.mat.get(), Materials.matSettings.get(), pos, HPR, "terrain_land");
 }
 
 
@@ -145,15 +182,9 @@ void InitSphere(EDK3::Node* root) {
   sphere.alloc();
   sphere->init(10.0f);
 
-  EDK3::ref_ptr<EDK3::Drawable> drawable;
-  drawable.alloc();
-  drawable->set_geometry(sphere.get());
-  drawable->set_material(Materials.mat.get());
-  drawable->set_material_settings(Materials.matSettings.get());
-  drawable->set_position(0.0f, 100.0f, 0.0f);
-  drawable->set_HPR(0.0f, 0.0f, 0.0f);
-  drawable->set_name("Sphere");
-  root->addChild(drawable.get());
+  float pos[3] = { 0.0f, 100.0f, 0.0f };
+  float HPR[3] = { 0.0f, 0.0f, 0.0f };
+  AddDrawable(root, sphere.get(), Materials.mat.get(), Materials.matSettings.get(), pos, HPR, "sphere");
 }
 
 void InitQuad(EDK3::Node* root) {
@@ -161,15 +192,9 @@ void InitQuad(EDK3::Node* root) {
     quad.alloc();
     quad->init(10.0f);
 
-    EDK3::ref_ptr<EDK3::Drawable> drawable;
-    drawable.alloc();
-    drawable->set_geometry(quad.get());
-    drawable->set_material(GameState.mat.get());
-    drawable->set_material_settings(GameState.mat_settings.get());
-    drawable->set_position(-50.0f, 100.0f, 0.0f);
-    drawable->set_HPR(0.0f, 0.0f, 0.0f);
-    drawable->set_name("Quad");
-    root->addChild(drawable.get());
+    float pos[3] = { -50.0f, 100.0f, 0.0f };
+    float HPR[3] = { 0.0f, 0.0f, 0.0f };
+    AddDrawable(root, quad.get(), Materials.mat.get(), Materials.matSettings.get(), pos, HPR, "quad");
 }
 
 void InitCube24(EDK3::Node* root) {
@@ -177,15 +202,10 @@ void InitCube24(EDK3::Node* root) {
     cube.alloc();
     cube->init24v(10.0f);
 
-    EDK3::ref_ptr<EDK3::Drawable> drawable;
-    drawable.alloc();
-    drawable->set_geometry(cube.get());
-    drawable->set_material(GameState.mat.get());
-    drawable->set_material_settings(GameState.mat_settings.get());
-    drawable->set_position(50.0f, 100.0f, 0.0f);
-    drawable->set_HPR(0.0f, 0.0f, 0.0f);
-    drawable->set_name("Cube24");
-    root->addChild(drawable.get());
+    float pos[3] = { 50.0f, 100.0f, 0.0f };
+    float HPR[3] = { 0.0f, 0.0f, 0.0f };
+    AddDrawable(root, cube.get(), Materials.mat.get(), Materials.matSettings.get(), pos, HPR, "Cube24");
+
 }
 
 void InitCube8(EDK3::Node* root) {
@@ -193,15 +213,9 @@ void InitCube8(EDK3::Node* root) {
     cube.alloc();
     cube->init8v(10.0f);
 
-    EDK3::ref_ptr<EDK3::Drawable> drawable;
-    drawable.alloc();
-    drawable->set_geometry(cube.get());
-    drawable->set_material(GameState.mat.get());
-    drawable->set_material_settings(GameState.mat_settings.get());
-    drawable->set_position(100.0f, 100.0f, 0.0f);
-    drawable->set_HPR(0.0f, 0.0f, 0.0f);
-    drawable->set_name("Cube8");
-    root->addChild(drawable.get());
+    float pos[3] = { 100.0f, 100.0f, 0.0f };
+    float HPR[3] = { 0.0f, 0.0f, 0.0f };
+    AddDrawable(root, cube.get(), Materials.mat.get(), Materials.matSettings.get(), pos, HPR, "Cube8");
 }
 
 void InitSurface(EDK3::Node* root) {
@@ -212,6 +226,12 @@ void InitSurface(EDK3::Node* root) {
     Surface.alloc();
     Surface->init(figure_points, kFigurePoints, 10, 1.0f, 1.0f);
 
+
+    float pos[3] = { -100.0f, 100.0f, 0.0f };
+    float HPR[3] = { 0.0f, 0.0f, 0.0f };
+    AddDrawable(root, Surface.get(), Materials.mat.get(), Materials.matSettings.get(), pos, HPR, "Surface");
+
+    /*
     EDK3::ref_ptr<EDK3::Drawable> drawable;
     drawable.alloc();
     drawable->set_geometry(Surface.get());
@@ -220,11 +240,17 @@ void InitSurface(EDK3::Node* root) {
     drawable->set_position(-100.0f, 100.0f, 0.0f);
     drawable->set_HPR(0.0f, 0.0f, 0.0f);
     root->addChild(drawable.get());
+    */
 }
 
 void InitObj(EDK3::Node* root) {
-    EDK3::LoadObj("./obj/Couch/couch.obj", &customObjGeometry, nullptr);
+    EDK3::LoadObj("./obj/SM_Building_03.obj", &customObjGeometry, nullptr);
 
+    float pos[3] = { -200.0f, 100.0f, 0.0f };
+    float HPR[3] = { 0.0f, 0.0f, 0.0f };
+    AddDrawable(root, customObjGeometry[0].get(), Materials.mat.get(), Materials.matSettings.get(), pos, HPR, "Cube8");
+
+    /*
     EDK3::ref_ptr<EDK3::Drawable> drawable;
     drawable.alloc();
     drawable->set_geometry(customObjGeometry[0].get());
@@ -233,25 +259,29 @@ void InitObj(EDK3::Node* root) {
     drawable->set_position(-200.0f, 100.0f, 0.0f);
     drawable->set_HPR(0.0f, 0.0f, 0.0f);
     root->addChild(drawable.get());
+    */
 }
 
 void InitScene() {
   //Allocating root node:
   EDK3::Node* root = GameState.root.alloc();
   
+  //Allocating and initializing the camera:
+  GameState.camera.alloc();
+
+  InitTextures();
   InitMaterials();
+  InitSceneLights();
   InitTerrain(root);
   InitSphere(root);
   InitQuad(root);
   InitCube24(root);
   InitCube8(root);
   //InitSurface(root); --> no usar
-  //InitTextures();
   //InitObj(root);
    
 
-  //Allocating and initializing the camera:
-  GameState.camera.alloc();
+
   float pos[] = { 0.0f, 80.0f, 100.0f };
   float view[] = { 0.0f, 0.0f, 0.0f };
   GameState.camera->set_position(pos);

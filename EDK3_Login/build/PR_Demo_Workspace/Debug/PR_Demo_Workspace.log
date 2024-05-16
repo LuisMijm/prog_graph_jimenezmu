@@ -1,14 +1,5 @@
-﻿  material_custom.cc
-  main.cc
+﻿  main.cc
 C:\Users\jimenezmu\Documents\prog_graph_jimenezmu\EDK3_Login\include\math_library\math_utils.h(15,46): warning C4100: 'copy': parámetro formal sin referencia
-C:\Users\jimenezmu\Documents\prog_graph_jimenezmu\EDK3_Login\tests\main.cc(167,47): error C2039: "mat_settings": no es un miembro de "<unnamed-type-GameState>"
-C:\Users\jimenezmu\Documents\prog_graph_jimenezmu\EDK3_Login\tests\main.cc(64,8): message : vea la declaración de '<unnamed-type-GameState>'
-C:\Users\jimenezmu\Documents\prog_graph_jimenezmu\EDK3_Login\tests\main.cc(183,47): error C2039: "mat_settings": no es un miembro de "<unnamed-type-GameState>"
-C:\Users\jimenezmu\Documents\prog_graph_jimenezmu\EDK3_Login\tests\main.cc(64,8): message : vea la declaración de '<unnamed-type-GameState>'
-C:\Users\jimenezmu\Documents\prog_graph_jimenezmu\EDK3_Login\tests\main.cc(199,47): error C2039: "mat_settings": no es un miembro de "<unnamed-type-GameState>"
-C:\Users\jimenezmu\Documents\prog_graph_jimenezmu\EDK3_Login\tests\main.cc(64,8): message : vea la declaración de '<unnamed-type-GameState>'
-C:\Users\jimenezmu\Documents\prog_graph_jimenezmu\EDK3_Login\tests\main.cc(218,47): error C2039: "mat_settings": no es un miembro de "<unnamed-type-GameState>"
-C:\Users\jimenezmu\Documents\prog_graph_jimenezmu\EDK3_Login\tests\main.cc(64,8): message : vea la declaración de '<unnamed-type-GameState>'
-C:\Users\jimenezmu\Documents\prog_graph_jimenezmu\EDK3_Login\tests\main.cc(231,47): error C2039: "mat_settings": no es un miembro de "<unnamed-type-GameState>"
-C:\Users\jimenezmu\Documents\prog_graph_jimenezmu\EDK3_Login\tests\main.cc(64,8): message : vea la declaración de '<unnamed-type-GameState>'
-  Generando código...
+C:\Users\jimenezmu\Documents\prog_graph_jimenezmu\EDK3_Login\tests\main.cc(322,33): warning C4100: 'argv': parámetro formal sin referencia
+C:\Users\jimenezmu\Documents\prog_graph_jimenezmu\EDK3_Login\tests\main.cc(322,20): warning C4100: 'argc': parámetro formal sin referencia
+  PR_Demo_Workspace.vcxproj -> C:\Users\jimenezmu\Documents\prog_graph_jimenezmu\EDK3_Login\bin\Debug\x32\PR_Demo_Workspace_d.exe

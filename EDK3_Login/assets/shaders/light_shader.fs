@@ -24,17 +24,61 @@ uniform int u_number_lights;
 uniform vec3 u_ambient;
 
 vec3 DirectionaLight(){
+  float directionalIncidence = max(dot(normal.xyz, conf.lightDirection), 0.0);
+  //Specular
+  vec3 viewDirection = normalize(u_camera_position - position.xyz);
+  vec3 reflectDirection = reflect(-conf.lightDirection, normal.xyz);
 
+  float specularValue = pow(max(dot(viewDirection, reflectDirection), 0.0), conf.specularShininess);
+
+  vec3 diffuse = directionalIncidence * conf.lightColor;
+  vec3 specular = conf.specularStrength * specularValue * conf.lightColor;
+  return step(0.5,use_diffuse) * diffuse + step(0.5,use_specular) * specular;
 
 }
 
 vec3 SpotLight(){
+  conf.lightDirection = normalize(conf.lightPosition - position.xyz);
+  float theta = dot(conf.lightDirection,normalize(-conf.spotDirection));
+  vec3 result = vec3(0.0,0.0,0.0);
+    float directionalIncidence = max(dot(normal.xyz, conf.lightDirection), 0.0);
+    //Specular
+    vec3 viewDirection = normalize(u_camera_position - position.xyz);
+    vec3 reflectDirection = reflect(-conf.lightDirection, normal.xyz);
 
+    float specularValue = pow(max(dot(viewDirection, reflectDirection), 0.0), conf.specularShininess);
+
+    vec3 diffuse = directionalIncidence * conf.lightColor;
+    vec3 specular = conf.specularStrength * specularValue * conf.lightColor;
+    //Attenuation
+    float distance = length(conf.lightPosition - position.xyz);
+    float attenuation = 1.0 / (conf.attenuation.constant + conf.attenuation.linear * distance + conf.attenuation.quadratic * distance * distance);
+    
+    //Intensity
+    float epsilon   = conf.cutOff - conf.outerCutOff;
+    float intensity = clamp((theta - conf.outerCutOff) / epsilon, 0.0, 1.0);   
+    
+    result = (diffuse * intensity  * attenuation) + (specular * intensity * attenuation);
+
+  return result;
 
 }
 
 vec3 PointLight(){
+  conf.lightDirection = normalize(conf.lightPosition - position.xyz);
+  float directionalIncidence = max(dot(normal.xyz, conf.lightDirection), 0.0);
+  //Specular
+  vec3 viewDirection = normalize(u_camera_position - position.xyz);
+  vec3 reflectDirection = reflect(-conf.lightDirection, normal.xyz);
 
+  float specularValue = pow(max(dot(viewDirection, reflectDirection), 0.0), conf.specularShininess);
+
+  vec3 diffuse = directionalIncidence * conf.lightColor;
+  vec3 specular = conf.specularStrength * specularValue * conf.lightColor;
+  //Attenuation
+  float distance = length(conf.lightPosition - position.xyz);
+  float attenuation = 1.0 / (conf.attenuation.constant + conf.attenuation.linear * distance + conf.attenuation.quadratic * distance * distance);
+  return step(0.5,use_diffuse)*(diffuse * attenuation) + step(0.5,use_specular)*(specular * attenuation);
 }
 
 void main(){
@@ -58,5 +102,5 @@ void main(){
             }
         }
     }
-    FragColor = vec4(final_color, 1.0) * texture(u_texture,uv );
+    FragColor = vec4(1.0,0.0,0.0, 1.0) * texture(u_texture,uv );
 }

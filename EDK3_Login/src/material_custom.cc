@@ -14,9 +14,7 @@
 
 namespace EDK3 {
 
-  CustomLightMaterial::CustomLightMaterial()
-  {
-  }
+  CustomLightMaterial::CustomLightMaterial() {}
 
   //void CustomLightMaterial::init(EDK3::scoped_array<char>& error_log, const char* vertex_path, const char* fragment_path, int useTexture)
   void CustomLightMaterial::init(EDK3::scoped_array<char>& error_log, const char* vertex_path, const char* fragment_path, int useTexture)
@@ -58,11 +56,19 @@ namespace EDK3 {
     const Settings* settings = dynamic_cast<const Settings*>(mat);
     if (settings) {
       program_->use();
-      int num_lights;
+      int num_lights = 0;
       char aux_name[60] = { '\0' };
       int loc;
 
-      for (int i = 0; i < 8; i++) {
+      unsigned int color_loc = program_->get_uniform_position("u_color");
+      program_->set_uniform_value(color_loc, Type::T_FLOAT_4, settings->color());
+
+      int slot = 0;
+      settings->texture()->bind(slot); //settings->texture(0)->bind(slot);
+      unsigned int texture_loc = program_->get_uniform_position("u_texture");
+      program_->set_uniform_value(texture_loc, EDK3::Type::T_INT_1, &slot);
+
+      for (int i = 0; i < num_lights; i++) {
         //Position
         sprintf(aux_name, "u_lights[%d].pos\0", i);
         loc = program_->get_uniform_position(aux_name);
@@ -174,21 +180,25 @@ namespace EDK3 {
         printf("Error uniform %s\n", aux_name);
       }
 
+      //Ambient color
+      sprintf(aux_name, "u_ambient\0");
+      loc = program_->get_uniform_position(aux_name);
+      if (loc != -1) {
+        program_->set_uniform_value(loc, EDK3::Type::T_FLOAT_3, settings->ambient_color_);
+      }
+      else {
+        printf("Error uniform %s\n", aux_name);
+      }
 
 
-      unsigned int color_loc = program_->get_uniform_position("u_color");
-      program_->set_uniform_value(color_loc, Type::T_FLOAT_4, settings->color());
 
-      int slot = 0;
-      settings->specular()->bind(slot); //settings->texture(0)->bind(slot);
-      unsigned int texture_loc = program_->get_uniform_position("u_specular");
-      program_->set_uniform_value(texture_loc, EDK3::Type::T_INT_1, &slot);
-
+      /*
       slot = 1;
       settings->normal()->bind(slot);
       texture_loc = program_->get_uniform_position("u_normal");
       program_->set_uniform_value(texture_loc, EDK3::Type::T_INT_1, &slot);
 
+      */
       int use_texture = useTexture_;
       unsigned int used_texture_loc = program_->get_uniform_position("u_use_texture");
       program_->set_uniform_value(used_texture_loc, Type::T_INT_1, &use_texture);

@@ -1,8 +1,9 @@
 #version 330
 uniform sampler2D u_texture;
-uniform sampler2D u_albedo_1;
-uniform sampler2D u_albedo_2;
+uniform sampler2D u_normal;
+uniform sampler2D u_specular;
 uniform int u_use_texture;
+uniform int u_num_lights;
 uniform vec4 u_color;
 out vec4 fragColor;
 in vec2 uv;
@@ -13,6 +14,6 @@ void main() {
    fragColor = vec4(normal,1.0);
    }else{
    //  fragColor = texture(u_albedo_2,uv);
-    fragColor = texture(u_albedo_2,uv) * u_color;
+    fragColor = texture(u_texture,uv) * u_color;
    }
 }

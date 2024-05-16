@@ -204,11 +204,12 @@ namespace EDK3 {
 
     private:
       EDK3::ref_ptr<EDK3::Texture> texture_;
-      EDK3::ref_ptr<EDK3::Texture> specualar_;
+      EDK3::ref_ptr<EDK3::Texture> specular_;
       EDK3::ref_ptr<EDK3::Texture> normal_;
     public:
       LightConf lightConf_[10];
       float color_[4];
+      static float ambient_color_[3];
 
     private:
       Settings(const Settings&);
@@ -216,15 +217,15 @@ namespace EDK3 {
 
 
     public:
-      Settings();
+      Settings() {};
 
       void set_texture(EDK3::Texture* tex) { texture_ = tex; }
       EDK3::Texture* texture() { return texture_.get(); }
       const EDK3::Texture* texture() const { return texture_.get(); }
 
-      void set_specular(EDK3::Texture* tex) { specualar_ = tex; }
-      EDK3::Texture* specular() { return specualar_.get(); }
-      const EDK3::Texture* specular() const { return specualar_.get(); }
+      void set_specular(EDK3::Texture* tex) { specular_ = tex; }
+      EDK3::Texture* specular() { return specular_.get(); }
+      const EDK3::Texture* specular() const { return specular_.get(); }
 
       void set_normal(EDK3::Texture* tex) { normal_ = tex; }
       EDK3::Texture* normal() { return normal_.get(); }
@@ -237,7 +238,7 @@ namespace EDK3 {
 
       const float* color() const { return color_; }
 
-      ~Settings();
+      ~Settings() {};
 
       };
 
