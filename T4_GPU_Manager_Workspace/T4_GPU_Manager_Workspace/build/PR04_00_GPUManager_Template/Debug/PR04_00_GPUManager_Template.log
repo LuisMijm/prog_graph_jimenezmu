@@ -1,15 +1,23 @@
-﻿  custom_gpu_camera.cc
-C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\T4_GPU_Manager_Workspace\T4_GPU_Manager_Workspace\include\math_library\math_utils.h(15,46): warning C4100: 'copy': parámetro formal sin referencia
-C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\T4_GPU_Manager_Workspace\T4_GPU_Manager_Workspace\include\math_library\matrix_4.h(349,20): warning C4100: 'far': parámetro formal sin referencia
-C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\T4_GPU_Manager_Workspace\T4_GPU_Manager_Workspace\include\math_library\matrix_4.h(349,8): warning C4100: 'near': parámetro formal sin referencia
-C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\T4_GPU_Manager_Workspace\T4_GPU_Manager_Workspace\include\math_library\matrix_4.h(348,54): warning C4100: 'aspect': parámetro formal sin referencia
-C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\T4_GPU_Manager_Workspace\T4_GPU_Manager_Workspace\include\math_library\matrix_4.h(348,43): warning C4100: 'fov': parámetro formal sin referencia
-C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\T4_GPU_Manager_Workspace\T4_GPU_Manager_Workspace\include\math_library\matrix_4.h(355,20): warning C4100: 'far': parámetro formal sin referencia
-C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\T4_GPU_Manager_Workspace\T4_GPU_Manager_Workspace\include\math_library\matrix_4.h(355,8): warning C4100: 'near': parámetro formal sin referencia
-C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\T4_GPU_Manager_Workspace\T4_GPU_Manager_Workspace\include\math_library\matrix_4.h(354,73): warning C4100: 'valueottom': parámetro formal sin referencia
-C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\T4_GPU_Manager_Workspace\T4_GPU_Manager_Workspace\include\math_library\matrix_4.h(354,62): warning C4100: 'top': parámetro formal sin referencia
-C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\T4_GPU_Manager_Workspace\T4_GPU_Manager_Workspace\include\math_library\matrix_4.h(354,50): warning C4100: 'left': parámetro formal sin referencia
-C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\T4_GPU_Manager_Workspace\T4_GPU_Manager_Workspace\include\math_library\matrix_4.h(354,37): warning C4100: 'right': parámetro formal sin referencia
-C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\T4_GPU_Manager_Workspace\T4_GPU_Manager_Workspace\src\dev\custom_gpu_camera.cc(50,29): warning C4018: '<': no coinciden signed/unsigned
-C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\T4_GPU_Manager_Workspace\T4_GPU_Manager_Workspace\src\dev\custom_gpu_camera.cc(67,29): warning C4018: '<': no coinciden signed/unsigned
-  PR04_00_GPUManager_Template.vcxproj -> C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\T4_GPU_Manager_Workspace\T4_GPU_Manager_Workspace\bin\Debug\x32\PR04_00_GPUManager_Template_d.exe
+﻿  custom_gpu_manager.cc
+D:\prog_graph_jimenezmu\T4_GPU_Manager_Workspace\T4_GPU_Manager_Workspace\src\dev\custom_gpu_manager.cc(46,83): warning C4100: 'FrameBufferOrMask': parámetro formal sin referencia
+  Generando código...
+  Compilando...
+  PR04_00_GPUManager_Template.cc
+D:\prog_graph_jimenezmu\T4_GPU_Manager_Workspace\T4_GPU_Manager_Workspace\include\math_library\math_utils.h(15,46): warning C4100: 'copy': parámetro formal sin referencia
+D:\prog_graph_jimenezmu\T4_GPU_Manager_Workspace\T4_GPU_Manager_Workspace\include\math_library\matrix_4.h(349,20): warning C4100: 'far': parámetro formal sin referencia
+D:\prog_graph_jimenezmu\T4_GPU_Manager_Workspace\T4_GPU_Manager_Workspace\include\math_library\matrix_4.h(349,8): warning C4100: 'near': parámetro formal sin referencia
+D:\prog_graph_jimenezmu\T4_GPU_Manager_Workspace\T4_GPU_Manager_Workspace\include\math_library\matrix_4.h(348,54): warning C4100: 'aspect': parámetro formal sin referencia
+D:\prog_graph_jimenezmu\T4_GPU_Manager_Workspace\T4_GPU_Manager_Workspace\include\math_library\matrix_4.h(348,43): warning C4100: 'fov': parámetro formal sin referencia
+D:\prog_graph_jimenezmu\T4_GPU_Manager_Workspace\T4_GPU_Manager_Workspace\include\math_library\matrix_4.h(355,20): warning C4100: 'far': parámetro formal sin referencia
+D:\prog_graph_jimenezmu\T4_GPU_Manager_Workspace\T4_GPU_Manager_Workspace\include\math_library\matrix_4.h(355,8): warning C4100: 'near': parámetro formal sin referencia
+D:\prog_graph_jimenezmu\T4_GPU_Manager_Workspace\T4_GPU_Manager_Workspace\include\math_library\matrix_4.h(354,73): warning C4100: 'valueottom': parámetro formal sin referencia
+D:\prog_graph_jimenezmu\T4_GPU_Manager_Workspace\T4_GPU_Manager_Workspace\include\math_library\matrix_4.h(354,62): warning C4100: 'top': parámetro formal sin referencia
+D:\prog_graph_jimenezmu\T4_GPU_Manager_Workspace\T4_GPU_Manager_Workspace\include\math_library\matrix_4.h(354,50): warning C4100: 'left': parámetro formal sin referencia
+D:\prog_graph_jimenezmu\T4_GPU_Manager_Workspace\T4_GPU_Manager_Workspace\include\math_library\matrix_4.h(354,37): warning C4100: 'right': parámetro formal sin referencia
+D:\prog_graph_jimenezmu\T4_GPU_Manager_Workspace\T4_GPU_Manager_Workspace\tests\PR04_00_GPUManager_Template.cc(77,49): warning C4244: 'argumento': conversión de 'float' a 'unsigned int'; posible pérdida de datos
+D:\prog_graph_jimenezmu\T4_GPU_Manager_Workspace\T4_GPU_Manager_Workspace\tests\PR04_00_GPUManager_Template.cc(76,49): warning C4244: 'argumento': conversión de 'float' a 'unsigned int'; posible pérdida de datos
+D:\prog_graph_jimenezmu\T4_GPU_Manager_Workspace\T4_GPU_Manager_Workspace\tests\PR04_00_GPUManager_Template.cc(111,51): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+D:\prog_graph_jimenezmu\T4_GPU_Manager_Workspace\T4_GPU_Manager_Workspace\tests\PR04_00_GPUManager_Template.cc(147,33): warning C4100: 'argv': parámetro formal sin referencia
+D:\prog_graph_jimenezmu\T4_GPU_Manager_Workspace\T4_GPU_Manager_Workspace\tests\PR04_00_GPUManager_Template.cc(147,20): warning C4100: 'argc': parámetro formal sin referencia
+  Generando código...
+  PR04_00_GPUManager_Template.vcxproj -> D:\prog_graph_jimenezmu\T4_GPU_Manager_Workspace\T4_GPU_Manager_Workspace\bin\Debug\x32\PR04_00_GPUManager_Template_d.exe

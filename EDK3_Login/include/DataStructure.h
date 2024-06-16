@@ -36,6 +36,10 @@ struct Material {
     EDK3::ref_ptr<EDK3::CustomLightMaterial::Settings> matSettings;
 };
 
+enum MaterialName {
+
+};
+
 /*
 struct {
 	EDK3::ref_ptr<EDK3::Texture> texture;
@@ -46,9 +50,8 @@ struct {
 } Textures;
 */
 
-struct Texture {
-    EDK3::ref_ptr<EDK3::Texture> texture;
-    EDK3::ref_ptr<EDK3::CustomGPUTexture> customTexture_;
+enum TextureName {
+
 };
 
 //Unnamed struct and it's unique instance:
@@ -92,5 +95,5 @@ const int kFigurePoints = 10;
 EDK3::scoped_array<EDK3::ref_ptr<EDK3::Geometry>> customObjGeometry;
 EDK3::scoped_ptr<Terrain> Terrains[2];
 const int num_terrains = 2;
-EDK3::scoped_array<EDK3::ref_ptr<Texture>> Textures;
-EDK3::scoped_array<EDK3::ref_ptr<Material>> Materials;
+EDK3::scoped_array<EDK3::ref_ptr<EDK3::CustomGPUTexture>> Textures[10];
+EDK3::scoped_array<EDK3::ref_ptr<Material>> Materials[10];
