@@ -2,6 +2,7 @@
 
 out vec4 FragColor;
 in vec2 uv;
+in vec3 normal;
 struct Light{
     int type;
     vec3 pos;
@@ -23,20 +24,21 @@ uniform int u_number_lights;
 //uniform vec3 u_camera_pos;
 uniform vec3 u_ambient;
 
-vec3 DirectionaLight(){
-  float directionalIncidence = max(dot(normal.xyz, conf.lightDirection), 0.0);
+vec3 DirectionaLight(Light light){
+  float directionalIncidence = max(dot(normal, light.dir), 0.0);
   //Specular
-  vec3 viewDirection = normalize(u_camera_position - position.xyz);
-  vec3 reflectDirection = reflect(-conf.lightDirection, normal.xyz);
+  vec3 viewDirection = normalize(u_camera_position - light.pos);
+  vec3 reflectDirection = reflect(-light.dir, normal);
 
-  float specularValue = pow(max(dot(viewDirection, reflectDirection), 0.0), conf.specularShininess);
+  float specularValue = pow(max(dot(viewDirection, reflectDirection), 0.0), light.shininess);
 
-  vec3 diffuse = directionalIncidence * conf.lightColor;
-  vec3 specular = conf.specularStrength * specularValue * conf.lightColor;
-  return step(0.5,use_diffuse) * diffuse + step(0.5,use_specular) * specular;
+  vec3 diffuse = directionalIncidence * light.diff_color;
+  vec3 specular = light.strenght * specularValue * light.spec_color;
+  return diffuse + specular;
 
 }
 
+/*
 vec3 SpotLight(){
   conf.lightDirection = normalize(conf.lightPosition - position.xyz);
   float theta = dot(conf.lightDirection,normalize(-conf.spotDirection));
@@ -80,6 +82,7 @@ vec3 PointLight(){
   float attenuation = 1.0 / (conf.attenuation.constant + conf.attenuation.linear * distance + conf.attenuation.quadratic * distance * distance);
   return step(0.5,use_diffuse)*(diffuse * attenuation) + step(0.5,use_specular)*(specular * attenuation);
 }
+*/
 
 void main(){
     vec3 final_color = vec3(0.0, 0.0, 0.0);
@@ -87,17 +90,19 @@ void main(){
         if( i < u_number_lights){
             switch(u_lights[i].type){
                 case 0: {
-                    final_color = DirectionaLight();
+                    final_color += DirectionaLight();
                     break;
                 }
+                /*
                 case 1: {
-                    final_color = SpotLight();
+                    final_color += SpotLight();
                     break;
                 }
                 case 2: {
-                    final_color = PointLight();
+                    final_color += PointLight();
                     break;
                 }
+                */
 
             }
         }

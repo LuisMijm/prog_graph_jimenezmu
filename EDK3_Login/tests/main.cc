@@ -35,7 +35,7 @@
 #include "dev/custom_gpu_texture.h"
 
 
-
+#include "DataStructure.h"
 #include "material_custom.h"
 #include "geometry_custom_terrain.h"
 #include "geometry_custom_sphere.h"
@@ -49,65 +49,7 @@
 
 //float EDK3::MaterialCustom::LightSettings::ambient_color_[3] = { 0.0f,0.0f,0.0f };
 
-float EDK3::CustomLightMaterial::Settings::ambient_color_[3] = { 1.0f, 1.0f, 1.0f};
 
-struct {
-  // Sand
-  EDK3::ref_ptr<EDK3::CustomLightMaterial> mat;
-  EDK3::ref_ptr<EDK3::CustomLightMaterial::Settings> matSettings;  
-  
-  // Water
-  EDK3::ref_ptr<EDK3::CustomLightMaterial> mat_water;
-  EDK3::ref_ptr<EDK3::CustomLightMaterial::Settings> matSettings_water;
-} Materials;
-
-struct {
-  EDK3::ref_ptr<EDK3::Texture> texture;
-  EDK3::ref_ptr<EDK3::CustomGPUTexture> customTexture_;
-
-
-  EDK3::ref_ptr<EDK3::Texture> texture_water;
-} Textures;
-
-//Unnamed struct and it's unique instance:
-struct {
-  EDK3::ref_ptr<EDK3::CameraCustom> camera;
-  EDK3::ref_ptr<EDK3::Node> root;
-  EDK3::ref_ptr<EDK3::MaterialCustom> mat;
-  //EDK3::ref_ptr<EDK3::MaterialCustom::MaterialCustomTextureSettings> mat_settings;
-  
-} GameState;
-
-struct Terrain
-{
-    EDK3::ref_ptr<EDK3::TerrainCustom> terrain;
-    int num_cols;
-    int num_rows;
-    float height_mult;
-    float size;
-    float smoothness;
-    float heightmap_mult;
-    char heightmap_path[256];
-    bool use_heightmap;
-    bool is_centered;
-    float pos[3];
-    float HPR[3];
-    EDK3::ref_ptr<EDK3::CustomLightMaterial> mat;
-    EDK3::ref_ptr<EDK3::CustomLightMaterial::Settings> mat_settings;
-    char name[256];
-
-};
-
-
-
-//const int kWindowWidth = 1024;
-const int kWindowWidth = 2048;
-//const int kWindowHeight = 768;
-const int kWindowHeight = 1536;
-const int kFigurePoints = 10;
-EDK3::scoped_array<EDK3::ref_ptr<EDK3::Geometry>> customObjGeometry;
-EDK3::scoped_ptr<Terrain> Terrains[2];
-const int num_terrains = 2;
 
 
 
@@ -117,6 +59,7 @@ void InitLight(int light, int light_type,
               float pos[3], float dir[3], float diff_color[3], float spec_color[3],
               float linear_att, float quad_att, float const_att, 
               float shininess, float strength, const float cam_pos[3]) {
+
   Materials.matSettings->lightConf_[light].type_ = light_type;
   memcpy(Materials.matSettings->lightConf_[light].pos_, pos, sizeof(pos));
   memcpy(Materials.matSettings->lightConf_[light].dir_, pos, sizeof(dir));
@@ -131,13 +74,29 @@ void InitLight(int light, int light_type,
   memcpy(Materials.matSettings->lightConf_[light].camera_pos_, pos, sizeof(cam_pos));
 
   Materials.matSettings->lightConf_[light].enabled_ = true;
+
+
+  Materials.matSettings_water->lightConf_[light].type_ = light_type;
+  memcpy(Materials.matSettings_water->lightConf_[light].pos_, pos, sizeof(pos));
+  memcpy(Materials.matSettings_water->lightConf_[light].dir_, pos, sizeof(dir));
+  memcpy(Materials.matSettings_water->lightConf_[light].diff_color_, pos, sizeof(diff_color));
+  memcpy(Materials.matSettings_water->lightConf_[light].spec_color_, pos, sizeof(spec_color));
+
+  Materials.matSettings_water->lightConf_[light].linear_att_ = linear_att;
+  Materials.matSettings_water->lightConf_[light].quadratic_att_ = quad_att;
+  Materials.matSettings_water->lightConf_[light].constant_att_ = const_att;
+  Materials.matSettings_water->lightConf_[light].shininess_ = shininess;
+  Materials.matSettings_water->lightConf_[light].strength_ = strength;
+  memcpy(Materials.matSettings_water->lightConf_[light].camera_pos_, pos, sizeof(cam_pos));
+
+  Materials.matSettings_water->lightConf_[light].enabled_ = true;
 }
 
 void InitSceneLights() {
-  int lightType = 1;
+  int lightType = 0;
   float pos[3]{ 0.0f,100.0f,0.0f };
-  float dir[3]{ 0.0f,0.0f,0.0f };
-  float diff_color[3]{ 1.0f,1.0f,1.0f };
+  float dir[3]{ -0.9f,0.2f,0.0f };
+  float diff_color[3]{ 1.0f,1.0f,0.0f };
   float spec_color[3]{ 1.0f,1.0f,1.0f };
   float linear_att = 1.0f;
   float quad_att = 1.0f;
@@ -398,73 +357,9 @@ void InitScene() {
   EDK3::dev::GPUManager::CheckGLError("Prepare END");
 }
 
-class ImGuiDemo
-{
-public:
-    int selectedTerrain;
-public:
-    ImGuiDemo();
-    ~ImGuiDemo();
-
-    void DrawImGuiTerrain();
-
-}IMGUI;
-
-ImGuiDemo::ImGuiDemo()
-{
-}
-
-ImGuiDemo::~ImGuiDemo()
-{
-}
-
-void ImGuiDemo::DrawImGuiTerrain() {
-    ImGui::Begin("Terrain Settings");
-
-    const char* terrainNames[2] = { Terrains[0]->name, Terrains[1]->name };
-    ImGui::Combo("Select Terrain", &IMGUI.selectedTerrain, terrainNames, num_terrains);
-
-    Terrain& t = *Terrains[IMGUI.selectedTerrain];
 
 
-    ImGui::InputInt("Number of Columns", &Terrains[IMGUI.selectedTerrain]->num_cols);
-    ImGui::InputInt("Number of Rows", &Terrains[IMGUI.selectedTerrain]->num_rows);
-    ImGui::SliderFloat("Height Multiplier", &Terrains[IMGUI.selectedTerrain]->height_mult, 0.0f, 100.0f);
-    ImGui::SliderFloat("Size", &Terrains[IMGUI.selectedTerrain]->size, 0.0f, 200.0f);
-    ImGui::SliderFloat("Smoothness", &Terrains[IMGUI.selectedTerrain]->smoothness, 0.0f, 1.0f);
-    ImGui::SliderFloat("Heightmap Multiplier", &Terrains[IMGUI.selectedTerrain]->heightmap_mult, 0.0f, 200.0f);
-    //ImGui::InputText("Heightmap Path", t.heightmap_path, sizeof(t.heightmap_path));
-    ImGui::Checkbox("Use Heightmap", &Terrains[IMGUI.selectedTerrain]->use_heightmap);
-    ImGui::Checkbox("Is Centered", &Terrains[IMGUI.selectedTerrain]->is_centered);
-    ImGui::InputFloat3("Position", Terrains[IMGUI.selectedTerrain]->pos);
-    ImGui::InputFloat3("HPR", Terrains[IMGUI.selectedTerrain]->HPR);
 
-
-    if (ImGui::BeginMainMenuBar()) {
-        if (ImGui::BeginMenu("Window")) {
-            if (ImGui::BeginMenu("Game Object"))
-            {
-
-                if (ImGui::MenuItem("Terrain", "")) {
-                    
-                }
-                /*
-                if (ImGui::MenuItem("Save", "Ctrl+S")) {
-                    // Acción al hacer click en Save
-                }
-                */
-
-                ImGui::EndMenu();
-            }
-            ImGui::EndMenu();
-
-        }
-        ImGui::EndMainMenuBar();
-    }
-
-
-    ImGui::End();
-}
 
 
 void UpdateFn() {
@@ -489,6 +384,7 @@ void ImGuiFn(double dt) {
   ImGui::Text("Delta time: %0.3f ms", dt);
   ImGui::End();
   IMGUI.DrawImGuiTerrain();
+  IMGUI.LightManager();
   ImGui::ShowTestWindow();
   ImGui::Render();
 }

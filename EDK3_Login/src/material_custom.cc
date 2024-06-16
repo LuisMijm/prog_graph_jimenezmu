@@ -56,7 +56,7 @@ namespace EDK3 {
     const Settings* settings = dynamic_cast<const Settings*>(mat);
     if (settings) {
       program_->use();
-      int num_lights = 0;
+      int num_lights = 1;
       char aux_name[60] = { '\0' };
       int loc;
 

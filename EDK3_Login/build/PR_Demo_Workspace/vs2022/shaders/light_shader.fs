@@ -2,6 +2,7 @@
 
 out vec4 FragColor;
 in vec2 uv;
+in vec3 normal;
 struct Light{
     int type;
     vec3 pos;
@@ -17,91 +18,94 @@ struct Light{
 };
 
 const int kMaxLights = 8;
-uniform sampler2D u_texture;
+uniform Sampler2D u_texture;
 uniform Light u_lights[kMaxLights];
 uniform int u_number_lights;
 //uniform vec3 u_camera_pos;
 uniform vec3 u_ambient;
 
-// vec3 DirectionaLight(){
-//   float directionalIncidence = max(dot(normal.xyz, conf.lightDirection), 0.0);
-//   //Specular
-//   vec3 viewDirection = normalize(u_camera_position - position.xyz);
-//   vec3 reflectDirection = reflect(-conf.lightDirection, normal.xyz);
+vec3 DirectionaLight(Light light){
+  float directionalIncidence = max(dot(normal, light.dir), 0.0);
+  //Specular
+  vec3 viewDirection = normalize(u_camera_position - light.pos);
+  vec3 reflectDirection = reflect(-light.dir, normal);
 
-//   float specularValue = pow(max(dot(viewDirection, reflectDirection), 0.0), conf.specularShininess);
+  float specularValue = pow(max(dot(viewDirection, reflectDirection), 0.0), light.shininess);
 
-//   vec3 diffuse = directionalIncidence * conf.lightColor;
-//   vec3 specular = conf.specularStrength * specularValue * conf.lightColor;
-//   return step(0.5,use_diffuse) * diffuse + step(0.5,use_specular) * specular;
+  vec3 diffuse = directionalIncidence * light.diff_color;
+  vec3 specular = light.strenght * specularValue * light.spec_color;
+  return diffuse + specular;
 
-// }
+}
 
-// vec3 SpotLight(){
-//   conf.lightDirection = normalize(conf.lightPosition - position.xyz);
-//   float theta = dot(conf.lightDirection,normalize(-conf.spotDirection));
-//   vec3 result = vec3(0.0,0.0,0.0);
-//     float directionalIncidence = max(dot(normal.xyz, conf.lightDirection), 0.0);
-//     //Specular
-//     vec3 viewDirection = normalize(u_camera_position - position.xyz);
-//     vec3 reflectDirection = reflect(-conf.lightDirection, normal.xyz);
+/*
+vec3 SpotLight(){
+  conf.lightDirection = normalize(conf.lightPosition - position.xyz);
+  float theta = dot(conf.lightDirection,normalize(-conf.spotDirection));
+  vec3 result = vec3(0.0,0.0,0.0);
+    float directionalIncidence = max(dot(normal.xyz, conf.lightDirection), 0.0);
+    //Specular
+    vec3 viewDirection = normalize(u_camera_position - position.xyz);
+    vec3 reflectDirection = reflect(-conf.lightDirection, normal.xyz);
 
-//     float specularValue = pow(max(dot(viewDirection, reflectDirection), 0.0), conf.specularShininess);
+    float specularValue = pow(max(dot(viewDirection, reflectDirection), 0.0), conf.specularShininess);
 
-//     vec3 diffuse = directionalIncidence * conf.lightColor;
-//     vec3 specular = conf.specularStrength * specularValue * conf.lightColor;
-//     //Attenuation
-//     float distance = length(conf.lightPosition - position.xyz);
-//     float attenuation = 1.0 / (conf.attenuation.constant + conf.attenuation.linear * distance + conf.attenuation.quadratic * distance * distance);
+    vec3 diffuse = directionalIncidence * conf.lightColor;
+    vec3 specular = conf.specularStrength * specularValue * conf.lightColor;
+    //Attenuation
+    float distance = length(conf.lightPosition - position.xyz);
+    float attenuation = 1.0 / (conf.attenuation.constant + conf.attenuation.linear * distance + conf.attenuation.quadratic * distance * distance);
     
-//     //Intensity
-//     float epsilon   = conf.cutOff - conf.outerCutOff;
-//     float intensity = clamp((theta - conf.outerCutOff) / epsilon, 0.0, 1.0);   
+    //Intensity
+    float epsilon   = conf.cutOff - conf.outerCutOff;
+    float intensity = clamp((theta - conf.outerCutOff) / epsilon, 0.0, 1.0);   
     
-//     result = (diffuse * intensity  * attenuation) + (specular * intensity * attenuation);
+    result = (diffuse * intensity  * attenuation) + (specular * intensity * attenuation);
 
-//   return result;
+  return result;
 
-// }
+}
 
-// vec3 PointLight(){
-//   conf.lightDirection = normalize(conf.lightPosition - position.xyz);
-//   float directionalIncidence = max(dot(normal.xyz, conf.lightDirection), 0.0);
-//   //Specular
-//   vec3 viewDirection = normalize(u_camera_position - position.xyz);
-//   vec3 reflectDirection = reflect(-conf.lightDirection, normal.xyz);
+vec3 PointLight(){
+  conf.lightDirection = normalize(conf.lightPosition - position.xyz);
+  float directionalIncidence = max(dot(normal.xyz, conf.lightDirection), 0.0);
+  //Specular
+  vec3 viewDirection = normalize(u_camera_position - position.xyz);
+  vec3 reflectDirection = reflect(-conf.lightDirection, normal.xyz);
 
-//   float specularValue = pow(max(dot(viewDirection, reflectDirection), 0.0), conf.specularShininess);
+  float specularValue = pow(max(dot(viewDirection, reflectDirection), 0.0), conf.specularShininess);
 
-//   vec3 diffuse = directionalIncidence * conf.lightColor;
-//   vec3 specular = conf.specularStrength * specularValue * conf.lightColor;
-//   //Attenuation
-//   float distance = length(conf.lightPosition - position.xyz);
-//   float attenuation = 1.0 / (conf.attenuation.constant + conf.attenuation.linear * distance + conf.attenuation.quadratic * distance * distance);
-//   return step(0.5,use_diffuse)*(diffuse * attenuation) + step(0.5,use_specular)*(specular * attenuation);
-// }
+  vec3 diffuse = directionalIncidence * conf.lightColor;
+  vec3 specular = conf.specularStrength * specularValue * conf.lightColor;
+  //Attenuation
+  float distance = length(conf.lightPosition - position.xyz);
+  float attenuation = 1.0 / (conf.attenuation.constant + conf.attenuation.linear * distance + conf.attenuation.quadratic * distance * distance);
+  return step(0.5,use_diffuse)*(diffuse * attenuation) + step(0.5,use_specular)*(specular * attenuation);
+}
+*/
 
 void main(){
-    vec3 final_color = u_ambient;
-    // for(int i=0; i<kMaxLights;i++){
-    //     if( i < u_number_lights){
-    //         switch(u_lights[i].type){
-    //             case 0: {
-    //                 final_color += DirectionaLight();
-    //                 break;
-    //             }
-    //             // case 1: {
-    //             //     final_color = SpotLight();
-    //             //     break;
-    //             // }
-    //             // case 2: {
-    //             //     final_color = PointLight();
-    //             //     break;
-    //             // }
+    vec3 final_color = vec3(0.0, 0.0, 0.0);
+    for(int i=0; i<kMaxLights;i++){
+        if( i < u_number_lights){
+            switch(u_lights[i].type){
+                case 0: {
+                    final_color += DirectionaLight();
+                    break;
+                }
+                /*
+                case 1: {
+                    final_color += SpotLight();
+                    break;
+                }
+                case 2: {
+                    final_color += PointLight();
+                    break;
+                }
+                */
 
-    //         }
-    //     }
-    // }
-    // FragColor = vec4(1.0,0.0,0.0, 1.0) * texture(u_texture,uv);
-    FragColor = vec4(final_color, 1.0) * texture(u_texture, uv);
+            }
+        }
+    }
+    FragColor = vec4(1.0,0.0,0.0, 1.0) * texture(u_texture,uv );
 }

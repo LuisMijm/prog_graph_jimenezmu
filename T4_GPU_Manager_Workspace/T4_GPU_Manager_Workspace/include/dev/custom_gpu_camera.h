@@ -15,7 +15,9 @@
 #define __CUSTOM_GPU_CAMERA_H__ 1
 
 #include "EDK3/camera.h"
+#include "EDK3/geometry.h"
 #include "ESAT/math.h"
+#include "math_library/matrix_4.h"
 
 namespace EDK3 {
 
@@ -31,7 +33,13 @@ class CustomGPUCamera : public EDK3::Camera {
   /** Renders all visible (not culled) objects */
   virtual void doRender() const override;
 
-  struct CamData;
+  struct CamData {
+	  Mat4 transform;
+	  const EDK3::Geometry* geometry;
+	  const EDK3::Material* material;
+	  const EDK3::MaterialSettings* material_setting;
+	  bool should_render;
+  };
 
  protected:
   virtual ~CustomGPUCamera();
@@ -40,7 +48,7 @@ class CustomGPUCamera : public EDK3::Camera {
   CustomGPUCamera(const CustomGPUCamera&);
   CustomGPUCamera& operator=(const CustomGPUCamera&);
 
-  EDK3::scoped_ptr<CamData> data_;
+  std::vector<CamData> data_;
 
 }; //CustomGPUCamera
 

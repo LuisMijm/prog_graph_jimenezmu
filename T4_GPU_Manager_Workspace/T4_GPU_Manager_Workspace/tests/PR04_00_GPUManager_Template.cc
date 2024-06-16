@@ -28,8 +28,8 @@
 
 //Unnamed struct and it's unique instance:
 struct {
-  //EDK3::ref_ptr<EDK3::dev::CustomGPUCamera> camera;
-  EDK3::ref_ptr<EDK3::Camera> camera;
+  EDK3::ref_ptr<EDK3::dev::CustomGPUCamera> camera;
+  //EDK3::ref_ptr<EDK3::Camera> camera;
   EDK3::ref_ptr<EDK3::Node> root;
   EDK3::ref_ptr<EDK3::RenderTarget> render_target;
   EDK3::ref_ptr<EDK3::MatPostprocess> postprocess_material;

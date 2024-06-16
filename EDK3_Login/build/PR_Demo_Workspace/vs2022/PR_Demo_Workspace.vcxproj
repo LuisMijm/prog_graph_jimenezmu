@@ -208,7 +208,9 @@
     <ClInclude Include="..\..\..\deps\EDK\include\ESAT_extra\tiny_obj_loader.h" />
     <ClInclude Include="..\..\..\deps\Perlin\include\Perlin\SimplexNoise.h" />
     <ClInclude Include="..\..\..\deps\STB\include\stbi_image.h" />
+    <ClInclude Include="..\..\..\include\DataStructure.h" />
     <ClInclude Include="..\..\..\include\DemoManager.h" />
+    <ClInclude Include="..\..\..\include\ImGuiDemo.h" />
     <ClInclude Include="..\..\..\include\camera_custom.h" />
     <ClInclude Include="..\..\..\include\dev\custom_gpu_buffer.h" />
     <ClInclude Include="..\..\..\include\dev\custom_gpu_camera.h" />
@@ -234,6 +236,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\deps\Perlin\src\SimplexNoise.cpp" />
+    <ClCompile Include="..\..\..\src\DemoManager.cc" />
+    <ClCompile Include="..\..\..\src\ImGuiDemo.cc" />
     <ClCompile Include="..\..\..\src\dev\custom_gpu_buffer.cc" />
     <ClCompile Include="..\..\..\src\dev\custom_gpu_program.cc" />
     <ClCompile Include="..\..\..\src\dev\custom_gpu_shader.cc" />

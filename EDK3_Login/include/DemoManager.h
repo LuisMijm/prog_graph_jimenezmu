@@ -14,26 +14,37 @@
 #include "geometry_custom_quad.h"
 #include "geometry_custom_cube.h"
 #include "geometry_custom_surface.h"
-#include "DataStructures.h"
+//#include "DataStructures.h"
+
 
 
 
 class DemoManager
 {
 public:
-	static void InitScene(EDK3::ref_ptr<EDK3::Node> root);
+	//static void InitScene(EDK3::ref_ptr<EDK3::Node> root);
+	DemoManager();
+	~DemoManager();
 
-	static GameState GameState;
+	//void LightManager()
 
-	void LoadTextures();
-	void LoadMaterials();
-	void SetAndAddDrawable(EDK3::Node* root, EDK3::Geometry* geo, EDK3::Material* mat, EDK3::MaterialSettings* settings, GLfloat position[3], GLfloat HPR[3], const char* name);
-	void InitTerrain(EDK3::Node* root);
-	void InitSphere(EDK3::Node* root);
-	void InitQuad(EDK3::Node* root);
-	void InitCube24(EDK3::Node* root);
-	void InitCube8(EDK3::Node* root);
-	void InitObj(EDK3::Node* root);
-
+    //Texturas
+    //Terrain
+    //
 };
 
+
+/*
+class ImGuiDemo
+{
+public:
+    int selectedTerrain;
+public:
+    ImGuiDemo();
+    ~ImGuiDemo();
+
+    void DrawImGuiTerrain();
+    void LightManager();
+
+}IMGUI;
+*/

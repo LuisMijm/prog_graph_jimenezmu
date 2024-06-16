@@ -171,7 +171,13 @@
     <ClInclude Include="..\..\..\deps\STB\include\stbi_image.h">
       <Filter>deps\STB\include</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\include\DataStructure.h">
+      <Filter>include</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\include\DemoManager.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\ImGuiDemo.h">
       <Filter>include</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\camera_custom.h">
@@ -244,6 +250,12 @@
   <ItemGroup>
     <ClCompile Include="..\..\..\deps\Perlin\src\SimplexNoise.cpp">
       <Filter>deps\Perlin\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\DemoManager.cc">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ImGuiDemo.cc">
+      <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\dev\custom_gpu_buffer.cc">
       <Filter>src\dev</Filter>
