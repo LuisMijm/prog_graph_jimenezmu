@@ -214,6 +214,7 @@ namespace EDK3{
 		}
 
 		int CustomGPUProgram::get_attrib_location(const char* name) const {
+			//glGetAttribLocation
 			GLint attrib_location;
 			attrib_location = glGetAttribLocation(internal_id_, name);
 			if (-1 == attrib_location) {

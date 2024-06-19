@@ -8,9 +8,11 @@
 
 
 #include "material_custom.h"
+
 #include "EDK3/dev/gpumanager.h"
 #include "EDK3/dev/shader.h"
 
+//#include "DataStructure.h"
 
 namespace EDK3 {
 
@@ -56,7 +58,7 @@ namespace EDK3 {
     const Settings* settings = dynamic_cast<const Settings*>(mat);
     if (settings) {
       program_->use();
-      int num_lights = 1;
+      int num_lights = 3;
       char aux_name[60] = { '\0' };
       int loc;
 
@@ -159,15 +161,56 @@ namespace EDK3 {
           printf("Error uniform %s\n", aux_name);
         }
 
-        //Camera position
-        sprintf(aux_name, "u_lights[%d].camera_pos\0", i);
+        //Enabled
+        sprintf(aux_name, "u_lights[%d].enabled\0", i);
         loc = program_->get_uniform_position(aux_name);
         if (loc != -1) {
-          program_->set_uniform_value(loc, EDK3::Type::T_FLOAT_3, settings->lightConf_[i].camera_pos_);
+            program_->set_uniform_value(loc, EDK3::Type::T_INT_1, &settings->lightConf_[i].enabled_);
         }
         else {
-          printf("Error uniform %s\n", aux_name);
+            printf("Error uniform %s\n", aux_name);
         }
+
+
+        //Type
+        sprintf(aux_name, "u_lights[%d].type\0", i);
+        loc = program_->get_uniform_position(aux_name);
+        if (loc != -1) {
+            program_->set_uniform_value(loc, EDK3::Type::T_INT_1, &settings->lightConf_[i].type_);
+        }
+        else {
+            printf("Error uniform %s\n", aux_name);
+        }
+
+
+        sprintf(aux_name, "u_lights[%d].cutOff\0", i);
+        loc = program_->get_uniform_position(aux_name);
+        if (loc != -1) {
+            program_->set_uniform_value(loc, EDK3::Type::T_FLOAT_1, &settings->lightConf_[i].cutOff_);
+        }
+        else {
+            printf("Error uniform %s\n", aux_name);
+        }
+
+        sprintf(aux_name, "u_lights[%d].outerCutOff\0", i);
+        loc = program_->get_uniform_position(aux_name);
+        if (loc != -1) {
+            program_->set_uniform_value(loc, EDK3::Type::T_FLOAT_1, &settings->lightConf_[i].outerCutOff_);
+        }
+        else {
+            printf("Error uniform %s\n", aux_name);
+        }
+
+
+        //Camera position
+        //sprintf(aux_name, "u_lights[%d].camera_pos\0", i);
+        //loc = program_->get_uniform_position(aux_name);
+        //if (loc != -1) {
+        //  program_->set_uniform_value(loc, EDK3::Type::T_FLOAT_3, settings->lightConf_[i].camera_pos_);
+        //}
+        //else {
+        //  printf("Error uniform %s\n", aux_name);
+        //}
       }
 
       //Number lights
@@ -190,7 +233,15 @@ namespace EDK3 {
         printf("Error uniform %s\n", aux_name);
       }
 
-
+      //PostProcess
+  /*    sprintf(aux_name, "u_postprocess\0");
+      loc = program_->get_uniform_position(aux_name);
+      if (loc != -1) {
+          program_->set_uniform_value(loc, EDK3::Type::T_INT, &GS.Postprocess );
+      }
+      else {
+          printf("Error uniform %s\n", aux_name);
+      }*/
 
       /*
       slot = 1;

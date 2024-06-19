@@ -21,9 +21,8 @@ namespace dev {
 
 class CustomGPUManager : public EDK3::dev::GPUManager {
  public:
-   
-  virtual void newShader(EDK3::ref_ptr<EDK3::dev::Shader> *output) override;
   
+  virtual void newShader(EDK3::ref_ptr<EDK3::dev::Shader>* output) override;
   virtual void newProgram(EDK3::ref_ptr<EDK3::dev::Program> *output) override;
   
   virtual void newBuffer(EDK3::ref_ptr<EDK3::dev::Buffer> *output) override;
@@ -40,18 +39,19 @@ class CustomGPUManager : public EDK3::dev::GPUManager {
                             const unsigned int width, const unsigned int height, 
                             const unsigned int depth, 
                             EDK3::ref_ptr<Texture>* output) override;
+
    
 
-   /*
-  virtual void newFramebuffer(EDK3::ref_ptr<Framebuffer>* output) override;
-   */
+  //virtual void newFramebuffer(EDK3::ref_ptr<Framebuffer>* output) override;
   virtual void clearFrameBuffer(const float rgba[4],
                                 const unsigned int FrameBufferOrMask =
                                 kFrameBufferColor | kFrameBufferDepth) override;
 
+
    
   virtual void enableDepthTest(const CompareFunc f) override;
   virtual void disableDepthTest() override;
+   
    
 
    
@@ -61,11 +61,12 @@ class CustomGPUManager : public EDK3::dev::GPUManager {
                            const float ConstantColor[4]) override;
   void disableBlend();
    
-
-   /*
+   
+  
   virtual void enableCullFaces(const FaceType f) override;
   virtual void disableCullFaces() override;
-   */
+  
+   
 
    
   virtual void enableScissor(int x, int y,
@@ -93,6 +94,7 @@ class CustomGPUManager : public EDK3::dev::GPUManager {
                             const EDK3::dev::Buffer *buffer,
                             const EDK3::Type element_type = EDK3::Type::T_USHORT,
                             const unsigned int offset = 0) const override;
+   
 
 }; //CustomGPUManager
 

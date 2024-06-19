@@ -197,7 +197,10 @@ namespace EDK3 {
       float shininess_;
       float strength_;
       float camera_pos_[3];
-      bool enabled_;
+      float cutOff_;
+      float outerCutOff_;
+
+      int enabled_;
     };
 
     class Settings : public MaterialSettings {

@@ -18,6 +18,7 @@
 #include "EDK3/matdiffusetexture.h"
 #include "EDK3/texture.h"
 #include "EDK3/dev/gpumanager.h"
+#include "EDK3/rendertarget.h"
 
 #include "ESAT_extra/imgui.h"
 #include "EDK3/dev/opengl.h"
@@ -43,107 +44,228 @@
 #include "geometry_custom_quad.h"
 #include "geometry_custom_cube.h"
 #include "geometry_custom_surface.h"
+//#include "ImGuiDemo.h"
 
 
+//float EDK3::MaterialCustom::LightSettings::ambient_color_[3] = { 0.1f,0.1f,0.1f };
+
+void ImGuiLights() {
+    static int num_materials = 2;
+    static int num_lights = 3;
+
+    //static int selected_material = 0;
+    static int selected_light = 0;
+    static float temp_pos[3];
+    static float temp_dir[3];
+    static float temp_diff_color[3];
+    static float temp_spec_color[3];
+    static bool temp_enabled;
+
+    ImGui::Begin("LIGHT MANAGER");
+
+    //const char* mat_names[] = { "Mat 1", "Mat 2" };
+    //if (ImGui::Combo("Select Material", &selected_material, mat_names, 2)) {
+
+    //    for (int i = 0; i < num_materials; i++) {
+    //        bool is_selected = (selected_material == i);
+    //        if (ImGui::Selectable("Material %d", is_selected)) {
+    //            selected_material = i;
+    //            selected_light = 0;
+    //        }
+    //        //if (is_selected) {
+    //            //ImGui::SetItemDefaultFocus();
+    //        //}
+    //    }
+    //}
+
+    // Selección de luz dentro del material seleccionado
+    const char* light_names[] = { "Light directional", "Light spotlight", "Light pointlight"};
+    if (ImGui::Combo("Select Light", &selected_light, light_names, num_lights)) {
+        for (int i = 0; i < num_lights; i++) {
+            bool is_selected = (selected_light == i);
+            if (ImGui::Selectable("Light %d", is_selected)) {
+                selected_light = i;
+            }
+            //if (is_selected) {
+            //    ImGui::SetItemDefaultFocus();
+            //}
+        }
+    }
+
+    if (GS.Materials.get()->matSettings->lightConf_ != nullptr) {
+        
+        EDK3::CustomLightMaterial::LightConf* light = &GS.Materials[0].matSettings->lightConf_[selected_light];
+
+        //ImGui::InputInt("Type", &light->type_);
+        ImGui::ColorEdit3("Diffuse Color", light->diff_color_);
+        ImGui::ColorEdit3("Specular Color", light->spec_color_);
+        if (0 == light->type_) {
+            ImGui::DragFloat3("Direction", light->dir_, 0.01f, -1.0f, 1.0f);
+        }
+        else {
+            if (1 == light->type_) {
+                ImGui::DragFloat3("Direction", light->dir_, 0.01f, -1.0f, 1.0f);
+                ImGui::SliderFloat("Cutoff", &light->cutOff_, 0.0f, 1.0f);
+                ImGui::SliderFloat("outer Cutoff", &light->outerCutOff_, 0.0f, 1.0f);
+            }
+            ImGui::DragFloat3("Position", light->pos_, 0.01f);
+            ImGui::SliderFloat("Linear Attenuation", &light->linear_att_, 0.0f, 1.0f);
+            ImGui::SliderFloat("Quadratic Attenuation", &light->quadratic_att_, 0.0f, 1.0f);
+            ImGui::SliderFloat("Constant Attenuation", &light->constant_att_, 0.0f, 1.0f);
+            ImGui::SliderFloat("Shininess", &light->shininess_, 0.1f, 128.0f);
+            ImGui::SliderFloat("Strength", &light->strength_, 0.1f, 50.0f);
+        }
+        
+       
 
 
-//float EDK3::MaterialCustom::LightSettings::ambient_color_[3] = { 0.0f,0.0f,0.0f };
+        static bool temp = true;
+        ImGui::Checkbox("Enabled", &temp);
+        light->enabled_ = temp == true ? 1: 0;
+
+        for (int i = 0; i < num_materials; i++)
+        {
+            memcpy(GS.Materials[i].matSettings->lightConf_[selected_light].pos_, &light->pos_, sizeof(float) * 3);
+            memcpy(GS.Materials[i].matSettings->lightConf_[selected_light].dir_, &light->dir_, sizeof(float) * 3);
+            memcpy(GS.Materials[i].matSettings->lightConf_[selected_light].diff_color_, &light->diff_color_, sizeof(float) * 3);
+            memcpy(GS.Materials[i].matSettings->lightConf_[selected_light].spec_color_, &light->spec_color_, sizeof(float) * 3);
+            GS.Materials[i].matSettings->lightConf_[selected_light].linear_att_ = light->linear_att_;
+            GS.Materials[i].matSettings->lightConf_[selected_light].quadratic_att_ = light->quadratic_att_;
+            GS.Materials[i].matSettings->lightConf_[selected_light].constant_att_ = light->constant_att_;
+            GS.Materials[i].matSettings->lightConf_[selected_light].shininess_ = light->shininess_;
+            GS.Materials[i].matSettings->lightConf_[selected_light].strength_ = light->strength_;
+
+            GS.Materials[i].matSettings->lightConf_[selected_light].cutOff_ = light->cutOff_;
+            GS.Materials[i].matSettings->lightConf_[selected_light].outerCutOff_ = light->outerCutOff_;
+            GS.Materials[i].matSettings->lightConf_[selected_light].enabled_ = light->enabled_;
+        }
+    }
+
+    //if (ImGui::Button(" ")) {
+
+    //}
+
+    ImGui::End();
 
 
+}
 
 
+void ImGuiGeneral() {
+    ImGui::Begin("General Manager");
 
+    ImGui::SliderInt("Postprocess", &GS.Postprocess, 0, 3);
+    GS.mat_postprocess_settings.get()->set_postprocess_type(GS.Postprocess);
+
+    ImGui::Checkbox("Wireframe", &GS.wireframe);
+
+    ImGui::End();
+}
 
 
 void InitLight(int light, int light_type, 
-              float pos[3], float dir[3], float diff_color[3], float spec_color[3],
+              const float* pos, const float* dir, const float* diff_color, const float* spec_color,
               float linear_att, float quad_att, float const_att, 
-              float shininess, float strength, const float cam_pos[3]) {
+              float shininess, float strength, const float* cam_pos) {
+    
+    //float pos[3]{ 0.0f, 110.0f, 0.0f };
+    //float dir[3]{ 0.7f, 0.7f, 0.05f };
+    //float diff_color[3]{ 1.0f, 1.0, 1.0f };
+    //float spec_color[3]{ 1.0f, 1.0, 1.0f };
 
-  Materials.matSettings->lightConf_[light].type_ = light_type;
-  memcpy(Materials.matSettings->lightConf_[light].pos_, pos, sizeof(pos));
-  memcpy(Materials.matSettings->lightConf_[light].dir_, pos, sizeof(dir));
-  memcpy(Materials.matSettings->lightConf_[light].diff_color_, pos, sizeof(diff_color));
-  memcpy(Materials.matSettings->lightConf_[light].spec_color_, pos, sizeof(spec_color));
-  
-  Materials.matSettings->lightConf_[light].linear_att_ = linear_att;
-  Materials.matSettings->lightConf_[light].quadratic_att_ = quad_att;
-  Materials.matSettings->lightConf_[light].constant_att_ = const_att;
-  Materials.matSettings->lightConf_[light].shininess_ = shininess;
-  Materials.matSettings->lightConf_[light].strength_ = strength;
-  memcpy(Materials.matSettings->lightConf_[light].camera_pos_, pos, sizeof(cam_pos));
+  GS.Materials[sand].matSettings->lightConf_[light].type_ = light_type;
+  memcpy(GS.Materials[sand].matSettings->lightConf_[light].pos_, pos, sizeof(float) * 3);
+  memcpy(GS.Materials[sand].matSettings->lightConf_[light].dir_, dir, sizeof(float) * 3);
+  memcpy(GS.Materials[sand].matSettings->lightConf_[light].diff_color_, diff_color, sizeof(float) * 3);
+  memcpy(GS.Materials[sand].matSettings->lightConf_[light].spec_color_, spec_color, sizeof(float) * 3);
 
-  Materials.matSettings->lightConf_[light].enabled_ = true;
+  GS.Materials[sand].matSettings->lightConf_[light].linear_att_ = linear_att;
+  GS.Materials[sand].matSettings->lightConf_[light].quadratic_att_ = quad_att;
+  GS.Materials[sand].matSettings->lightConf_[light].constant_att_ = const_att;
+  GS.Materials[sand].matSettings->lightConf_[light].shininess_ = shininess;
+  GS.Materials[sand].matSettings->lightConf_[light].strength_ = strength;
+  memcpy(GS.Materials[sand].matSettings->lightConf_[light].camera_pos_, cam_pos, sizeof(cam_pos));
+
+  GS.Materials[sand].matSettings->lightConf_[light].cutOff_ = 0.78f;
+  GS.Materials[sand].matSettings->lightConf_[light].outerCutOff_= 0.75f;
 
 
-  Materials.matSettings_water->lightConf_[light].type_ = light_type;
-  memcpy(Materials.matSettings_water->lightConf_[light].pos_, pos, sizeof(pos));
-  memcpy(Materials.matSettings_water->lightConf_[light].dir_, pos, sizeof(dir));
-  memcpy(Materials.matSettings_water->lightConf_[light].diff_color_, pos, sizeof(diff_color));
-  memcpy(Materials.matSettings_water->lightConf_[light].spec_color_, pos, sizeof(spec_color));
+  GS.Materials[sand].matSettings->lightConf_[light].enabled_ = 1;
 
-  Materials.matSettings_water->lightConf_[light].linear_att_ = linear_att;
-  Materials.matSettings_water->lightConf_[light].quadratic_att_ = quad_att;
-  Materials.matSettings_water->lightConf_[light].constant_att_ = const_att;
-  Materials.matSettings_water->lightConf_[light].shininess_ = shininess;
-  Materials.matSettings_water->lightConf_[light].strength_ = strength;
-  memcpy(Materials.matSettings_water->lightConf_[light].camera_pos_, pos, sizeof(cam_pos));
 
-  Materials.matSettings_water->lightConf_[light].enabled_ = true;
+  GS.Materials[water].matSettings->lightConf_[light].type_ = light_type;
+  memcpy(GS.Materials[water].matSettings->lightConf_[light].pos_, pos, sizeof(float) * 3);
+  memcpy(GS.Materials[water].matSettings->lightConf_[light].dir_, dir, sizeof(float) * 3);
+  memcpy(GS.Materials[water].matSettings->lightConf_[light].diff_color_, diff_color, sizeof(float) * 3);
+  memcpy(GS.Materials[water].matSettings->lightConf_[light].spec_color_, spec_color, sizeof(float) * 3);
+
+  GS.Materials[water].matSettings->lightConf_[light].linear_att_ = linear_att;
+  GS.Materials[water].matSettings->lightConf_[light].quadratic_att_ = quad_att;
+  GS.Materials[water].matSettings->lightConf_[light].constant_att_ = const_att;
+  GS.Materials[water].matSettings->lightConf_[light].shininess_ = shininess;
+  GS.Materials[water].matSettings->lightConf_[light].strength_ = strength;
+  memcpy(GS.Materials[water].matSettings->lightConf_[light].camera_pos_, cam_pos, sizeof(cam_pos));
+
+  GS.Materials[water].matSettings->lightConf_[light].enabled_ = 1;
 }
 
 void InitSceneLights() {
-  int lightType = 0;
-  float pos[3]{ 0.0f,100.0f,0.0f };
-  float dir[3]{ -0.9f,0.2f,0.0f };
-  float diff_color[3]{ 1.0f,1.0f,0.0f };
-  float spec_color[3]{ 1.0f,1.0f,1.0f };
+    //int lightType = 2;
+  /*  EDK3::scoped_ptr<float> pos;
+    pos[0] = 0.0f;
+    pos[1] = 115.0f 0.0f
+};*/
+  static float pos[]{ 0.0f ,115.0f, 0.0f };
+  static float dir[]{ 0.05f, 1.0f, 0.05f };
+  static float diff_color[]{ 1.0f,1.0f,1.0f };
+  static float spec_color[]{ 1.0f,1.0f,1.0f };
   float linear_att = 1.0f;
   float quad_att = 1.0f;
   float const_att = 1.0f;
   float shininess = 1.0f;
-  float strength = 1.0f;
+  float strength = 0.7f;
 
-  InitLight(0, lightType, pos, dir, diff_color, spec_color, linear_att, quad_att, const_att, shininess, strength, GameState.camera->position());
-  InitLight(1, lightType, pos, dir, diff_color, spec_color, linear_att, quad_att, const_att, shininess, strength, GameState.camera->position());
-  InitLight(2, lightType, pos, dir, diff_color, spec_color, linear_att, quad_att, const_att, shininess, strength, GameState.camera->position());
-  InitLight(3, lightType, pos, dir, diff_color, spec_color, linear_att, quad_att, const_att, shininess, strength, GameState.camera->position());
+
+  InitLight(0, 0, pos, dir, diff_color, spec_color, linear_att, quad_att, const_att, shininess, strength, GS.camera->position());
+  InitLight(1, 1, pos, dir, diff_color, spec_color, linear_att, quad_att, const_att, shininess, strength, GS.camera->position());
+  InitLight(2, 2, pos, dir, diff_color, spec_color, linear_att, quad_att, const_att, shininess, strength, GS.camera->position());
+  //InitLight(3, lightType, pos, dir, diff_color, spec_color, linear_att, quad_att, const_att, shininess, strength, GS.camera->position());
 }
 
 void InitMaterials() {
     EDK3::scoped_array<char> error_log;
-    Materials.mat.alloc();
-    Materials.matSettings.alloc();
+    GS.Materials[sand].mat.alloc();
+    GS.Materials[sand].matSettings.alloc();
 
-    Materials.mat->init(error_log, "./shaders/basicVertex.vs", "./shaders/light_shader.fs");
-    Materials.mat->useTexture_ = 1;
+    GS.Materials[sand].mat->init(error_log, "./shaders/basicVertex.vs", "./shaders/light_shader.fs");
+    GS.Materials[sand].mat->useTexture_ = 1;
 
-    float color[] = { 1.0f, 1.0f, 1.0f, 0.0f };
-    Materials.matSettings->set_color(color);
-    Materials.matSettings->set_texture(Textures.texture.get());
+    float color[] = { 1.0f, 1.0f, 1.0f, 1.0f };
+    GS.Materials[sand].matSettings->set_color(color);
+    GS.Materials[sand].matSettings->set_texture(GS.Textures[sand].get());
 
     // Sea 
 
-    Materials.mat_water.alloc();
-    Materials.matSettings_water.alloc();
+    GS.Materials[water].mat.alloc();
+    GS.Materials[water].matSettings.alloc();
 
-    Materials.mat_water->init(error_log, "./shaders/basicVertex.vs", "./shaders/light_shader.fs");
-    Materials.mat_water->useTexture_ = 1;
+    GS.Materials[water].mat->init(error_log, "./shaders/basicVertex.vs", "./shaders/light_shader.fs");
+    GS.Materials[water].mat->useTexture_ = 1;
 
     //color[0] = {1.0f, 1.0f, 1.0f, 0.0f};
-    Materials.matSettings_water->set_color(color);
-    Materials.matSettings_water->set_texture(Textures.texture_water.get());
+    GS.Materials[water].matSettings->set_color(color);
+    GS.Materials[water].matSettings->set_texture(GS.Textures[water].get());
 }
     
 
 void InitTextures() {
-    EDK3::Texture::Load("./textures/sand.png", &Textures.texture);
-    if (!Textures.texture) {
+    EDK3::Texture::Load("./textures/sand.png", &GS.Textures[sand]);
+    if (!GS.Textures[sand].get()) {
         printf("Can't load texture.png\n");
         exit(-2);
     }    
-    EDK3::Texture::Load("./textures/water2.png", &Textures.texture_water);
-    if (!Textures.texture_water) {
+    EDK3::Texture::Load("./textures/water2.png", &GS.Textures[water]);
+    if (!GS.Textures[water].get()) {
         printf("Can't load water.png\n");
         exit(-2);
     }
@@ -169,68 +291,68 @@ void InitTerrain() {
     
 
     // Init Terrains variable
-    Terrains[0].alloc();
-    Terrains[1].alloc();
+    GS.Terrains[sand].terrain.alloc();
+    GS.Terrains[water].terrain.alloc();
 
-    EDK3::Node* root = GameState.root.get();
+    EDK3::Node* root = GS.root.get();
 
     // Initialize Land
-    strncpy(Terrains[0]->name, "Land", sizeof(Terrains[0]->name));
-    Terrains[0]->num_cols = 256;
-    Terrains[0]->num_rows = 256;
-    Terrains[0]->height_mult = 5.0f;
-    Terrains[0]->size = 1.0f;
-    Terrains[0]->smoothness = 0.5f;
-    Terrains[0]->heightmap_mult = 30.0f;
-    strncpy(Terrains[0]->heightmap_path, "./textures/south.png", sizeof(Terrains[0]->heightmap_path));
-    Terrains[0]->use_heightmap = true;
-    Terrains[0]->is_centered = true;
-    Terrains[0]->pos[0] = 0.0f;
-    Terrains[0]->pos[1] = 0.0f;
-    Terrains[0]->pos[2] = 0.0f;
-    Terrains[0]->HPR[0] = 0.0f;
-    Terrains[0]->HPR[1] = 0.0f;
-    Terrains[0]->HPR[2] = 0.0f;
-    Terrains[0]->mat = Materials.mat;
-    Terrains[0]->mat_settings = Materials.matSettings;
+    strncpy(GS.Terrains[sand].name, "Land", sizeof(GS.Terrains[sand].name));
+    GS.Terrains[sand].num_cols = 256;
+    GS.Terrains[sand].num_rows = 256;
+    GS.Terrains[sand].height_mult = 5.0f;
+    GS.Terrains[sand].size = 1.0f;
+    GS.Terrains[sand].smoothness = 0.5f;
+    GS.Terrains[sand].heightmap_mult = 30.0f;
+    strncpy(GS.Terrains[sand].heightmap_path, "./textures/south.png", sizeof(GS.Terrains[sand].heightmap_path));
+    GS.Terrains[sand].use_heightmap = true;
+    GS.Terrains[sand].is_centered = true;
+    GS.Terrains[sand].pos[0] = 0.0f;
+    GS.Terrains[sand].pos[1] = 0.0f;
+    GS.Terrains[sand].pos[2] = 0.0f;
+    GS.Terrains[sand].HPR[0] = 0.0f;
+    GS.Terrains[sand].HPR[1] = 0.0f;
+    GS.Terrains[sand].HPR[2] = 0.0f;
+    GS.Terrains[sand].mat = GS.Materials[sand].mat;
+    GS.Terrains[sand].mat_settings = GS.Materials[sand].matSettings;
     
 
     
     // Initialize Water
-    strncpy(Terrains[1]->name, "Water", sizeof(Terrains[1]->name));
-    Terrains[1]->num_cols = 64;
-    Terrains[1]->num_rows = 64;
-    Terrains[1]->height_mult = 1.0f;
-    Terrains[1]->size = 100.0f;
-    Terrains[1]->smoothness = 0.005f;
-    Terrains[1]->heightmap_mult = 100.0f;
-    strncpy(Terrains[1]->heightmap_path, "./textures/water_heightmap.png", sizeof(Terrains[1]->heightmap_path));
-    Terrains[1]->use_heightmap = true;
-    Terrains[1]->is_centered = true;
-    Terrains[1]->pos[0] = 0.0f;
-    Terrains[1]->pos[1] = 10.0f;
-    Terrains[1]->pos[2] = 0.0f;
-    Terrains[1]->HPR[0] = 0.0f;
-    Terrains[1]->HPR[1] = 0.0f;
-    Terrains[1]->HPR[2] = 0.0f;
-    Terrains[1]->mat = Materials.mat_water;
-    Terrains[1]->mat_settings = Materials.matSettings_water;
+    strncpy(GS.Terrains[water].name, "Water", sizeof(GS.Terrains[water].name));
+    GS.Terrains[water].num_cols = 64;
+    GS.Terrains[water].num_rows = 64;
+    GS.Terrains[water].height_mult = 1.0f;
+    GS.Terrains[water].size = 100.0f;
+    GS.Terrains[water].smoothness = 0.005f;
+    GS.Terrains[water].heightmap_mult = 100.0f;
+    strncpy(GS.Terrains[water].heightmap_path, "./textures/water_heightmap.png", sizeof(GS.Terrains[water].heightmap_path));
+    GS.Terrains[water].use_heightmap = true;
+    GS.Terrains[water].is_centered = true;
+    GS.Terrains[water].pos[0] = 0.0f;
+    GS.Terrains[water].pos[1] = 10.0f;
+    GS.Terrains[water].pos[2] = 0.0f;
+    GS.Terrains[water].HPR[0] = 0.0f;
+    GS.Terrains[water].HPR[1] = 0.0f;
+    GS.Terrains[water].HPR[2] = 0.0f;
+    GS.Terrains[water].mat = GS.Materials[water].mat;
+    GS.Terrains[water].mat_settings = GS.Materials[water].matSettings;
     
 
 
 
     // Give attributes and add to the root system
     for (int i = 0; i < num_terrains; ++i) {
-        Terrains[i]->terrain.alloc();
-        Terrains[i]->terrain->init(Terrains[i]->num_cols, Terrains[i]->num_rows, Terrains[i]->height_mult, Terrains[i]->size, Terrains[i]->smoothness, Terrains[i]->heightmap_mult, Terrains[i]->heightmap_path, Terrains[i]->use_heightmap);
-        AddDrawable(root, Terrains[i]->terrain.get(), Terrains[i]->mat.get(), Terrains[i]->mat_settings.get(), Terrains[i]->pos, Terrains[i]->HPR, Terrains[i]->name);
+        //Terrains[i]->terrain.alloc();
+        GS.Terrains[i].terrain->init(GS.Terrains[i].num_cols, GS.Terrains[i].num_rows, GS.Terrains[i].height_mult, GS.Terrains[i].size, GS.Terrains[i].smoothness, GS.Terrains[i].heightmap_mult, GS.Terrains[i].heightmap_path, GS.Terrains[i].use_heightmap);
+        AddDrawable(root, GS.Terrains[i].terrain.get(), GS.Terrains[i].mat.get(), GS.Terrains[i].mat_settings.get(), GS.Terrains[i].pos, GS.Terrains[i].HPR, GS.Terrains[i].name);
     }
 }
 
 /*
 void InitTerrain() {
 
-    EDK3::Node* root = GameState.root.get();
+    EDK3::Node* root = GS.root.get();
     // Land
     EDK3::ref_ptr<EDK3::TerrainCustom> custom_terrain;
     custom_terrain.alloc();
@@ -259,7 +381,7 @@ void InitSphere(EDK3::Node* root) {
 
   float pos[3] = { 0.0f, 100.0f, 0.0f };
   float HPR[3] = { 0.0f, 0.0f, 0.0f };
-  AddDrawable(root, sphere.get(), Materials.mat.get(), Materials.matSettings.get(), pos, HPR, "sphere");
+  AddDrawable(root, sphere.get(), GS.Materials[sand].mat.get(), GS.Materials[sand].matSettings.get(), pos, HPR, "sphere");
 }
 
 void InitQuad(EDK3::Node* root) {
@@ -269,7 +391,7 @@ void InitQuad(EDK3::Node* root) {
 
     float pos[3] = { -50.0f, 100.0f, 0.0f };
     float HPR[3] = { 0.0f, 0.0f, 0.0f };
-    AddDrawable(root, quad.get(), Materials.mat.get(), Materials.matSettings.get(), pos, HPR, "quad");
+    AddDrawable(root, quad.get(), GS.Materials[sand].mat.get(), GS.Materials[sand].matSettings.get(), pos, HPR, "quad");
 }
 
 void InitCube24(EDK3::Node* root) {
@@ -279,7 +401,7 @@ void InitCube24(EDK3::Node* root) {
 
     float pos[3] = { 50.0f, 100.0f, 0.0f };
     float HPR[3] = { 0.0f, 0.0f, 0.0f };
-    AddDrawable(root, cube.get(), Materials.mat.get(), Materials.matSettings.get(), pos, HPR, "Cube24");
+    AddDrawable(root, cube.get(), GS.Materials[sand].mat.get(), GS.Materials[sand].matSettings.get(), pos, HPR, "Cube24");
 
 }
 
@@ -290,7 +412,7 @@ void InitCube8(EDK3::Node* root) {
 
     float pos[3] = { 100.0f, 100.0f, 0.0f };
     float HPR[3] = { 0.0f, 0.0f, 0.0f };
-    AddDrawable(root, cube.get(), Materials.mat.get(), Materials.matSettings.get(), pos, HPR, "Cube8");
+    AddDrawable(root, cube.get(), GS.Materials[sand].mat.get(), GS.Materials[sand].matSettings.get(), pos, HPR, "Cube8");
 }
 
 void InitSurface(EDK3::Node* root) {
@@ -304,44 +426,64 @@ void InitSurface(EDK3::Node* root) {
 
     float pos[3] = { -100.0f, 100.0f, 0.0f };
     float HPR[3] = { 0.0f, 0.0f, 0.0f };
-    AddDrawable(root, Surface.get(), Materials.mat.get(), Materials.matSettings.get(), pos, HPR, "Surface");
+    AddDrawable(root, Surface.get(), GS.Materials[sand].mat.get(), GS.Materials[sand].matSettings.get(), pos, HPR, "Surface");
 
 }
 
 void InitObj(EDK3::Node* root) {
-    EDK3::LoadObj("./obj/SM_Building_03.obj", &customObjGeometry, nullptr);
+    EDK3::LoadObj("./obj/SM_Building_03.obj", &GS.customObjGeometry, nullptr);
 
     float pos[3] = { -200.0f, 100.0f, 0.0f };
     float HPR[3] = { 0.0f, 0.0f, 0.0f };
-    AddDrawable(root, customObjGeometry[0].get(), Materials.mat.get(), Materials.matSettings.get(), pos, HPR, "Cube8");
+    AddDrawable(root, GS.customObjGeometry[0].get(), GS.Materials[sand].mat.get(), GS.Materials[sand].matSettings.get(), pos, HPR, "Cube8");
 }
 
 void InitCamera() 
 {
     //Allocating and initializing the camera:
-    GameState.camera.alloc();
+    GS.camera.alloc();
 
     float pos[] = { 0.0f, 80.0f, 100.0f };
     float view[] = { 0.0f, 0.0f, 0.0f };
-    GameState.camera->set_position(pos);
-    GameState.camera->initViewTarget(kWindowWidth, kWindowHeight);
-    GameState.camera->setSensitibity(1.0f);
-    //GameState.camera->set_view_direction(view);
-    GameState.camera->setSpeed(5.0f);
-    GameState.camera->setSpeedModifier(0.1f);
-    GameState.camera->setupPerspective(70.0f, 8.0f / 6.0f, 1.0f, 1500.0f);
+    GS.camera->set_position(pos);
+    GS.camera->initViewTarget(kWindowWidth, kWindowHeight);
+    GS.camera->setSensitibity(1.0f);
+    //GS.camera->set_view_direction(view);
+    GS.camera->setSpeed(5.0f);
+    GS.camera->setSpeedModifier(0.1f);
+    GS.camera->setupPerspective(70.0f, 8.0f / 6.0f, 1.0f, 1500.0f);
 
+}
+
+void InitPostProcesses()
+{
+    GS.render_target.alloc()->init((float)kWindowWidth,(float)kWindowHeight, 1);
+    GS.mat_postprocess.alloc();
+    GS.mat_postprocess_settings.alloc();
+
+    GS.mat_postprocess->init();
+
+    float pink[4] = { 0.65f, 0.0f, 0.95f, 1.0f };
+    GS.mat_postprocess->set_use_texture(true);
+    //Aqui le asociamos la textura del render target y se la asociamos al material de postproceso
+    GS.mat_postprocess_settings->set_texture(GS.render_target->color_texture(0));
+    GS.mat_postprocess_settings->set_color(pink);
 }
 
 void InitScene() {
   //Allocating root node:
-  EDK3::Node* root = GameState.root.alloc();
-  
+  EDK3::Node* root = GS.root.alloc();
   InitCamera();
+  GS.Textures.alloc(10);
+  GS.Materials.alloc(10);
+  GS.customObjGeometry.alloc(10);
+  GS.Terrains.alloc(2);
 
   InitTextures();
   InitMaterials();
+  InitPostProcesses();
   InitSceneLights();
+
   InitTerrain();
   InitSphere(root);
   InitQuad(root);
@@ -363,18 +505,29 @@ void InitScene() {
 
 
 void UpdateFn() {
-  GameState.camera->set_clear_color(0.94f, 1.0f, 0.94f, 1.0f);
-  GameState.camera->update(0.0f, GameState.camera->window_size().x, GameState.camera->window_size().y);
+  GS.camera->set_clear_color(0.94f, 1.0f, 0.94f, 1.0f);
+  GS.camera->update(0.0f, GS.camera->window_size().x, GS.camera->window_size().y);
   
 }
 
 void RenderFn() {
   //For every frame... determine what's visible:
-  GameState.camera->doCull(GameState.root.get());
+  GS.camera->doCull(GS.root.get());
 
   //Rendering the scene:
   EDK3::dev::GPUManager::CheckGLError("begin Render-->");
-  GameState.camera->doRender();
+
+  if (GS.Postprocess != 0) GS.render_target->begin();
+  if (GS.wireframe) glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+
+  GS.camera->doRender();
+
+  if (GS.wireframe) glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+  if (GS.Postprocess != 0) {
+      GS.render_target->end();
+      GS.mat_postprocess->drawFullScreenQuad(GS.mat_postprocess_settings.get());
+  }
+  
   EDK3::dev::GPUManager::CheckGLError("end Render-->");
 }
 
@@ -383,13 +536,18 @@ void ImGuiFn(double dt) {
   ImGui::Text("FPS: %0.1f", 1000.0 / dt);
   ImGui::Text("Delta time: %0.3f ms", dt);
   ImGui::End();
-  IMGUI.DrawImGuiTerrain();
-  IMGUI.LightManager();
+  //IMGUI.DrawImGuiTerrain();
+  //IMGUI.LightManager();
   ImGui::ShowTestWindow();
+  ImGuiGeneral();
+  ImGuiLights();
   ImGui::Render();
 }
 
 int ESAT::main(int argc, char** argv) {
+ /* EDK3::dev::CustomGPUManager GPU;
+  EDK3::dev::CustomGPUManager::ReplaceGPUManagerImplementation(&GPU);*/
+  
   ESAT::WindowInit(kWindowWidth, kWindowHeight);
   InitScene();
   double dt = 0.0;

@@ -3,10 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\lumij\\Documents\\Segundo_Prg\\prog_graph_jimenezmu\\EDK3_Login\\build\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{59F46164-C50A-60FA-0E82-EB1B7AD73082}|PR_Demo_Workspace\\vs2022\\PR_Demo_Workspace.vcxproj|C:\\Users\\lumij\\Documents\\Segundo_Prg\\prog_graph_jimenezmu\\EDK3_Login\\include\\DemoManager.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{59F46164-C50A-60FA-0E82-EB1B7AD73082}|PR_Demo_Workspace\\vs2022\\PR_Demo_Workspace.vcxproj|C:\\Users\\lumij\\Documents\\Segundo_Prg\\prog_graph_jimenezmu\\EDK3_Login\\src\\postprocess_basic.cc||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{59F46164-C50A-60FA-0E82-EB1B7AD73082}|PR_Demo_Workspace\\vs2022\\PR_Demo_Workspace.vcxproj|C:\\Users\\lumij\\Documents\\Segundo_Prg\\prog_graph_jimenezmu\\EDK3_Login\\src\\DemoManager.cc||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\lumij\\Documents\\Segundo_Prg\\prog_graph_jimenezmu\\EDK3_Login\\assets\\shaders\\light_shader.fs||{8A5AA6CF-46E3-4520-A70A-7393D15233E9}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{59F46164-C50A-60FA-0E82-EB1B7AD73082}|PR_Demo_Workspace\\vs2022\\PR_Demo_Workspace.vcxproj|C:\\Users\\lumij\\Documents\\Segundo_Prg\\prog_graph_jimenezmu\\EDK3_Login\\include\\postprocess_basic.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\lumij\\Documents\\Segundo_Prg\\prog_graph_jimenezmu\\EDK3_Login\\assets\\shaders\\basicVertex.vs||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{59F46164-C50A-60FA-0E82-EB1B7AD73082}|PR_Demo_Workspace\\vs2022\\PR_Demo_Workspace.vcxproj|C:\\Users\\lumij\\Documents\\Segundo_Prg\\prog_graph_jimenezmu\\EDK3_Login\\tests\\main.cc||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
@@ -15,10 +21,22 @@
       "AbsoluteMoniker": "D:0:0:{59F46164-C50A-60FA-0E82-EB1B7AD73082}|PR_Demo_Workspace\\vs2022\\PR_Demo_Workspace.vcxproj|C:\\Users\\lumij\\Documents\\Segundo_Prg\\prog_graph_jimenezmu\\EDK3_Login\\include\\DataStructure.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\lumij\\Documents\\Segundo_Prg\\prog_graph_jimenezmu\\EDK3_Login\\assets\\shaders\\basicVertex.vs||{8B382828-6202-11D1-8870-0000F87579D2}"
+      "AbsoluteMoniker": "D:0:0:{59F46164-C50A-60FA-0E82-EB1B7AD73082}|PR_Demo_Workspace\\vs2022\\PR_Demo_Workspace.vcxproj|C:\\Users\\lumij\\Documents\\Segundo_Prg\\prog_graph_jimenezmu\\EDK3_Login\\src\\material_custom.cc||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\lumij\\Documents\\Segundo_Prg\\prog_graph_jimenezmu\\EDK3_Login\\assets\\shaders\\light_shader.fs||{8A5AA6CF-46E3-4520-A70A-7393D15233E9}"
+      "AbsoluteMoniker": "D:0:0:{59F46164-C50A-60FA-0E82-EB1B7AD73082}|PR_Demo_Workspace\\vs2022\\PR_Demo_Workspace.vcxproj|C:\\Users\\lumij\\Documents\\Segundo_Prg\\prog_graph_jimenezmu\\EDK3_Login\\include\\material_custom.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{59F46164-C50A-60FA-0E82-EB1B7AD73082}|PR_Demo_Workspace\\vs2022\\PR_Demo_Workspace.vcxproj|C:\\Users\\lumij\\Documents\\Segundo_Prg\\prog_graph_jimenezmu\\EDK3_Login\\include\\camera_custom.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{59F46164-C50A-60FA-0E82-EB1B7AD73082}|PR_Demo_Workspace\\vs2022\\PR_Demo_Workspace.vcxproj|C:\\Users\\lumij\\Documents\\Segundo_Prg\\prog_graph_jimenezmu\\EDK3_Login\\src\\ImGuiDemo.cc||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{59F46164-C50A-60FA-0E82-EB1B7AD73082}|PR_Demo_Workspace\\vs2022\\PR_Demo_Workspace.vcxproj|C:\\Users\\lumij\\Documents\\Segundo_Prg\\prog_graph_jimenezmu\\EDK3_Login\\include\\ImGuiDemo.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{59F46164-C50A-60FA-0E82-EB1B7AD73082}|PR_Demo_Workspace\\vs2022\\PR_Demo_Workspace.vcxproj|C:\\Users\\lumij\\Documents\\Segundo_Prg\\prog_graph_jimenezmu\\EDK3_Login\\include\\dev\\custom_gpu_manager.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -33,14 +51,118 @@
             {
               "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "postprocess_basic.h",
+              "DocumentMoniker": "C:\\Users\\lumij\\Documents\\Segundo_Prg\\prog_graph_jimenezmu\\EDK3_Login\\include\\postprocess_basic.h",
+              "RelativeDocumentMoniker": "..\\include\\postprocess_basic.h",
+              "ToolTip": "C:\\Users\\lumij\\Documents\\Segundo_Prg\\prog_graph_jimenezmu\\EDK3_Login\\include\\postprocess_basic.h",
+              "RelativeToolTip": "..\\include\\postprocess_basic.h",
+              "ViewState": "AQIAABgAAAAAAAAAAAAAADoAAAAEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-06-19T21:45:42.946Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "material_custom.h",
+              "DocumentMoniker": "C:\\Users\\lumij\\Documents\\Segundo_Prg\\prog_graph_jimenezmu\\EDK3_Login\\include\\material_custom.h",
+              "RelativeDocumentMoniker": "..\\include\\material_custom.h",
+              "ToolTip": "C:\\Users\\lumij\\Documents\\Segundo_Prg\\prog_graph_jimenezmu\\EDK3_Login\\include\\material_custom.h",
+              "RelativeToolTip": "..\\include\\material_custom.h",
+              "ViewState": "AQIAALMAAAAAAAAAAADwv8oAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-06-19T19:59:14.663Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "camera_custom.h",
+              "DocumentMoniker": "C:\\Users\\lumij\\Documents\\Segundo_Prg\\prog_graph_jimenezmu\\EDK3_Login\\include\\camera_custom.h",
+              "RelativeDocumentMoniker": "..\\include\\camera_custom.h",
+              "ToolTip": "C:\\Users\\lumij\\Documents\\Segundo_Prg\\prog_graph_jimenezmu\\EDK3_Login\\include\\camera_custom.h",
+              "RelativeToolTip": "..\\include\\camera_custom.h",
+              "ViewState": "AQIAAAUAAAAAAAAAAADwvysAAAASAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-06-19T17:50:54.443Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "DataStructure.h",
+              "DocumentMoniker": "C:\\Users\\lumij\\Documents\\Segundo_Prg\\prog_graph_jimenezmu\\EDK3_Login\\include\\DataStructure.h",
+              "RelativeDocumentMoniker": "..\\include\\DataStructure.h",
+              "ToolTip": "C:\\Users\\lumij\\Documents\\Segundo_Prg\\prog_graph_jimenezmu\\EDK3_Login\\include\\DataStructure.h",
+              "RelativeToolTip": "..\\include\\DataStructure.h",
+              "ViewState": "AQIAAC8AAAAAAAAAAAAAAGEAAAAjAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-06-19T17:06:02.528Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "ImGuiDemo.h",
+              "DocumentMoniker": "C:\\Users\\lumij\\Documents\\Segundo_Prg\\prog_graph_jimenezmu\\EDK3_Login\\include\\ImGuiDemo.h",
+              "RelativeDocumentMoniker": "..\\include\\ImGuiDemo.h",
+              "ToolTip": "C:\\Users\\lumij\\Documents\\Segundo_Prg\\prog_graph_jimenezmu\\EDK3_Login\\include\\ImGuiDemo.h",
+              "RelativeToolTip": "..\\include\\ImGuiDemo.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABcAAAAWAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-06-19T17:08:41.661Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "main.cc",
               "DocumentMoniker": "C:\\Users\\lumij\\Documents\\Segundo_Prg\\prog_graph_jimenezmu\\EDK3_Login\\tests\\main.cc",
               "RelativeDocumentMoniker": "..\\tests\\main.cc",
               "ToolTip": "C:\\Users\\lumij\\Documents\\Segundo_Prg\\prog_graph_jimenezmu\\EDK3_Login\\tests\\main.cc",
               "RelativeToolTip": "..\\tests\\main.cc",
-              "ViewState": "AQIAACoAAAAAAAAAAAAAADcAAAAAAAAA",
+              "ViewState": "AQIAAIoAAAAAAAAAAAAAAJwAAAA5AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-06-08T19:19:25.297Z",
+              "WhenOpened": "2024-06-19T17:05:56.688Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "ImGuiDemo.cc",
+              "DocumentMoniker": "C:\\Users\\lumij\\Documents\\Segundo_Prg\\prog_graph_jimenezmu\\EDK3_Login\\src\\ImGuiDemo.cc",
+              "RelativeDocumentMoniker": "..\\src\\ImGuiDemo.cc",
+              "ToolTip": "C:\\Users\\lumij\\Documents\\Segundo_Prg\\prog_graph_jimenezmu\\EDK3_Login\\src\\ImGuiDemo.cc",
+              "RelativeToolTip": "..\\src\\ImGuiDemo.cc",
+              "ViewState": "AQIAAD8AAAAAAAAAAAAAAJkAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-06-19T16:33:47.25Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "material_custom.cc",
+              "DocumentMoniker": "C:\\Users\\lumij\\Documents\\Segundo_Prg\\prog_graph_jimenezmu\\EDK3_Login\\src\\material_custom.cc",
+              "RelativeDocumentMoniker": "..\\src\\material_custom.cc",
+              "ToolTip": "C:\\Users\\lumij\\Documents\\Segundo_Prg\\prog_graph_jimenezmu\\EDK3_Login\\src\\material_custom.cc",
+              "RelativeToolTip": "..\\src\\material_custom.cc",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAANoAAAAWAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-06-19T16:32:57.217Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "custom_gpu_manager.h",
+              "DocumentMoniker": "C:\\Users\\lumij\\Documents\\Segundo_Prg\\prog_graph_jimenezmu\\EDK3_Login\\include\\dev\\custom_gpu_manager.h",
+              "RelativeDocumentMoniker": "..\\include\\dev\\custom_gpu_manager.h",
+              "ToolTip": "C:\\Users\\lumij\\Documents\\Segundo_Prg\\prog_graph_jimenezmu\\EDK3_Login\\include\\dev\\custom_gpu_manager.h",
+              "RelativeToolTip": "..\\include\\dev\\custom_gpu_manager.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-06-19T18:03:37.447Z",
               "EditorCaption": ""
             }
           ]
@@ -52,65 +174,41 @@
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "DataStructure.h",
-              "DocumentMoniker": "C:\\Users\\lumij\\Documents\\Segundo_Prg\\prog_graph_jimenezmu\\EDK3_Login\\include\\DataStructure.h",
-              "RelativeDocumentMoniker": "..\\include\\DataStructure.h",
-              "ToolTip": "C:\\Users\\lumij\\Documents\\Segundo_Prg\\prog_graph_jimenezmu\\EDK3_Login\\include\\DataStructure.h",
-              "RelativeToolTip": "..\\include\\DataStructure.h",
-              "ViewState": "AQIAADAAAAAAAAAAAAAAAF8AAAA2AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-06-12T16:26:14.481Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "DemoManager.cc",
-              "DocumentMoniker": "C:\\Users\\lumij\\Documents\\Segundo_Prg\\prog_graph_jimenezmu\\EDK3_Login\\src\\DemoManager.cc",
-              "RelativeDocumentMoniker": "..\\src\\DemoManager.cc",
-              "ToolTip": "C:\\Users\\lumij\\Documents\\Segundo_Prg\\prog_graph_jimenezmu\\EDK3_Login\\src\\DemoManager.cc",
-              "RelativeToolTip": "..\\src\\DemoManager.cc",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-06-12T16:10:46.734Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "DemoManager.h",
-              "DocumentMoniker": "C:\\Users\\lumij\\Documents\\Segundo_Prg\\prog_graph_jimenezmu\\EDK3_Login\\include\\DemoManager.h",
-              "RelativeDocumentMoniker": "..\\include\\DemoManager.h",
-              "ToolTip": "C:\\Users\\lumij\\Documents\\Segundo_Prg\\prog_graph_jimenezmu\\EDK3_Login\\include\\DemoManager.h",
-              "RelativeToolTip": "..\\include\\DemoManager.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAACAAAAACAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-06-12T16:10:42.378Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
               "Title": "basicVertex.vs",
               "DocumentMoniker": "C:\\Users\\lumij\\Documents\\Segundo_Prg\\prog_graph_jimenezmu\\EDK3_Login\\assets\\shaders\\basicVertex.vs",
               "RelativeDocumentMoniker": "..\\assets\\shaders\\basicVertex.vs",
               "ToolTip": "C:\\Users\\lumij\\Documents\\Segundo_Prg\\prog_graph_jimenezmu\\EDK3_Login\\assets\\shaders\\basicVertex.vs",
               "RelativeToolTip": "..\\assets\\shaders\\basicVertex.vs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAzAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-06-12T15:54:19.799Z"
+              "WhenOpened": "2024-06-19T22:16:11.836Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 1,
               "Title": "light_shader.fs",
               "DocumentMoniker": "C:\\Users\\lumij\\Documents\\Segundo_Prg\\prog_graph_jimenezmu\\EDK3_Login\\assets\\shaders\\light_shader.fs",
               "RelativeDocumentMoniker": "..\\assets\\shaders\\light_shader.fs",
               "ToolTip": "C:\\Users\\lumij\\Documents\\Segundo_Prg\\prog_graph_jimenezmu\\EDK3_Login\\assets\\shaders\\light_shader.fs",
               "RelativeToolTip": "..\\assets\\shaders\\light_shader.fs",
-              "ViewState": "AQIAAAwAAAAAAAAAAAAAACQAAAAcAAAA",
+              "ViewState": "AQIAAGwAAAAAAAAAAAAAAA0AAAATAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-06-12T15:54:20.437Z"
+              "WhenOpened": "2024-06-19T16:34:47.66Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "postprocess_basic.cc",
+              "DocumentMoniker": "C:\\Users\\lumij\\Documents\\Segundo_Prg\\prog_graph_jimenezmu\\EDK3_Login\\src\\postprocess_basic.cc",
+              "RelativeDocumentMoniker": "..\\src\\postprocess_basic.cc",
+              "ToolTip": "C:\\Users\\lumij\\Documents\\Segundo_Prg\\prog_graph_jimenezmu\\EDK3_Login\\src\\postprocess_basic.cc",
+              "RelativeToolTip": "..\\src\\postprocess_basic.cc",
+              "ViewState": "AQIAACcAAAAAAAAAAAAAAEIAAABEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-06-19T21:51:48.149Z",
+              "EditorCaption": ""
             }
           ]
         }

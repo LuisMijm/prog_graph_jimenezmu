@@ -9,7 +9,8 @@ class Mat4 {
  public:
 
   Mat4();
-  Mat4(float a[16]);
+  Mat4(float array[16]);
+  Mat4(const float a[16]);
   Mat4(float value);
   Mat4(const Mat4& copy);
   ~Mat4();

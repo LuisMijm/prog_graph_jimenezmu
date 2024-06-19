@@ -1,6 +1,12 @@
 #include "ImguiDemo.h"
 
 
+#include "ESAT_extra/imgui.h"
+
+//#include "DataStructure.h"
+//#include "material_custom.h"
+
+
 ImGuiDemo::ImGuiDemo()
 {
 }
@@ -9,6 +15,7 @@ ImGuiDemo::~ImGuiDemo()
 {
 }
 
+/*
 void ImGuiDemo::DrawImGuiTerrain() {
     ImGui::Begin("Terrain Settings");
 
@@ -39,11 +46,11 @@ void ImGuiDemo::DrawImGuiTerrain() {
                 if (ImGui::MenuItem("Terrain", "")) {
 
                 }
-                /*
-                if (ImGui::MenuItem("Save", "Ctrl+S")) {
-                    // Acción al hacer click en Save
-                }
-                */
+                
+                //if (ImGui::MenuItem("Save", "Ctrl+S")) {
+                //    // Acción al hacer click en Save
+                //}
+                
 
                 ImGui::EndMenu();
             }
@@ -75,3 +82,85 @@ void ImGuiDemo::LightManager() {
 
     ImGui::End();
 }
+
+*/
+
+/*
+void ImGuiDemo::ImGuiLights(){
+
+    static int selected_material = 0;
+    static int selected_light = 0;
+    static float temp_pos[3];
+    static float temp_dir[3];
+    static float temp_diff_color[3];
+    static float temp_spec_color[3];
+    static bool temp_enabled;
+
+    ImGui::Begin("LIGHT MANAGER");
+    
+    const char* mat_names[] = { "Mat 1", "Mat 2" };
+    if (ImGui::Combo("Select Material", &selected_material, mat_names, sizeof(mat_names))) {
+
+        for (int i = 0; i < num_materials; i++) {
+            bool is_selected = (selected_material == i);
+            if (ImGui::Selectable("Material %d", is_selected)) {
+                selected_material = i;
+                selected_light = 0; 
+            }
+            //if (is_selected) {
+                //ImGui::SetItemDefaultFocus();
+            //}
+        }
+    }
+
+    // Selección de luz dentro del material seleccionado
+    const char* light_names[]= {"Light 1", "Light 2"};
+    if (ImGui::Combo("Select Light", &selected_light, light_names, sizeof(light_names))) {
+        for (int i = 0; i < num_lights; i++) {
+            bool is_selected = (selected_light == i);
+            if (ImGui::Selectable("Light %d", is_selected)) {
+                selected_light = i;
+            }
+            //if (is_selected) {
+            //    ImGui::SetItemDefaultFocus();
+            //}
+        }
+    }
+
+    //if (GS.Materials->lightConf_ != nullptr) {
+    //    
+    //    EDK3::ref_ptr<EDK3::MaterialCustom::LightConf>* light = GS.Materials->lightConf_[selected_light];
+
+    //    ImGui::InputInt("Type", &light.type_);
+    //    ImGui::DragFloat3("Position", light.pos_, 0.01f);
+    //    ImGui::DragFloat3("Direction", light.dir_, 0.01f, -1.0f, 1.0f);
+    //    ImGui::ColorEdit3("Diffuse Color", light.diff_color_);
+    //    ImGui::ColorEdit3("Specular Color", light.spec_color_);
+    //    ImGui::SliderFloat("Linear Attenuation", &light.linear_att_, 0.0f, 1.0f);
+    //    ImGui::SliderFloat("Quadratic Attenuation", &light.quadratic_att_, 0.0f, 1.0f);
+    //    ImGui::SliderFloat("Constant Attenuation", &light.constant_att_, 0.0f, 1.0f);
+    //    ImGui::SliderFloat("Shininess", &light.shininess_, 0.0f, 128.0f);
+    //    ImGui::SliderFloat("Strength", &light.strength_, 0.0f, 10.0f);
+    //    ImGui::Checkbox("Enabled", &light.enabled_);
+    //}
+
+    if (ImGui::Button(" ")) {
+        
+    }
+
+    ImGui::End();
+
+
+}
+*/
+
+
+//void ImGuiDemo::ImGuiPostprocess()
+//{
+//    ImGui::Begin("General Manager");
+//
+//    //ImGui::SliderInt("Postprocess", &GS.Postprocess, 0, 3);
+//    //ImGui::Checkbox("Wireframe", &GS.wireframe);
+//
+//    ImGui::End();
+//}

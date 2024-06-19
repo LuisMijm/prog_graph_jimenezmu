@@ -1,5 +1,8 @@
 #pragma once
 
+#ifndef _DATASTRUCTURE_H__
+#define _DATASTRUCTURE_H__ 1
+
 #include "EDK3/geometry.h"
 
 
@@ -18,6 +21,8 @@
 #include "geometry_custom_quad.h"
 #include "geometry_custom_cube.h"
 #include "geometry_custom_surface.h"
+#include "EDK3/node.h"
+#include <postprocess_basic.h>
 
 /*
 struct {
@@ -31,15 +36,6 @@ struct {
 } Materials;
 */
 
-struct Material {
-    EDK3::ref_ptr<EDK3::CustomLightMaterial> mat;
-    EDK3::ref_ptr<EDK3::CustomLightMaterial::Settings> matSettings;
-};
-
-enum MaterialName {
-
-};
-
 /*
 struct {
 	EDK3::ref_ptr<EDK3::Texture> texture;
@@ -50,20 +46,22 @@ struct {
 } Textures;
 */
 
-enum TextureName {
 
+
+struct Material {
+    EDK3::ref_ptr<EDK3::CustomLightMaterial> mat;
+    EDK3::ref_ptr<EDK3::CustomLightMaterial::Settings> matSettings;
 };
 
-//Unnamed struct and it's unique instance:
-struct {
-	EDK3::ref_ptr<EDK3::CameraCustom> camera;
-	EDK3::ref_ptr<EDK3::Node> root;
-	EDK3::ref_ptr<EDK3::MaterialCustom> mat;
-	//EDK3::ref_ptr<EDK3::MaterialCustom::MaterialCustomTextureSettings> mat_settings;
+enum MaterialName {
+    sand,
+    water,
+};
 
-	//EDK3::scoped_array<Material> 
-} GameState;
-
+//enum class TextureName {
+//    sand,
+//    water,
+//};
 
 struct Terrain
 {
@@ -85,15 +83,36 @@ struct Terrain
 
 };
 
+//#define GS GameState
+//Unnamed struct and it's unique instance:
+struct GameState {
+	EDK3::ref_ptr<EDK3::CameraCustom> camera;
+	EDK3::ref_ptr<EDK3::Node> root;
 
-float EDK3::CustomLightMaterial::Settings::ambient_color_[3] = { 1.0f, 1.0f, 1.0f };
-//const int kWindowWidth = 1024;
+    EDK3::scoped_array<EDK3::ref_ptr<EDK3::Texture>> Textures;
+    EDK3::scoped_array<Material> Materials;
+    EDK3::scoped_array<EDK3::ref_ptr<EDK3::Geometry>> customObjGeometry;
+    EDK3::scoped_array<Terrain> Terrains;
+    
+    EDK3::ref_ptr<EDK3::RenderTarget> render_target;
+    EDK3::ref_ptr<EDK3::PostprocessBasic> mat_postprocess;
+    EDK3::ref_ptr<EDK3::PostprocessBasic::PostprocessBasicSettings> mat_postprocess_settings;
+
+    int Postprocess = 1;
+    bool wireframe;
+} GS;
+
+
+
+
 const int kWindowWidth = 2048;
-//const int kWindowHeight = 768;
 const int kWindowHeight = 1536;
+//const int kWindowWidth = 1024;
+//const int kWindowHeight = 768;
 const int kFigurePoints = 10;
-EDK3::scoped_array<EDK3::ref_ptr<EDK3::Geometry>> customObjGeometry;
-EDK3::scoped_ptr<Terrain> Terrains[2];
+
 const int num_terrains = 2;
-EDK3::scoped_array<EDK3::ref_ptr<EDK3::CustomGPUTexture>> Textures[10];
-EDK3::scoped_array<EDK3::ref_ptr<Material>> Materials[10];
+float EDK3::CustomLightMaterial::Settings::ambient_color_[3] = { 0.3f,0.3f,0.3f };
+
+
+#endif

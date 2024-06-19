@@ -3,16 +3,16 @@
 
 namespace EDK3 {
     CustomGPUTexture::CustomGPUTexture() {
-      internal_id_ = 0;
+        internal_id_ = 0;
     }
 
     CustomGPUTexture::CustomGPUTexture(const CustomGPUTexture& other) {
-      internal_id_ = other.internal_id_;
+        internal_id_ = other.internal_id_;
     }
 
     CustomGPUTexture& CustomGPUTexture::operator=(const CustomGPUTexture& other) {
-      internal_id_ = other.internal_id_;
-      return *this;
+        internal_id_ = other.internal_id_;
+        return *this;
     }
 
     GLenum GetOpenGLTextureType(EDK3::Texture::Type t) {
@@ -96,48 +96,48 @@ namespace EDK3 {
     }
 
     void CustomGPUTexture::init(Type t, Format internal_format, unsigned int width,
-      unsigned int height, unsigned int depth) {
+        unsigned int height, unsigned int depth) {
 
-      Texture::init(t, internal_format, width, height, depth);
+        Texture::init(t, internal_format, width, height, depth);
     }
 
     void CustomGPUTexture::set_data(const Format f,
-      const EDK3::Type t,
-      const void* data,
-      unsigned int mipmap_LOD) {
+        const EDK3::Type t,
+        const void* data,
+        unsigned int mipmap_LOD) {
 
-      glGenTextures(1, &internal_id_);
-      GLenum texture_type = GetOpenGLTextureType(type());
-      GLenum pixel_type = GetOpenGLDataPixelType(t);
-      GLint internal_format = GetOpenGLFormat(format());
-      GLint external_format = GetOpenGLFormat(f);
-      glBindTexture(texture_type, internal_id_);
+        glGenTextures(1, &internal_id_);
+        GLenum texture_type = GetOpenGLTextureType(type());
+        GLenum pixel_type = GetOpenGLDataPixelType(t);
+        GLint internal_format = GetOpenGLFormat(format());
+        GLint external_format = GetOpenGLFormat(f);
+        glBindTexture(texture_type, internal_id_);
 
-      switch (texture_type){
-      case GL_TEXTURE_1D:
-          glTexImage1D(texture_type, mipmap_LOD, 
-                       internal_format, width(), 0, 
-                       external_format, pixel_type, data);
-          break;
+        switch (texture_type) {
+        case GL_TEXTURE_1D:
+            glTexImage1D(texture_type, mipmap_LOD,
+                internal_format, width(), 0,
+                external_format, pixel_type, data);
+            break;
 
-      case GL_TEXTURE_2D:
-          glTexImage2D(texture_type, mipmap_LOD,
-              internal_format, width(), height(), 0,
-              external_format, pixel_type, data);
-          break;
-      case GL_TEXTURE_3D:
-          glTexImage3D(texture_type, mipmap_LOD,
-              internal_format, width(), height(),
-              depth(), 0,
-              external_format, pixel_type, data);
-          break;
-      }
-      glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
-      glPixelStorei(GL_UNPACK_LSB_FIRST, 1);
-      generateMipmaps();
-      set_wrap(EDK3::Texture::Wrap::W_REPEAT);
-      set_min_filter(EDK3::Texture::Filter::F_LINEAR);
-      set_mag_filter(EDK3::Texture::Filter::F_LINEAR);
+        case GL_TEXTURE_2D:
+            glTexImage2D(texture_type, mipmap_LOD,
+                internal_format, width(), height(), 0,
+                external_format, pixel_type, data);
+            break;
+        case GL_TEXTURE_3D:
+            glTexImage3D(texture_type, mipmap_LOD,
+                internal_format, width(), height(),
+                depth(), 0,
+                external_format, pixel_type, data);
+            break;
+        }
+        glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
+        glPixelStorei(GL_UNPACK_LSB_FIRST, 1);
+        generateMipmaps();
+        set_wrap(EDK3::Texture::Wrap::W_REPEAT);
+        set_min_filter(EDK3::Texture::Filter::F_LINEAR);
+        set_mag_filter(EDK3::Texture::Filter::F_LINEAR);
 
     }
 
@@ -148,7 +148,7 @@ namespace EDK3 {
     }
 
     unsigned int CustomGPUTexture::internal_id() const {
-      return internal_id_;
+        return internal_id_;
     }
 
     GLenum GetOpenGLFilterType(EDK3::Texture::Filter f) {
@@ -184,7 +184,7 @@ namespace EDK3 {
 
     GLenum GetOpenGLWrappingType(EDK3::Texture::Wrap c) {
         GLenum wrapping_type = GL_REPEAT;
-        switch (c){
+        switch (c) {
 
         case Texture::Wrap::W_REPEAT:
             wrapping_type = GL_REPEAT;
@@ -202,50 +202,50 @@ namespace EDK3 {
     }
 
     void CustomGPUTexture::set_min_filter(Filter f) {
-      Texture::set_min_filter(f);
-      GLenum texture_type = GetOpenGLTextureType(type());
-      GLenum filter_type = GetOpenGLFilterType(f);
+        Texture::set_min_filter(f);
+        GLenum texture_type = GetOpenGLTextureType(type());
+        GLenum filter_type = GetOpenGLFilterType(f);
 
-      glBindTexture(texture_type, internal_id_);
-      glTexParameteri(texture_type, GL_TEXTURE_MIN_FILTER, filter_type);
+        glBindTexture(texture_type, internal_id_);
+        glTexParameteri(texture_type, GL_TEXTURE_MIN_FILTER, filter_type);
     }
 
     void CustomGPUTexture::set_mag_filter(Filter f) {
-      Texture::set_mag_filter(f);
-      GLenum texture_type = GetOpenGLTextureType(type());
-      GLenum filter_type = GetOpenGLFilterType(f);
+        Texture::set_mag_filter(f);
+        GLenum texture_type = GetOpenGLTextureType(type());
+        GLenum filter_type = GetOpenGLFilterType(f);
 
-      glBindTexture(texture_type, internal_id_);
-      glTexParameteri(texture_type, GL_TEXTURE_MAG_FILTER, filter_type);
+        glBindTexture(texture_type, internal_id_);
+        glTexParameteri(texture_type, GL_TEXTURE_MAG_FILTER, filter_type);
     }
 
     void CustomGPUTexture::set_wrap_s(Wrap c) {
-      Texture::set_wrap_s(c);
-      GLenum texture_type = GetOpenGLTextureType(type());
+        Texture::set_wrap_s(c);
+        GLenum texture_type = GetOpenGLTextureType(type());
 
-      GLenum wrapping_type = GetOpenGLWrappingType(c);
+        GLenum wrapping_type = GetOpenGLWrappingType(c);
 
-      glBindTexture(texture_type, internal_id_);
-      glTexParameteri(texture_type, GL_TEXTURE_WRAP_S, wrapping_type);
+        glBindTexture(texture_type, internal_id_);
+        glTexParameteri(texture_type, GL_TEXTURE_WRAP_S, wrapping_type);
     }
     void CustomGPUTexture::set_wrap_t(Wrap c) {
-      Texture::set_wrap_t(c);
-      GLenum texture_type = GetOpenGLTextureType(type());
+        Texture::set_wrap_t(c);
+        GLenum texture_type = GetOpenGLTextureType(type());
 
-      GLenum wrapping_type = GetOpenGLWrappingType(c);
+        GLenum wrapping_type = GetOpenGLWrappingType(c);
 
-      glBindTexture(texture_type, internal_id_);
-      glTexParameteri(texture_type, GL_TEXTURE_WRAP_T, wrapping_type);
+        glBindTexture(texture_type, internal_id_);
+        glTexParameteri(texture_type, GL_TEXTURE_WRAP_T, wrapping_type);
     }
 
     void CustomGPUTexture::set_wrap_r(Wrap c) {
-      Texture::set_wrap_r(c);
-      GLenum texture_type = GetOpenGLTextureType(type());
+        Texture::set_wrap_r(c);
+        GLenum texture_type = GetOpenGLTextureType(type());
 
-      GLenum wrapping_type = GetOpenGLWrappingType(c);
+        GLenum wrapping_type = GetOpenGLWrappingType(c);
 
-      glBindTexture(texture_type, internal_id_);
-      glTexParameteri(texture_type, GL_TEXTURE_WRAP_R, wrapping_type);
+        glBindTexture(texture_type, internal_id_);
+        glTexParameteri(texture_type, GL_TEXTURE_WRAP_R, wrapping_type);
     }
 
     void CustomGPUTexture::generateMipmaps() const {

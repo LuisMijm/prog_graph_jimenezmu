@@ -25,5 +25,11 @@ Mat4::Mat4(const Mat4& copy) {
 	}
 }
 
+Mat4::Mat4(const float a[16]) {
+	for (int i = 0; i < 16; ++i) {
+		m[i] = a[i];
+	}
+}
+
 Mat4::~Mat4() {
 }

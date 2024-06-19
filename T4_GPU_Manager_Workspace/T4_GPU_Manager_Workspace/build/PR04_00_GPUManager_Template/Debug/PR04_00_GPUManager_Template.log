@@ -1,23 +1,90 @@
-﻿  custom_gpu_manager.cc
-D:\prog_graph_jimenezmu\T4_GPU_Manager_Workspace\T4_GPU_Manager_Workspace\src\dev\custom_gpu_manager.cc(46,83): warning C4100: 'FrameBufferOrMask': parámetro formal sin referencia
-  Generando código...
-  Compilando...
+﻿  custom_gpu_buffer.cc
+  custom_gpu_camera.cc
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\T4_GPU_Manager_Workspace\T4_GPU_Manager_Workspace\include\math_library\math_utils.h(15,46): warning C4100: 'copy': parámetro formal sin referencia
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\T4_GPU_Manager_Workspace\T4_GPU_Manager_Workspace\include\math_library\matrix_4.h(349,20): warning C4100: 'far': parámetro formal sin referencia
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\T4_GPU_Manager_Workspace\T4_GPU_Manager_Workspace\include\math_library\matrix_4.h(349,8): warning C4100: 'near': parámetro formal sin referencia
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\T4_GPU_Manager_Workspace\T4_GPU_Manager_Workspace\include\math_library\matrix_4.h(348,54): warning C4100: 'aspect': parámetro formal sin referencia
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\T4_GPU_Manager_Workspace\T4_GPU_Manager_Workspace\include\math_library\matrix_4.h(348,43): warning C4100: 'fov': parámetro formal sin referencia
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\T4_GPU_Manager_Workspace\T4_GPU_Manager_Workspace\include\math_library\matrix_4.h(355,20): warning C4100: 'far': parámetro formal sin referencia
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\T4_GPU_Manager_Workspace\T4_GPU_Manager_Workspace\include\math_library\matrix_4.h(355,8): warning C4100: 'near': parámetro formal sin referencia
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\T4_GPU_Manager_Workspace\T4_GPU_Manager_Workspace\include\math_library\matrix_4.h(354,73): warning C4100: 'valueottom': parámetro formal sin referencia
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\T4_GPU_Manager_Workspace\T4_GPU_Manager_Workspace\include\math_library\matrix_4.h(354,62): warning C4100: 'top': parámetro formal sin referencia
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\T4_GPU_Manager_Workspace\T4_GPU_Manager_Workspace\include\math_library\matrix_4.h(354,50): warning C4100: 'left': parámetro formal sin referencia
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\T4_GPU_Manager_Workspace\T4_GPU_Manager_Workspace\include\math_library\matrix_4.h(354,37): warning C4100: 'right': parámetro formal sin referencia
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\T4_GPU_Manager_Workspace\T4_GPU_Manager_Workspace\src\dev\custom_gpu_camera.cc(45,29): warning C4018: '<': no coinciden signed/unsigned
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\T4_GPU_Manager_Workspace\T4_GPU_Manager_Workspace\src\dev\custom_gpu_camera.cc(57,29): warning C4018: '<': no coinciden signed/unsigned
+  custom_gpu_manager.cc
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\T4_GPU_Manager_Workspace\T4_GPU_Manager_Workspace\src\dev\custom_gpu_manager.cc(46,83): warning C4100: 'FrameBufferOrMask': parámetro formal sin referencia
+  custom_gpu_program.cc
+  custom_gpu_shader.cc
+  custom_gpu_texture.cc
+  matrix_3.cc
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\T4_GPU_Manager_Workspace\T4_GPU_Manager_Workspace\include\math_library\math_utils.h(15,46): warning C4100: 'copy': parámetro formal sin referencia
+  matrix_4.cc
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\T4_GPU_Manager_Workspace\T4_GPU_Manager_Workspace\include\math_library\math_utils.h(15,46): warning C4100: 'copy': parámetro formal sin referencia
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\T4_GPU_Manager_Workspace\T4_GPU_Manager_Workspace\include\math_library\matrix_4.h(349,20): warning C4100: 'far': parámetro formal sin referencia
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\T4_GPU_Manager_Workspace\T4_GPU_Manager_Workspace\include\math_library\matrix_4.h(349,8): warning C4100: 'near': parámetro formal sin referencia
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\T4_GPU_Manager_Workspace\T4_GPU_Manager_Workspace\include\math_library\matrix_4.h(348,54): warning C4100: 'aspect': parámetro formal sin referencia
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\T4_GPU_Manager_Workspace\T4_GPU_Manager_Workspace\include\math_library\matrix_4.h(348,43): warning C4100: 'fov': parámetro formal sin referencia
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\T4_GPU_Manager_Workspace\T4_GPU_Manager_Workspace\include\math_library\matrix_4.h(355,20): warning C4100: 'far': parámetro formal sin referencia
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\T4_GPU_Manager_Workspace\T4_GPU_Manager_Workspace\include\math_library\matrix_4.h(355,8): warning C4100: 'near': parámetro formal sin referencia
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\T4_GPU_Manager_Workspace\T4_GPU_Manager_Workspace\include\math_library\matrix_4.h(354,73): warning C4100: 'valueottom': parámetro formal sin referencia
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\T4_GPU_Manager_Workspace\T4_GPU_Manager_Workspace\include\math_library\matrix_4.h(354,62): warning C4100: 'top': parámetro formal sin referencia
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\T4_GPU_Manager_Workspace\T4_GPU_Manager_Workspace\include\math_library\matrix_4.h(354,50): warning C4100: 'left': parámetro formal sin referencia
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\T4_GPU_Manager_Workspace\T4_GPU_Manager_Workspace\include\math_library\matrix_4.h(354,37): warning C4100: 'right': parámetro formal sin referencia
+  vector_2.cc
+  vector_3.cc
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\T4_GPU_Manager_Workspace\T4_GPU_Manager_Workspace\include\math_library\math_utils.h(15,46): warning C4100: 'copy': parámetro formal sin referencia
+  vector_4.cc
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\T4_GPU_Manager_Workspace\T4_GPU_Manager_Workspace\include\math_library\math_utils.h(15,46): warning C4100: 'copy': parámetro formal sin referencia
   PR04_00_GPUManager_Template.cc
-D:\prog_graph_jimenezmu\T4_GPU_Manager_Workspace\T4_GPU_Manager_Workspace\include\math_library\math_utils.h(15,46): warning C4100: 'copy': parámetro formal sin referencia
-D:\prog_graph_jimenezmu\T4_GPU_Manager_Workspace\T4_GPU_Manager_Workspace\include\math_library\matrix_4.h(349,20): warning C4100: 'far': parámetro formal sin referencia
-D:\prog_graph_jimenezmu\T4_GPU_Manager_Workspace\T4_GPU_Manager_Workspace\include\math_library\matrix_4.h(349,8): warning C4100: 'near': parámetro formal sin referencia
-D:\prog_graph_jimenezmu\T4_GPU_Manager_Workspace\T4_GPU_Manager_Workspace\include\math_library\matrix_4.h(348,54): warning C4100: 'aspect': parámetro formal sin referencia
-D:\prog_graph_jimenezmu\T4_GPU_Manager_Workspace\T4_GPU_Manager_Workspace\include\math_library\matrix_4.h(348,43): warning C4100: 'fov': parámetro formal sin referencia
-D:\prog_graph_jimenezmu\T4_GPU_Manager_Workspace\T4_GPU_Manager_Workspace\include\math_library\matrix_4.h(355,20): warning C4100: 'far': parámetro formal sin referencia
-D:\prog_graph_jimenezmu\T4_GPU_Manager_Workspace\T4_GPU_Manager_Workspace\include\math_library\matrix_4.h(355,8): warning C4100: 'near': parámetro formal sin referencia
-D:\prog_graph_jimenezmu\T4_GPU_Manager_Workspace\T4_GPU_Manager_Workspace\include\math_library\matrix_4.h(354,73): warning C4100: 'valueottom': parámetro formal sin referencia
-D:\prog_graph_jimenezmu\T4_GPU_Manager_Workspace\T4_GPU_Manager_Workspace\include\math_library\matrix_4.h(354,62): warning C4100: 'top': parámetro formal sin referencia
-D:\prog_graph_jimenezmu\T4_GPU_Manager_Workspace\T4_GPU_Manager_Workspace\include\math_library\matrix_4.h(354,50): warning C4100: 'left': parámetro formal sin referencia
-D:\prog_graph_jimenezmu\T4_GPU_Manager_Workspace\T4_GPU_Manager_Workspace\include\math_library\matrix_4.h(354,37): warning C4100: 'right': parámetro formal sin referencia
-D:\prog_graph_jimenezmu\T4_GPU_Manager_Workspace\T4_GPU_Manager_Workspace\tests\PR04_00_GPUManager_Template.cc(77,49): warning C4244: 'argumento': conversión de 'float' a 'unsigned int'; posible pérdida de datos
-D:\prog_graph_jimenezmu\T4_GPU_Manager_Workspace\T4_GPU_Manager_Workspace\tests\PR04_00_GPUManager_Template.cc(76,49): warning C4244: 'argumento': conversión de 'float' a 'unsigned int'; posible pérdida de datos
-D:\prog_graph_jimenezmu\T4_GPU_Manager_Workspace\T4_GPU_Manager_Workspace\tests\PR04_00_GPUManager_Template.cc(111,51): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
-D:\prog_graph_jimenezmu\T4_GPU_Manager_Workspace\T4_GPU_Manager_Workspace\tests\PR04_00_GPUManager_Template.cc(147,33): warning C4100: 'argv': parámetro formal sin referencia
-D:\prog_graph_jimenezmu\T4_GPU_Manager_Workspace\T4_GPU_Manager_Workspace\tests\PR04_00_GPUManager_Template.cc(147,20): warning C4100: 'argc': parámetro formal sin referencia
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\T4_GPU_Manager_Workspace\T4_GPU_Manager_Workspace\include\math_library\math_utils.h(15,46): warning C4100: 'copy': parámetro formal sin referencia
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\T4_GPU_Manager_Workspace\T4_GPU_Manager_Workspace\include\math_library\matrix_4.h(349,20): warning C4100: 'far': parámetro formal sin referencia
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\T4_GPU_Manager_Workspace\T4_GPU_Manager_Workspace\include\math_library\matrix_4.h(349,8): warning C4100: 'near': parámetro formal sin referencia
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\T4_GPU_Manager_Workspace\T4_GPU_Manager_Workspace\include\math_library\matrix_4.h(348,54): warning C4100: 'aspect': parámetro formal sin referencia
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\T4_GPU_Manager_Workspace\T4_GPU_Manager_Workspace\include\math_library\matrix_4.h(348,43): warning C4100: 'fov': parámetro formal sin referencia
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\T4_GPU_Manager_Workspace\T4_GPU_Manager_Workspace\include\math_library\matrix_4.h(355,20): warning C4100: 'far': parámetro formal sin referencia
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\T4_GPU_Manager_Workspace\T4_GPU_Manager_Workspace\include\math_library\matrix_4.h(355,8): warning C4100: 'near': parámetro formal sin referencia
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\T4_GPU_Manager_Workspace\T4_GPU_Manager_Workspace\include\math_library\matrix_4.h(354,73): warning C4100: 'valueottom': parámetro formal sin referencia
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\T4_GPU_Manager_Workspace\T4_GPU_Manager_Workspace\include\math_library\matrix_4.h(354,62): warning C4100: 'top': parámetro formal sin referencia
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\T4_GPU_Manager_Workspace\T4_GPU_Manager_Workspace\include\math_library\matrix_4.h(354,50): warning C4100: 'left': parámetro formal sin referencia
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\T4_GPU_Manager_Workspace\T4_GPU_Manager_Workspace\include\math_library\matrix_4.h(354,37): warning C4100: 'right': parámetro formal sin referencia
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\T4_GPU_Manager_Workspace\T4_GPU_Manager_Workspace\tests\PR04_00_GPUManager_Template.cc(77,49): warning C4244: 'argumento': conversión de 'float' a 'unsigned int'; posible pérdida de datos
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\T4_GPU_Manager_Workspace\T4_GPU_Manager_Workspace\tests\PR04_00_GPUManager_Template.cc(76,49): warning C4244: 'argumento': conversión de 'float' a 'unsigned int'; posible pérdida de datos
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\T4_GPU_Manager_Workspace\T4_GPU_Manager_Workspace\tests\PR04_00_GPUManager_Template.cc(111,51): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\T4_GPU_Manager_Workspace\T4_GPU_Manager_Workspace\tests\PR04_00_GPUManager_Template.cc(147,33): warning C4100: 'argv': parámetro formal sin referencia
+C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\T4_GPU_Manager_Workspace\T4_GPU_Manager_Workspace\tests\PR04_00_GPUManager_Template.cc(147,20): warning C4100: 'argc': parámetro formal sin referencia
   Generando código...
-  PR04_00_GPUManager_Template.vcxproj -> D:\prog_graph_jimenezmu\T4_GPU_Manager_Workspace\T4_GPU_Manager_Workspace\bin\Debug\x32\PR04_00_GPUManager_Template_d.exe
+ESAT_d.lib(draw.obj) : warning LNK4099: no se encontró PDB '' con 'ESAT_d.lib(draw.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
+ESAT_d.lib(input.obj) : warning LNK4099: no se encontró PDB '' con 'ESAT_d.lib(input.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
+ESAT_d.lib(math.obj) : warning LNK4099: no se encontró PDB '' con 'ESAT_d.lib(math.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
+ESAT_d.lib(time.obj) : warning LNK4099: no se encontró PDB '' con 'ESAT_d.lib(time.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
+ESAT_d.lib(window.obj) : warning LNK4099: no se encontró PDB '' con 'ESAT_d.lib(window.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
+ESAT_d.lib(edk_camera.obj) : warning LNK4099: no se encontró PDB '' con 'ESAT_d.lib(edk_camera.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
+ESAT_d.lib(edk_drawable.obj) : warning LNK4099: no se encontró PDB '' con 'ESAT_d.lib(edk_drawable.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
+ESAT_d.lib(edk_geometry.obj) : warning LNK4099: no se encontró PDB '' con 'ESAT_d.lib(edk_geometry.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
+ESAT_d.lib(edk_gpumanager.obj) : warning LNK4099: no se encontró PDB '' con 'ESAT_d.lib(edk_gpumanager.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
+ESAT_d.lib(edk_gpuresources.obj) : warning LNK4099: no se encontró PDB '' con 'ESAT_d.lib(edk_gpuresources.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
+ESAT_d.lib(edk_matdiffusetexture.obj) : warning LNK4099: no se encontró PDB '' con 'ESAT_d.lib(edk_matdiffusetexture.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
+ESAT_d.lib(edk_material.obj) : warning LNK4099: no se encontró PDB '' con 'ESAT_d.lib(edk_material.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
+ESAT_d.lib(edk_matpostprocess.obj) : warning LNK4099: no se encontró PDB '' con 'ESAT_d.lib(edk_matpostprocess.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
+ESAT_d.lib(edk_node.obj) : warning LNK4099: no se encontró PDB '' con 'ESAT_d.lib(edk_node.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
+ESAT_d.lib(edk_rendertarget.obj) : warning LNK4099: no se encontró PDB '' con 'ESAT_d.lib(edk_rendertarget.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
+ESAT_d.lib(nanovg.obj) : warning LNK4099: no se encontró PDB '' con 'ESAT_d.lib(nanovg.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
+ESAT_d.lib(glew.obj) : warning LNK4099: no se encontró PDB '' con 'ESAT_d.lib(glew.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
+ESAT_d.lib(context.obj) : warning LNK4099: no se encontró PDB '' con 'ESAT_d.lib(context.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
+ESAT_d.lib(init.obj) : warning LNK4099: no se encontró PDB '' con 'ESAT_d.lib(init.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
+ESAT_d.lib(input.obj) : warning LNK4099: no se encontró PDB '' con 'ESAT_d.lib(input.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
+ESAT_d.lib(monitor.obj) : warning LNK4099: no se encontró PDB '' con 'ESAT_d.lib(monitor.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
+ESAT_d.lib(window.obj) : warning LNK4099: no se encontró PDB '' con 'ESAT_d.lib(window.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
+ESAT_d.lib(win32_init.obj) : warning LNK4099: no se encontró PDB '' con 'ESAT_d.lib(win32_init.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
+ESAT_d.lib(win32_monitor.obj) : warning LNK4099: no se encontró PDB '' con 'ESAT_d.lib(win32_monitor.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
+ESAT_d.lib(win32_time.obj) : warning LNK4099: no se encontró PDB '' con 'ESAT_d.lib(win32_time.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
+ESAT_d.lib(win32_tls.obj) : warning LNK4099: no se encontró PDB '' con 'ESAT_d.lib(win32_tls.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
+ESAT_d.lib(win32_window.obj) : warning LNK4099: no se encontró PDB '' con 'ESAT_d.lib(win32_window.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
+ESAT_d.lib(wgl_context.obj) : warning LNK4099: no se encontró PDB '' con 'ESAT_d.lib(wgl_context.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
+ESAT_d.lib(winmm_joystick.obj) : warning LNK4099: no se encontró PDB '' con 'ESAT_d.lib(winmm_joystick.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
+ESAT_extra_d.lib(imgui.obj) : warning LNK4099: no se encontró PDB '' con 'ESAT_extra_d.lib(imgui.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
+ESAT_extra_d.lib(imgui.obj) : warning LNK4099: no se encontró PDB '' con 'ESAT_extra_d.lib(imgui.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
+ESAT_extra_d.lib(imgui_draw.obj) : warning LNK4099: no se encontró PDB '' con 'ESAT_extra_d.lib(imgui_draw.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
+  PR04_00_GPUManager_Template.vcxproj -> C:\Users\lumij\Documents\Segundo_Prg\prog_graph_jimenezmu\T4_GPU_Manager_Workspace\T4_GPU_Manager_Workspace\bin\Debug\x32\PR04_00_GPUManager_Template_d.exe

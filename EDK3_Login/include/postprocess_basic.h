@@ -47,11 +47,17 @@ class PostprocessBasic : public EDK3::Material {
     void set_texture(const EDK3::ref_ptr<EDK3::Texture> texture) {
       texture_ = texture;
     }
+    void set_postprocess_type(int type) {
+        postprocess_type_ = type;
+    }
     const float* color() const {
       return color_;
     }
     const EDK3::ref_ptr<EDK3::Texture> texture() const {
       return texture_;
+    }
+    int postprocess_type() const {
+        return postprocess_type_;
     }
    protected:
     virtual ~PostprocessBasicSettings() {}
@@ -73,6 +79,7 @@ class PostprocessBasic : public EDK3::Material {
     }
     float color_[4];
     EDK3::ref_ptr<EDK3::Texture> texture_;
+    int postprocess_type_;
   }; //PostprocessBasicSettings
 
 

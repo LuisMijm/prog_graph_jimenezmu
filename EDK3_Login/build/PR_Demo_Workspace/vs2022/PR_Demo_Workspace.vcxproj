@@ -239,6 +239,8 @@
     <ClCompile Include="..\..\..\src\DemoManager.cc" />
     <ClCompile Include="..\..\..\src\ImGuiDemo.cc" />
     <ClCompile Include="..\..\..\src\dev\custom_gpu_buffer.cc" />
+    <ClCompile Include="..\..\..\src\dev\custom_gpu_camera.cc" />
+    <ClCompile Include="..\..\..\src\dev\custom_gpu_manager.cc" />
     <ClCompile Include="..\..\..\src\dev\custom_gpu_program.cc" />
     <ClCompile Include="..\..\..\src\dev\custom_gpu_shader.cc" />
     <ClCompile Include="..\..\..\src\dev\custom_gpu_texture.cc" />

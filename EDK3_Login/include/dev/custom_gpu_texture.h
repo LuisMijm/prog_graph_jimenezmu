@@ -52,7 +52,7 @@ class CustomGPUTexture : public EDK3::Texture {
   virtual void generateMipmaps() const override;
 
  protected:
-  virtual ~CustomGPUTexture();
+  virtual ~CustomGPUTexture(); 
 
   GLuint internal_id_;
 

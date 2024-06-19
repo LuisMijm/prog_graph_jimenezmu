@@ -260,6 +260,12 @@
     <ClCompile Include="..\..\..\src\dev\custom_gpu_buffer.cc">
       <Filter>src\dev</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\src\dev\custom_gpu_camera.cc">
+      <Filter>src\dev</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dev\custom_gpu_manager.cc">
+      <Filter>src\dev</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\src\dev\custom_gpu_program.cc">
       <Filter>src\dev</Filter>
     </ClCompile>

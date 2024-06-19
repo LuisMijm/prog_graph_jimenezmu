@@ -24,11 +24,16 @@ namespace EDK3 {
     "layout(location = 0) in vec3 a_position;"
     "layout(location = 1) in vec3 a_normal;"
     "layout(location = 2) in vec2 a_uv;"
+    "out vec3 position;"
     "out vec2 uv;"
+    "out vec3 normal;"
+
 
     "void main() {"
     "    gl_Position = u_vp_matrix * u_m_matrix * vec4(a_position, 1.0);"
+    "    position = (u_m_matrix * vec4(a_position,1.0)).xyz;"
     "    uv = a_uv;"
+    "    normal = (u_m_matrix * vec4(a_normal,0.0)).xyz;"
     "}";
 
 //#define GLSL(x) "#version 330\n"#x
@@ -37,19 +42,35 @@ namespace EDK3 {
 //);
 
 static const char kFragmentShader[] =
-"#version 330\n"
-"uniform sampler2D u_texture;\n"
-"uniform int u_use_texture;\n"
-"uniform vec4 u_color;\n"
-"out vec4 fragColor;\n"
-"in vec2 uv;\n"
-"void main() {\n"
-"   if(0 == u_use_texture){"
-"    fragColor = u_color;\n"
-"   }else{\n"
-"    fragColor = u_color * texture(u_texture,uv);\n"
-"   }\n"
-"}\n";
+    "#version 330\n"
+    "uniform sampler2D u_texture;\n"
+    "uniform int u_use_texture;\n"
+    "uniform int u_postprocess;\n"
+    "uniform vec4 u_color;\n"
+    "out vec4 fragColor;\n"
+    "in vec3 position;"
+    "in vec2 uv;"
+    "in vec3 normal;"
+    "void main() {\n"
+    "   if(0 == u_use_texture){"
+    "       fragColor = u_color;\n"
+    "   }else{\n"
+    "       vec3 color = texture(u_texture,uv).rgb;"  
+    "       if(1 == u_postprocess){"
+    "           float gray = dot(color, vec3(0.299, 0.587, 0.114));"
+    "           fragColor = vec4(vec3(gray), 1.0);"
+    "       }"
+    "       else if (2 == u_postprocess) {"
+    "           fragColor = vec4(uv, 1.0, 1.0) * vec4(color, 1.0);"
+    "       }"
+    "       else if (3 == u_postprocess) {"
+    "           fragColor = vec4(1.0) - vec4(1.0) * vec4(color, 1.0);"
+    "       }"
+    "       else {"
+    "           fragColor = vec4(color, 1.0);"
+    "       }"
+    "   }\n"
+    "}\n";
 
 
 PostprocessBasic::PostprocessBasic() { }
@@ -103,6 +124,10 @@ bool PostprocessBasic::enable(const EDK3::MaterialSettings *mat) const {
     
     unsigned int used_texture_loc = program_->get_uniform_position("u_use_texture");
     program_->set_uniform_value(used_texture_loc, Type::T_INT_1, &use_texture_);
+
+    unsigned int postprocess_loc = program_->get_uniform_position("u_postprocess");
+    int type = ms->postprocess_type();
+    program_->set_uniform_value(postprocess_loc, Type::T_INT_1, &type);
 
     int slot = 0;
     ms->texture()->bind(slot);

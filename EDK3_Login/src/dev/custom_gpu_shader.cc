@@ -18,8 +18,8 @@ namespace EDK3{
       EDK3::scoped_array<char>* output_log) {
 
         GLint params = 0;
-        glCompileShader(internal_id_); // compile 
-        glGetShaderiv(internal_id_, GL_COMPILE_STATUS, &params); // compile info (id, sobre que, &resultado)
+        glCompileShader(internal_id_);
+        glGetShaderiv(internal_id_, GL_COMPILE_STATUS, &params);
 
         if (GL_FALSE == params) {
           if (output_log) {
