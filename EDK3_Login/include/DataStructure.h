@@ -56,6 +56,7 @@ struct Material {
 enum MaterialName {
     sand,
     water,
+    volcano,
 };
 
 //enum class TextureName {
@@ -87,7 +88,8 @@ struct Terrain
 //Unnamed struct and it's unique instance:
 struct GameState {
 	EDK3::ref_ptr<EDK3::CameraCustom> camera;
-	EDK3::ref_ptr<EDK3::Node> root;
+    EDK3::ref_ptr<EDK3::Node> root;
+    EDK3::ref_ptr<EDK3::Node> transparents;
 
     EDK3::scoped_array<EDK3::ref_ptr<EDK3::Texture>> Textures;
     EDK3::scoped_array<Material> Materials;
@@ -98,7 +100,10 @@ struct GameState {
     EDK3::ref_ptr<EDK3::PostprocessBasic> mat_postprocess;
     EDK3::ref_ptr<EDK3::PostprocessBasic::PostprocessBasicSettings> mat_postprocess_settings;
 
-    int Postprocess = 1;
+    EDK3::ref_ptr<EDK3::TransparentMaterial> mat_transparent;
+    EDK3::ref_ptr<EDK3::TransparentMaterial::Settings> mat_transparent_settings;
+
+    int Postprocess = 0;
     bool wireframe;
 } GS;
 

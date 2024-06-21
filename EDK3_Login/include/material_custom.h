@@ -166,7 +166,6 @@ namespace EDK3 {
   public:
     int useTexture_;
 
-
   public:
     CustomLightMaterial();
 
@@ -251,7 +250,96 @@ namespace EDK3 {
       //CustomLightMaterial& operator=(const CustomLightMaterial&);
     };
 
-  } //EDK3
+
+
+  class TransparentMaterial : public Material  {
+
+  public:
+      
+      int useTexture_;
+
+      TransparentMaterial();
+      TransparentMaterial(const TransparentMaterial&);
+      ~TransparentMaterial();
+
+      void init(EDK3::scoped_array<char>& error_log,
+          const char* vertex_path,
+          const char* fragment_path, int useTexture = 0);
+      bool enable(const EDK3::MaterialSettings* mat) const;
+      void setupCamera(const float projection[16], const float view[16]) const;
+      void setupModel(const float m[16]) const;
+
+      virtual unsigned int num_attributes_required() const override;
+      virtual EDK3::Attribute attribute_at_index(const unsigned int attrib_idx) const override;
+      virtual EDK3::Type attribute_type_at_index(const unsigned int attrib_index) const override;
+
+      struct LightConf {
+          int type_;
+          float pos_[3];
+          float dir_[3];
+          float diff_color_[3];
+          float spec_color_[3];
+          float linear_att_;
+          float quadratic_att_;
+          float constant_att_;
+          float shininess_;
+          float strength_;
+          float camera_pos_[3];
+          float cutOff_;
+          float outerCutOff_;
+          int enabled_;
+      };
+
+      class Settings : public MaterialSettings 
+      {
+      public:
+          //Settings() {};
+          Settings() : alpha_(1.0f) {};
+          ~Settings() {};
+          LightConf lightConf_[10];
+          float color_[4];
+          static float ambient_color_[3];
+          float alpha_;  // Transparencia
+
+
+          void set_texture(EDK3::Texture* tex) { texture_ = tex; }
+          EDK3::Texture* texture() { return texture_.get(); }
+          const EDK3::Texture* texture() const { return texture_.get(); }
+
+          void set_specular(EDK3::Texture* tex) { specular_ = tex; }
+          EDK3::Texture* specular() { return specular_.get(); }
+          const EDK3::Texture* specular() const { return specular_.get(); }
+
+          void set_normal(EDK3::Texture* tex) { normal_ = tex; }
+          EDK3::Texture* normal() { return normal_.get(); }
+          const EDK3::Texture* normal() const { return normal_.get(); }
+
+          void set_color(const float v[4]) {
+              memcpy(color_, v, sizeof(color_));
+          }
+
+          void set_alpha(float alpha) {
+              alpha_ = alpha;
+          }
+
+          void init(EDK3::scoped_array<char>& error_log, const char* vertex_path, const char* fragment_path);
+
+          const float* color() const { return color_; }
+          float alpha() const { return alpha_; }
+
+      private:
+          EDK3::ref_ptr<EDK3::Texture> texture_;
+          EDK3::ref_ptr<EDK3::Texture> specular_;
+          EDK3::ref_ptr<EDK3::Texture> normal_;
+      };
+
+      EDK3::ref_ptr<EDK3::dev::Program> program_;
+
+  private:
+
+  };
+
+} //EDK3
 
 
 #endif //__MATERIAL_BASIC_H__

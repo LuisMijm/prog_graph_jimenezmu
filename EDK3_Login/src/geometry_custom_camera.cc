@@ -52,7 +52,6 @@ namespace EDK3 {
       static Mat4 child_transform = child_transform.Identity();
       CamData current_node;
 
-
       if (nullptr == root_node->parent()) {
           data_.clear();
           current_node.transform = Mat4(root_node->local_transform());
@@ -85,7 +84,7 @@ namespace EDK3 {
 
   void CameraCustom::doRender() const
   {
-      float rgba[4] = { 1.0f, 1.0f, 1.0f, 1.0f };
+      float rgba[4] = { 0.8f, 0.8f, 0.8f, 1.0f };
       EDK3::dev::GPUManager::Instance()->clearFrameBuffer(rgba);
 
       for (int i = 0; i < data_.size(); ++i)
@@ -93,6 +92,7 @@ namespace EDK3 {
           if (data_[i].should_render) {
               if (data_[i].material->enable(data_[i].material_setting))
               {
+                  //EDK3::dev::GPUManager::Instance()->disableCullFaces();
                   data_[i].material->setupCamera(projection_matrix(), view_matrix());
                   data_[i].material->setupModel(data_[i].transform.m);
                   data_[i].geometry->bindAttributesAndRenderWithCurrentMaterial(data_[i].material);

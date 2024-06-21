@@ -1,34 +1,13 @@
 GRÁFICA
 
-
-	Simulacion de un bosque con mar
-
-	Control de los nodos del grafo -> revisar bien esto porque es importante
-
-	Gestión de la camara --> puede que ya lo tenga
-
-
-	Logica 2D - Render 3D
-
-	Filosofia RAII
-
-	Debug & Release
-
 	Video 5 - 10 min
 
 
---------------------------------------
-
-	GPUCustom: integrar
-	
-	Transparencias
-
-	2 post-procesos
+	GPU ->  - cull se hace al reves en ciertos elementos
+		- El orden de los elementos 
 
 
+	Transparencias -> provocan crash junto con postproceso colores invertidos
+			  el orden de llamada de la función le afecta de forma extraña (deberían ser las ultimas, pero no 				  funciona asi)
 
-
-
-
-
-
+	Cube8 -> fallo en las uv

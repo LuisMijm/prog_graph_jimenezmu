@@ -601,8 +601,130 @@ EDK3::Type MaterialCustom::attribute_type_at_index(const unsigned int attrib_idx
 }*/
 
 
+TransparentMaterial::TransparentMaterial(){}
+TransparentMaterial::TransparentMaterial(const TransparentMaterial&){}
+TransparentMaterial::~TransparentMaterial(){}
 
 
+void TransparentMaterial::init(EDK3::scoped_array<char>& error_log, const char* vertex_path, const char* fragment_path, int useTexture)
+{
+    //1: Request at least two shaders and one program to the GPU Manager.
+    EDK3::dev::GPUManager& GPU = *EDK3::dev::GPUManager::Instance();
+    EDK3::ref_ptr<EDK3::dev::Shader> fragment_shader;
+    GPU.newShader(&fragment_shader);
+    EDK3::ref_ptr<EDK3::dev::Shader> vertex_vertex;
+    GPU.newShader(&vertex_vertex);
+    GPU.newProgram(&program_);
 
+
+    //2: Load the source code to the requested shaders.
+    if (!loadVertexShaderFile(&vertex_vertex, vertex_path)) printf("Error loading vertex shader path: %s\n", vertex_path);
+    if (!loadFragmentShaderFile(&fragment_shader, fragment_path)) printf("Error loading fragment shader path: %s\n", fragment_path);
+    // bool loadFragmentShaderFile(ref_ptr<dev::Shader> *output, const char* file_path);
+
+  //3: Compile both shaders.
+    if (!vertex_vertex->compile(&error_log)) printf("VERTEX: %s\n", error_log.get());
+    if (!fragment_shader->compile(&error_log)) printf("FRAGMENT: %s\n", error_log.get());
+
+
+    //4: Attach shaders to the program.
+    program_->attach(vertex_vertex.get());
+    program_->attach(fragment_shader.get());
+    //5: Finally... link the program!
+    program_->link();
+
+    useTexture_ = useTexture;
+}
+
+bool TransparentMaterial::enable(const EDK3::MaterialSettings* mat) const
+{
+    bool result = false;
+    EDK3::dev::GPUManager& GPU = *EDK3::dev::GPUManager::Instance();
+    const Settings* settings = dynamic_cast<const Settings*>(mat);
+
+    if (settings) {
+        GPU.enableDepthTest(EDK3::dev::GPUManager::kCompareFunc_LessOrEqual);
+        GPU.enableCullFaces(EDK3::dev::GPUManager::kFace_Back);
+        //GPU.disableCullFaces();
+        EDK3::dev::GPUManager::BlendParam src = EDK3::dev::GPUManager::BlendParam::kBlendParam_SourceAlpha;
+        EDK3::dev::GPUManager::BlendParam dst = EDK3::dev::GPUManager::BlendParam::kBlendParam_OneMinusSourceAlpha;
+        EDK3::dev::GPUManager::BlendOp op = EDK3::dev::GPUManager::BlendOp::kBlendOp_Add;
+        float blend_white[4] = { 1.0f, 1.0f, 1.0f, 1.0f };
+        float blend_black[4] = { 0.0f, 0.0f, 0.0f, 0.0f };
+        GPU.enableBlend(src, dst, op, blend_black);
+
+        program_->use();
+
+        unsigned int color_loc = program_->get_attrib_location("u_color");
+        program_->set_uniform_value(color_loc, Type::T_FLOAT_4, settings->color());
+
+        int slot = 0;
+        settings->texture()->bind(slot);
+        unsigned int texture_loc = program_->get_uniform_position("u_texture");
+        program_->set_uniform_value(texture_loc, EDK3::Type::T_INT_1, &slot);
+
+        float alpha = settings->alpha();
+        unsigned int alpha_loc = program_->get_uniform_position("u_alpha");
+        program_->set_uniform_value(alpha_loc, Type::T_FLOAT_1, &alpha);
+
+        result = true;
+    }
+    return result;
+}
+
+void TransparentMaterial::setupCamera(const float projection[16], const float view[16]) const
+{
+    ESAT::Mat4 local_projection = ESAT::Mat4FromColumns(projection);
+    ESAT::Mat4 local_view = ESAT::Mat4FromColumns(view);
+    ESAT::Mat4 m = ESAT::Mat4Multiply(local_projection, local_view);
+    program_->set_uniform_value(program_->get_uniform_position("u_vp_matrix"), EDK3::Type::T_MAT_4x4, m.d);
+}
+
+void TransparentMaterial::setupModel(const float m[16]) const
+{
+    program_->set_uniform_value(program_->get_uniform_position("u_m_matrix"), EDK3::Type::T_MAT_4x4, m);
+}
+
+unsigned int TransparentMaterial::num_attributes_required() const
+{
+    return 0;
+}
+
+EDK3::Attribute TransparentMaterial::attribute_at_index(const unsigned int attrib_idx) const
+{
+
+    switch (attrib_idx) {
+    case 0:
+        return EDK3::Attribute::A_POSITION;
+        break;
+    case 1:
+        return EDK3::Attribute::A_NORMAL;
+        break;
+    case 2:
+        return EDK3::Attribute::A_UV;
+        break;
+    default:
+        return EDK3::Attribute::A_NONE;
+        break;
+    }
+}
+
+EDK3::Type TransparentMaterial::attribute_type_at_index(const unsigned int attrib_index) const
+{
+    switch (attrib_index) {
+    case 0:
+        return EDK3::Type::T_FLOAT_3;
+        break;
+    case 1:
+        return EDK3::Type::T_FLOAT_3;
+        break;
+    case 2:
+        return EDK3::Type::T_FLOAT_2;
+        break;
+    default:
+        return EDK3::Type::T_NONE;
+        break;
+    }
+}
 
 } //EDK3

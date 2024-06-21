@@ -50,8 +50,8 @@
 //float EDK3::MaterialCustom::LightSettings::ambient_color_[3] = { 0.1f,0.1f,0.1f };
 
 void ImGuiLights() {
-    static int num_materials = 2;
-    static int num_lights = 3;
+    static int num_materials = 3;
+    static int num_lights = 9;
 
     //static int selected_material = 0;
     static int selected_light = 0;
@@ -63,23 +63,11 @@ void ImGuiLights() {
 
     ImGui::Begin("LIGHT MANAGER");
 
-    //const char* mat_names[] = { "Mat 1", "Mat 2" };
-    //if (ImGui::Combo("Select Material", &selected_material, mat_names, 2)) {
-
-    //    for (int i = 0; i < num_materials; i++) {
-    //        bool is_selected = (selected_material == i);
-    //        if (ImGui::Selectable("Material %d", is_selected)) {
-    //            selected_material = i;
-    //            selected_light = 0;
-    //        }
-    //        //if (is_selected) {
-    //            //ImGui::SetItemDefaultFocus();
-    //        //}
-    //    }
-    //}
 
     // Selección de luz dentro del material seleccionado
-    const char* light_names[] = { "Light directional", "Light spotlight", "Light pointlight"};
+    const char* light_names[] = { "Light directional", 
+                                  "Light spotlight 1", "Light spotlight 2", "Light spotlight 3", "Light spotlight 4", 
+                                  "Light pointlight 1", "Light pointlight 2", "Light pointlight 3", "Light pointlight 4"};
     if (ImGui::Combo("Select Light", &selected_light, light_names, num_lights)) {
         for (int i = 0; i < num_lights; i++) {
             bool is_selected = (selected_light == i);
@@ -167,54 +155,32 @@ void InitLight(int light, int light_type,
               const float* pos, const float* dir, const float* diff_color, const float* spec_color,
               float linear_att, float quad_att, float const_att, 
               float shininess, float strength, const float* cam_pos) {
-    
-    //float pos[3]{ 0.0f, 110.0f, 0.0f };
-    //float dir[3]{ 0.7f, 0.7f, 0.05f };
-    //float diff_color[3]{ 1.0f, 1.0, 1.0f };
-    //float spec_color[3]{ 1.0f, 1.0, 1.0f };
 
-  GS.Materials[sand].matSettings->lightConf_[light].type_ = light_type;
-  memcpy(GS.Materials[sand].matSettings->lightConf_[light].pos_, pos, sizeof(float) * 3);
-  memcpy(GS.Materials[sand].matSettings->lightConf_[light].dir_, dir, sizeof(float) * 3);
-  memcpy(GS.Materials[sand].matSettings->lightConf_[light].diff_color_, diff_color, sizeof(float) * 3);
-  memcpy(GS.Materials[sand].matSettings->lightConf_[light].spec_color_, spec_color, sizeof(float) * 3);
+    for (int i = 0; i < 3; i++)
+    {
+        GS.Materials[i].matSettings->lightConf_[light].type_ = light_type;
+        memcpy(GS.Materials[i].matSettings->lightConf_[light].pos_, pos, sizeof(float) * 3);
+        memcpy(GS.Materials[i].matSettings->lightConf_[light].dir_, dir, sizeof(float) * 3);
+        memcpy(GS.Materials[i].matSettings->lightConf_[light].diff_color_, diff_color, sizeof(float) * 3);
+        memcpy(GS.Materials[i].matSettings->lightConf_[light].spec_color_, spec_color, sizeof(float) * 3);
 
-  GS.Materials[sand].matSettings->lightConf_[light].linear_att_ = linear_att;
-  GS.Materials[sand].matSettings->lightConf_[light].quadratic_att_ = quad_att;
-  GS.Materials[sand].matSettings->lightConf_[light].constant_att_ = const_att;
-  GS.Materials[sand].matSettings->lightConf_[light].shininess_ = shininess;
-  GS.Materials[sand].matSettings->lightConf_[light].strength_ = strength;
-  memcpy(GS.Materials[sand].matSettings->lightConf_[light].camera_pos_, cam_pos, sizeof(cam_pos));
+        GS.Materials[i].matSettings->lightConf_[light].linear_att_ = linear_att;
+        GS.Materials[i].matSettings->lightConf_[light].quadratic_att_ = quad_att;
+        GS.Materials[i].matSettings->lightConf_[light].constant_att_ = const_att;
+        GS.Materials[i].matSettings->lightConf_[light].shininess_ = shininess;
+        GS.Materials[i].matSettings->lightConf_[light].strength_ = strength;
+        memcpy(GS.Materials[i].matSettings->lightConf_[light].camera_pos_, cam_pos, sizeof(cam_pos));
 
-  GS.Materials[sand].matSettings->lightConf_[light].cutOff_ = 0.78f;
-  GS.Materials[sand].matSettings->lightConf_[light].outerCutOff_= 0.75f;
+        GS.Materials[i].matSettings->lightConf_[light].cutOff_ = 0.78f;
+        GS.Materials[i].matSettings->lightConf_[light].outerCutOff_ = 0.75f;
 
 
-  GS.Materials[sand].matSettings->lightConf_[light].enabled_ = 1;
-
-
-  GS.Materials[water].matSettings->lightConf_[light].type_ = light_type;
-  memcpy(GS.Materials[water].matSettings->lightConf_[light].pos_, pos, sizeof(float) * 3);
-  memcpy(GS.Materials[water].matSettings->lightConf_[light].dir_, dir, sizeof(float) * 3);
-  memcpy(GS.Materials[water].matSettings->lightConf_[light].diff_color_, diff_color, sizeof(float) * 3);
-  memcpy(GS.Materials[water].matSettings->lightConf_[light].spec_color_, spec_color, sizeof(float) * 3);
-
-  GS.Materials[water].matSettings->lightConf_[light].linear_att_ = linear_att;
-  GS.Materials[water].matSettings->lightConf_[light].quadratic_att_ = quad_att;
-  GS.Materials[water].matSettings->lightConf_[light].constant_att_ = const_att;
-  GS.Materials[water].matSettings->lightConf_[light].shininess_ = shininess;
-  GS.Materials[water].matSettings->lightConf_[light].strength_ = strength;
-  memcpy(GS.Materials[water].matSettings->lightConf_[light].camera_pos_, cam_pos, sizeof(cam_pos));
-
-  GS.Materials[water].matSettings->lightConf_[light].enabled_ = 1;
+        GS.Materials[i].matSettings->lightConf_[light].enabled_ = 1;
+    }
 }
 
 void InitSceneLights() {
-    //int lightType = 2;
-  /*  EDK3::scoped_ptr<float> pos;
-    pos[0] = 0.0f;
-    pos[1] = 115.0f 0.0f
-};*/
+
   static float pos[]{ 0.0f ,115.0f, 0.0f };
   static float dir[]{ 0.05f, 1.0f, 0.05f };
   static float diff_color[]{ 1.0f,1.0f,1.0f };
@@ -224,16 +190,102 @@ void InitSceneLights() {
   float const_att = 1.0f;
   float shininess = 1.0f;
   float strength = 0.7f;
-
-
   InitLight(0, 0, pos, dir, diff_color, spec_color, linear_att, quad_att, const_att, shininess, strength, GS.camera->position());
+
+  pos[0] = 0.0f; pos[1] = 115.0f; pos[2] = 0.0f;
+  dir[0] = 0.05f; dir[1] = 1.0f; dir[2] = 0.05f;
+  diff_color[0] = 0.05f; diff_color[1] = 1.0f; diff_color[2] = 0.05f;
+  spec_color[0] = 1.0f; spec_color[1] = 1.0f; spec_color[2] = 1.0f;
+  linear_att = 1.0f;
+  quad_att = 1.0f;
+  const_att = 1.0f;
+  shininess = 1.0f;
+  strength = 0.7f;
   InitLight(1, 1, pos, dir, diff_color, spec_color, linear_att, quad_att, const_att, shininess, strength, GS.camera->position());
-  InitLight(2, 2, pos, dir, diff_color, spec_color, linear_att, quad_att, const_att, shininess, strength, GS.camera->position());
-  //InitLight(3, lightType, pos, dir, diff_color, spec_color, linear_att, quad_att, const_att, shininess, strength, GS.camera->position());
+  
+  pos[0] = 0.0f; pos[1] = 115.0f; pos[2] = 0.0f;
+  dir[0] = 0.05f; dir[1] = 1.0f; dir[2] = 0.05f;
+  diff_color[0] = 0.05f; diff_color[1] = 1.0f; diff_color[2] = 0.05f;
+  spec_color[0] = 1.0f; spec_color[1] = 1.0f; spec_color[2] = 1.0f;
+  linear_att = 1.0f;
+  quad_att = 1.0f;
+  const_att = 1.0f;
+  shininess = 1.0f;
+  strength = 0.7f;
+  InitLight(2, 1, pos, dir, diff_color, spec_color, linear_att, quad_att, const_att, shininess, strength, GS.camera->position());
+  
+  pos[0] = 0.0f; pos[1] = 115.0f; pos[2] = 0.0f;
+  dir[0] = 0.05f; dir[1] = 1.0f; dir[2] = 0.05f;
+  diff_color[0] = 0.05f; diff_color[1] = 1.0f; diff_color[2] = 0.05f;
+  spec_color[0] = 1.0f; spec_color[1] = 1.0f; spec_color[2] = 1.0f;
+  linear_att = 1.0f;
+  quad_att = 1.0f;
+  const_att = 1.0f;
+  shininess = 1.0f;
+  strength = 0.7f;
+  InitLight(3, 1, pos, dir, diff_color, spec_color, linear_att, quad_att, const_att, shininess, strength, GS.camera->position());
+  
+  pos[0] = 0.0f; pos[1] = 115.0f; pos[2] = 0.0f;
+  dir[0] = 0.05f; dir[1] = 1.0f; dir[2] = 0.05f;
+  diff_color[0] = 0.05f; diff_color[1] = 1.0f; diff_color[2] = 0.05f;
+  spec_color[0] = 1.0f; spec_color[1] = 1.0f; spec_color[2] = 1.0f;
+  linear_att = 1.0f;
+  quad_att = 1.0f;
+  const_att = 1.0f;
+  shininess = 1.0f;
+  strength = 0.7f; 
+  InitLight(4, 1, pos, dir, diff_color, spec_color, linear_att, quad_att, const_att, shininess, strength, GS.camera->position());
+  
+  pos[0] = 0.0f; pos[1] = 115.0f; pos[2] = 0.0f;
+  dir[0] = 0.05f; dir[1] = 1.0f; dir[2] = 0.05f;
+  diff_color[0] = 0.05f; diff_color[1] = 1.0f; diff_color[2] = 0.05f;
+  spec_color[0] = 1.0f; spec_color[1] = 1.0f; spec_color[2] = 1.0f;
+  linear_att = 1.0f;
+  quad_att = 1.0f;
+  const_att = 1.0f;
+  shininess = 1.0f;
+  strength = 0.7f; 
+  InitLight(5, 2, pos, dir, diff_color, spec_color, linear_att, quad_att, const_att, shininess, strength, GS.camera->position());
+  
+  pos[0] = 0.0f; pos[1] = 115.0f; pos[2] = 0.0f;
+  dir[0] = 0.05f; dir[1] = 1.0f; dir[2] = 0.05f;
+  diff_color[0] = 0.05f; diff_color[1] = 1.0f; diff_color[2] = 0.05f;
+  spec_color[0] = 1.0f; spec_color[1] = 1.0f; spec_color[2] = 1.0f;
+  linear_att = 1.0f;
+  quad_att = 1.0f;
+  const_att = 1.0f;
+  shininess = 1.0f;
+  strength = 0.7f; 
+  InitLight(6, 2, pos, dir, diff_color, spec_color, linear_att, quad_att, const_att, shininess, strength, GS.camera->position());
+  
+  pos[0] = 0.0f; pos[1] = 115.0f; pos[2] = 0.0f;
+  dir[0] = 0.05f; dir[1] = 1.0f; dir[2] = 0.05f;
+  diff_color[0] = 0.05f; diff_color[1] = 1.0f; diff_color[2] = 0.05f;
+  spec_color[0] = 1.0f; spec_color[1] = 1.0f; spec_color[2] = 1.0f;
+  linear_att = 1.0f;
+  quad_att = 1.0f;
+  const_att = 1.0f;
+  shininess = 1.0f;
+  strength = 0.7f; 
+  InitLight(7, 2, pos, dir, diff_color, spec_color, linear_att, quad_att, const_att, shininess, strength, GS.camera->position());
+  
+  pos[0] = 0.0f; pos[1] = 115.0f; pos[2] = 0.0f;
+  dir[0] = 0.05f; dir[1] = 1.0f; dir[2] = 0.05f;
+  diff_color[0] = 0.05f; diff_color[1] = 1.0f; diff_color[2] = 0.05f;
+  spec_color[0] = 1.0f; spec_color[1] = 1.0f; spec_color[2] = 1.0f;
+  linear_att = 1.0f;
+  quad_att = 1.0f;
+  const_att = 1.0f;
+  shininess = 1.0f;
+  strength = 0.7f; 
+  InitLight(8, 2, pos, dir, diff_color, spec_color, linear_att, quad_att, const_att, shininess, strength, GS.camera->position());
 }
 
 void InitMaterials() {
     EDK3::scoped_array<char> error_log;
+
+    // Land
+
     GS.Materials[sand].mat.alloc();
     GS.Materials[sand].matSettings.alloc();
 
@@ -243,6 +295,7 @@ void InitMaterials() {
     float color[] = { 1.0f, 1.0f, 1.0f, 1.0f };
     GS.Materials[sand].matSettings->set_color(color);
     GS.Materials[sand].matSettings->set_texture(GS.Textures[sand].get());
+
 
     // Sea 
 
@@ -255,18 +308,56 @@ void InitMaterials() {
     //color[0] = {1.0f, 1.0f, 1.0f, 0.0f};
     GS.Materials[water].matSettings->set_color(color);
     GS.Materials[water].matSettings->set_texture(GS.Textures[water].get());
+
+
+    // Volcano 
+
+    GS.Materials[volcano].mat.alloc();
+    GS.Materials[volcano].matSettings.alloc();
+
+    GS.Materials[volcano].mat->init(error_log, "./shaders/basicVertex.vs", "./shaders/light_shader.fs");
+    GS.Materials[volcano].mat->useTexture_ = 1;
+
+    //color[0] = {1.0f, 1.0f, 1.0f, 0.0f};
+    GS.Materials[volcano].matSettings->set_color(color);
+    GS.Materials[volcano].matSettings->set_texture(GS.Textures[volcano].get());
+
+
+    // Transparent
+
+    GS.mat_transparent.alloc();
+    GS.mat_transparent_settings.alloc();
+
+    GS.mat_transparent->init(error_log, "./shaders/transparent_vertex.vs", "./shaders/transparent_shader.fs");
+    GS.mat_transparent->useTexture_ = 1;
+
+    GS.mat_transparent_settings->set_color(color);
+    GS.mat_transparent_settings->set_texture(GS.Textures[3].get());
+    GS.mat_transparent_settings->set_alpha(1.0f);
 }
     
 
 void InitTextures() {
     EDK3::Texture::Load("./textures/sand.png", &GS.Textures[sand]);
     if (!GS.Textures[sand].get()) {
-        printf("Can't load texture.png\n");
+        printf("Can't load sand.png\n");
         exit(-2);
     }    
     EDK3::Texture::Load("./textures/water2.png", &GS.Textures[water]);
     if (!GS.Textures[water].get()) {
         printf("Can't load water.png\n");
+        exit(-2);
+    }
+
+    EDK3::Texture::Load("./textures/main_volcano.png", &GS.Textures[volcano]);
+    if (!GS.Textures[volcano].get()) {
+        printf("Can't load volcano.png\n");
+        exit(-2);
+    }
+
+    EDK3::Texture::Load("./textures/window_transparency.png", &GS.Textures[3]);
+    if (!GS.Textures[3].get()) {
+        printf("Can't load window.png\n");
         exit(-2);
     }
 }
@@ -298,13 +389,13 @@ void InitTerrain() {
 
     // Initialize Land
     strncpy(GS.Terrains[sand].name, "Land", sizeof(GS.Terrains[sand].name));
-    GS.Terrains[sand].num_cols = 256;
-    GS.Terrains[sand].num_rows = 256;
-    GS.Terrains[sand].height_mult = 5.0f;
-    GS.Terrains[sand].size = 1.0f;
+    GS.Terrains[sand].num_cols = 1024;
+    GS.Terrains[sand].num_rows = 1024;
+    GS.Terrains[sand].height_mult = 10.0f;
+    GS.Terrains[sand].size = 3.5f;
     GS.Terrains[sand].smoothness = 0.5f;
-    GS.Terrains[sand].heightmap_mult = 30.0f;
-    strncpy(GS.Terrains[sand].heightmap_path, "./textures/south.png", sizeof(GS.Terrains[sand].heightmap_path));
+    GS.Terrains[sand].heightmap_mult = 300.0f;
+    strncpy(GS.Terrains[sand].heightmap_path, "./textures/heightmap_2.png", sizeof(GS.Terrains[sand].heightmap_path));
     GS.Terrains[sand].use_heightmap = true;
     GS.Terrains[sand].is_centered = true;
     GS.Terrains[sand].pos[0] = 0.0f;
@@ -322,15 +413,15 @@ void InitTerrain() {
     strncpy(GS.Terrains[water].name, "Water", sizeof(GS.Terrains[water].name));
     GS.Terrains[water].num_cols = 64;
     GS.Terrains[water].num_rows = 64;
-    GS.Terrains[water].height_mult = 1.0f;
-    GS.Terrains[water].size = 100.0f;
+    GS.Terrains[water].height_mult = 50.0f;
+    GS.Terrains[water].size = 150.0f;
     GS.Terrains[water].smoothness = 0.005f;
     GS.Terrains[water].heightmap_mult = 100.0f;
     strncpy(GS.Terrains[water].heightmap_path, "./textures/water_heightmap.png", sizeof(GS.Terrains[water].heightmap_path));
     GS.Terrains[water].use_heightmap = true;
     GS.Terrains[water].is_centered = true;
     GS.Terrains[water].pos[0] = 0.0f;
-    GS.Terrains[water].pos[1] = 10.0f;
+    GS.Terrains[water].pos[1] = -5.0f;
     GS.Terrains[water].pos[2] = 0.0f;
     GS.Terrains[water].HPR[0] = 0.0f;
     GS.Terrains[water].HPR[1] = 0.0f;
@@ -379,9 +470,13 @@ void InitSphere(EDK3::Node* root) {
   sphere.alloc();
   sphere->init(10.0f);
 
-  float pos[3] = { 0.0f, 100.0f, 0.0f };
+  float pos[3] = { 0.0f, 300.0f, 0.0f };
   float HPR[3] = { 0.0f, 0.0f, 0.0f };
   AddDrawable(root, sphere.get(), GS.Materials[sand].mat.get(), GS.Materials[sand].matSettings.get(), pos, HPR, "sphere");
+
+
+  pos[1] = 400.0f;
+  AddDrawable(root, sphere.get(), GS.mat_transparent.get(), GS.mat_transparent_settings.get(), pos, HPR, "sphere trasnparent");
 }
 
 void InitQuad(EDK3::Node* root) {
@@ -389,7 +484,7 @@ void InitQuad(EDK3::Node* root) {
     quad.alloc();
     quad->init(10.0f);
 
-    float pos[3] = { -50.0f, 100.0f, 0.0f };
+    float pos[3] = { -50.0f, 300.0f, 0.0f };
     float HPR[3] = { 0.0f, 0.0f, 0.0f };
     AddDrawable(root, quad.get(), GS.Materials[sand].mat.get(), GS.Materials[sand].matSettings.get(), pos, HPR, "quad");
 }
@@ -399,9 +494,12 @@ void InitCube24(EDK3::Node* root) {
     cube.alloc();
     cube->init24v(10.0f);
 
-    float pos[3] = { 50.0f, 100.0f, 0.0f };
+    float pos[3] = { 50.0f, 300.0f, 0.0f };
     float HPR[3] = { 0.0f, 0.0f, 0.0f };
     AddDrawable(root, cube.get(), GS.Materials[sand].mat.get(), GS.Materials[sand].matSettings.get(), pos, HPR, "Cube24");
+
+    pos[1] = 400.0f;
+    AddDrawable(root, cube.get(), GS.mat_transparent.get(), GS.mat_transparent_settings.get(), pos, HPR, "Cube transparent");
 
 }
 
@@ -410,7 +508,7 @@ void InitCube8(EDK3::Node* root) {
     cube.alloc();
     cube->init8v(10.0f);
 
-    float pos[3] = { 100.0f, 100.0f, 0.0f };
+    float pos[3] = { 100.0f, 300.0f, 0.0f };
     float HPR[3] = { 0.0f, 0.0f, 0.0f };
     AddDrawable(root, cube.get(), GS.Materials[sand].mat.get(), GS.Materials[sand].matSettings.get(), pos, HPR, "Cube8");
 }
@@ -424,18 +522,37 @@ void InitSurface(EDK3::Node* root) {
     Surface->init(figure_points, kFigurePoints, 10, 1.0f, 1.0f);
 
 
-    float pos[3] = { -100.0f, 100.0f, 0.0f };
+    float pos[3] = { -100.0f, 300.0f, 0.0f };
     float HPR[3] = { 0.0f, 0.0f, 0.0f };
     AddDrawable(root, Surface.get(), GS.Materials[sand].mat.get(), GS.Materials[sand].matSettings.get(), pos, HPR, "Surface");
 
 }
 
 void InitObj(EDK3::Node* root) {
-    EDK3::LoadObj("./obj/SM_Building_03.obj", &GS.customObjGeometry, nullptr);
+    EDK3::LoadObj("./obj/lava_land.obj", &GS.customObjGeometry, nullptr);
 
-    float pos[3] = { -200.0f, 100.0f, 0.0f };
+    float pos[3] = { -200.0f, 300.0f, 0.0f };
     float HPR[3] = { 0.0f, 0.0f, 0.0f };
-    AddDrawable(root, GS.customObjGeometry[0].get(), GS.Materials[sand].mat.get(), GS.Materials[sand].matSettings.get(), pos, HPR, "Cube8");
+    AddDrawable(root, GS.customObjGeometry[0].get(), GS.Materials[volcano].mat.get(), GS.Materials[volcano].matSettings.get(), pos, HPR, "Volcano");
+}
+
+void InitTransparent(EDK3::Node* root) {
+    EDK3::ref_ptr<EDK3::SphereCustom> sphere;
+    sphere.alloc();
+    sphere->init(10.0f);
+
+    float pos[3] = { 0.0f, 400.0f, 0.0f };
+    float HPR[3] = { 0.0f, 0.0f, 0.0f };
+
+    AddDrawable(root, sphere.get(), GS.mat_transparent.get(), GS.mat_transparent_settings.get(), pos, HPR, "sphere trasnparent");
+
+    EDK3::ref_ptr<EDK3::CubeCustom> cube;
+    cube.alloc();
+    cube->init24v(10.0f);
+    pos[1] = 400.0f;
+    pos[0] = 100.0f;
+
+    AddDrawable(root, cube.get(), GS.mat_transparent.get(), GS.mat_transparent_settings.get(), pos, HPR, "Cube transparent");
 }
 
 void InitCamera() 
@@ -451,7 +568,7 @@ void InitCamera()
     //GS.camera->set_view_direction(view);
     GS.camera->setSpeed(5.0f);
     GS.camera->setSpeedModifier(0.1f);
-    GS.camera->setupPerspective(70.0f, 8.0f / 6.0f, 1.0f, 1500.0f);
+    GS.camera->setupPerspective(70.0f, 8.0f / 6.0f, 1.0f, 3000.0f);
 
 }
 
@@ -473,6 +590,7 @@ void InitPostProcesses()
 void InitScene() {
   //Allocating root node:
   EDK3::Node* root = GS.root.alloc();
+  //EDK3::Node* transparents = GS.transparents.alloc();
   InitCamera();
   GS.Textures.alloc(10);
   GS.Materials.alloc(10);
@@ -485,16 +603,15 @@ void InitScene() {
   InitSceneLights();
 
   InitTerrain();
+  InitObj(root);
   InitSphere(root);
   InitQuad(root);
   InitCube24(root);
   InitCube8(root);
   //InitSurface(root); --> no usar
-  //InitObj(root);
-   
-
-
-
+  
+  //InitTransparent(transparents);
+  //root->addChild(transparents);
   
   EDK3::dev::GPUManager::CheckGLError("Prepare END");
 }
@@ -545,8 +662,11 @@ void ImGuiFn(double dt) {
 }
 
 int ESAT::main(int argc, char** argv) {
- /* EDK3::dev::CustomGPUManager GPU;
-  EDK3::dev::CustomGPUManager::ReplaceGPUManagerImplementation(&GPU);*/
+  //EDK3::dev::CustomGPUManager GPU;
+  //EDK3::dev::CustomGPUManager::ReplaceGPUManagerImplementation(&GPU);
+
+  //GPU.disableDepthTest();
+  //GPU.enableDepthTest(EDK3::dev::GPUManager::kCompareFunc_Always);
   
   ESAT::WindowInit(kWindowWidth, kWindowHeight);
   InitScene();
